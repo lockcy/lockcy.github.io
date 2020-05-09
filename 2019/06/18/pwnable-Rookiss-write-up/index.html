@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="pwn,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="PWNABLE write up[Rookiss]">
+<meta name="keywords" content="pwn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwnable-Rookiss-write-up ">
+<meta property="og:url" content="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="PWNABLE write up[Rookiss]">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-15T07:47:28.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pwnable-Rookiss-write-up ">
+<meta name="twitter:description" content="PWNABLE write up[Rookiss]">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/">
+
+
+
+
+
+  <title>pwnable-Rookiss-write-up  | lockcy's cave</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lockcy's cave</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ICCTW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">pwnable-Rookiss-write-up </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T15:46:03+08:00">
+                2019-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>PWNABLE write up[Rookiss]</p>
+<a id="more"></a>
+<p>Brainfuck</p>
+<p>一个c语言的brainfuck解释器，这题有点技巧，在leak阶段我也想了好久好久。<br>关于brainfuck，是一种小型计算机语言，之前也接触过一些bf编码的东西</p>
+<p>程序的do_brainfuck函数与表中除[ ]不支持外基本一致</p>
+<p>即使用brainfuck来控制p指针对内存进行读写操作</p>
+<p>put函数位置：0x0804a0a0-0x88=0804a018<br>泄露put函数地址时每次&gt;输出一个字节内容，泄露完put后p的位置在0x0804A01C<br>覆写putchar函数位置 0x080AA01C+0x14=0x80AA030 为main函数<br>覆写fgets函数位置0x0804A010 为system函数<br>覆写memset函数位置 0x0804A02C 为gets函数</p>
+<p>md5 calculator</p>
+<p>md5计算器，程序会先base64解码输入字符，再进行md5加密<br>先浏览一下main函数， 发现my_hash process_hash system函数 跟进my_hash函数看下</p>
+<p>My_hash()函数是用来产生验证码的，v11是canary，在这里被用于产生验证码，于是我们可以用验证码反推canary的值（在已知随机种子的情况下）<br>再看加密函数部分：</p>
+<p>Base64加密过后，1024个字节变成768个字节，但存放的v3只有0x200，即512字节，会有栈溢出。<br>最后的思路是：先通过验证码计算canary，再栈溢出并填充canary为正确值，最后调用system函数getshell<br>Canary.c</p>
+<p>Hash.py</p>
+<p>Simple login</p>
+<p>栈溢出</p>
+<p>Otp</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#include &lt;fcntl.h&gt;</p>
+<p>int main(int argc, char* argv[]){<br>    char fname[128];<br>    unsigned long long otp[2];</p>
+<pre><code>if(argc!=2){
+    printf(&quot;usage : ./otp [passcode]\n&quot;);
+    return 0;
+}
+
+int fd = open(&quot;/dev/urandom&quot;, O_RDONLY);
+if(fd==-1) exit(-1);
+
+if(read(fd, otp, 16)!=16) exit(-1);
+close(fd);
+
+sprintf(fname, &quot;/tmp/%llu&quot;, otp[0]);
+FILE* fp = fopen(fname, &quot;w&quot;);
+if(fp==NULL){ exit(-1); }
+fwrite(&amp;otp[1], 8, 1, fp);
+fclose(fp);</code></pre><p>printf(“OTP generated.\n”);</p>
+<pre><code>unsigned long long passcode=0;
+FILE* fp2 = fopen(fname, &quot;r&quot;);
+if(fp2==NULL){ exit(-1); }
+fread(&amp;passcode, 8, 1, fp2);
+fclose(fp2);
+
+if(strtoul(argv[1], 0, 16) == passcode){
+    printf(&quot;Congratz!\n&quot;);
+    system(&quot;/bin/cat flag&quot;);
+}
+else{
+    printf(&quot;OTP mismatch\n&quot;);
+}
+
+unlink(fname);
+return 0;</code></pre><p>}</p>
+<p>本题算是用了一些技巧，关键点在于ulimit的考察<br>这里对ulimit的使用算是逆向思维</p>
+<p>Tiny_easy</p>
+<p>整个程序很简单，就四行汇编代码</p>
+<p>程序在进入入口地址时会加载参数及环境变量</p>
+<p>什么保护措施都没开，优先考虑的是写入shellcode执行，但没有找到合适的写入点，在参考<a href="https://eugenekolo.com/blog/pwning-tiny_easy-pwnable-kr/后发现可以将shellcode写入环境变量传入程序" target="_blank" rel="noopener">https://eugenekolo.com/blog/pwning-tiny_easy-pwnable-kr/后发现可以将shellcode写入环境变量传入程序</a></p>
+<p>Fsb</p>
+<p>一道格式化字符串题目，分值只有20分，但却困扰了我很久<br>key在bss段中<br>最开始想的是利用格式化字符串读取或改写key的值，但是因为key不在栈中，无法使用格式化字符串利用key</p>
+<p>思路：<br>1.利用格式化字符串泄露esp和ebp<br>2.覆写ebp使其指向sleep的got地址<br>3.覆写sleep的got地址为execve</p>
+<p>Dragon</p>
+<p>刚开始看到了隐藏关</p>
+<p>就想着要覆写s1变量，但基本不可能，但看到了getshell函数，继续往下看<br>游戏逻辑是无法战胜龙的，但通过耗蓝无敌再被打回蓝可以使mama 龙的血量溢出，在战胜龙后v5变量会被释放，同时分配v2变量（大小与v5相同为0x10），这里就有了uaf漏洞</p>
+<p>Fix</p>
+<p>shellcode是没问题的，本地也跑得起来，所以刚开始有点困惑<br>ida查看程序</p>
+<p>Shellcode存放在ebp-1Ch开始处，而shellcode的长度为23字节，即shellcode到ebp-5h处<br>这里的问题是多次push后，栈中的内容会污染shellcode，导致shellcode无法正常执行<br>这里将第二个push eax 改为leave<br>复习一下AT&amp;T汇编leave ：<br>等价于</p>
+<p>movl %ebp, %esp<br>popl %ebp</p>
+<p>这里卡住了，毕竟栈基址移动后栈发生了变化，出错挺正常的，后来参考了网上大神的wp，方法挺巧妙的<br><a href="https://blog.csdn.net/kostart123/article/details/79395273" target="_blank" rel="noopener">https://blog.csdn.net/kostart123/article/details/79395273</a></p>
+<p>Echo1</p>
+<p>64位elf，没有任何保护，优先考虑写入shellcode，程序在echo1函数存在明显栈溢出漏洞，<br>最简单的方法是把jmp esp指令的机器码写入到id处，再控制eip跳转到id执行jmp esp，从而执行写入的shellcode</p>
+<p>Echo2</p>
+<p>和上一题类似，64位elf，没有任何保护，优先考虑写入shellcode<br>在echo2函数中存在fsb，可以leak该函数栈中任意地址</p>
+<p>Echo3函数中存在uaf</p>
+<p>思路如下：<br>1、将shellcode写入name变量中<br>2、利用fsb leak出name变量的地址<br>3、利用uaf跳转到name处</p>
+<p>因为printf函数参数不定，在64位下前6个参数由寄存器传递，超过6个才用栈传递，这里format的位置又在rbp-0x20h处，堆栈中占4个，寄存器中占6个，rbp为第11位置的值，所以使用%10$p来泄露，再利用一次uaf便可getshell<br>小于24字节的shellcode不太好找…参考了网上的wp</p>
+<p>Loveletter</p>
+<p>非常巧妙的一题</p>
+<p>程序的流程较为清晰，最后执行了system函数，初步看来不存在栈溢出，但在protect函数中发现了问题</p>
+<p>protect函数过滤了输入的字符，并替换为占三个字节的符号</p>
+<p>这里就存在了栈溢出</p>
+<p>一开始纠结如何构造绕过protect函数的命令</p>
+<p>但无奈过滤的符号太多，这条路走不通，还是利用一下栈溢出<br>因为在栈中v6和v7相邻，这里溢出v6达到修改v7的目的，从而控制loveletter第一部分读入长度<br>控制prolog为1，这样第一部分就变成了e，我们在拼接nv sh -c bash，最后执行env sh -c bash，完成getshell</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pwn/" rel="tag"># pwn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/30/linux下c语言函数返回值探究/" rel="next" title="linux下c语言函数返回值探究">
+                <i class="fa fa-chevron-left"></i> linux下c语言函数返回值探究
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/21/安全辅助工具应用/" rel="prev" title="安全辅助工具应用">
+                安全辅助工具应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

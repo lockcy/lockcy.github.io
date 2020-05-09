@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="pwn,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文主要学习在linux glibc使用的ptmalloc2实现原理。">
+<meta name="keywords" content="pwn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="glibc堆分配">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/glibc堆分配/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="本文主要学习在linux glibc使用的ptmalloc2实现原理。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/glibc堆分配/7.png">
+<meta property="og:updated_time" content="2019-08-15T07:37:38.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="glibc堆分配">
+<meta name="twitter:description" content="本文主要学习在linux glibc使用的ptmalloc2实现原理。">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/28/glibc堆分配/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/28/glibc堆分配/">
+
+
+
+
+
+  <title>glibc堆分配 | lockcy's cave</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lockcy's cave</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/glibc堆分配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ICCTW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">glibc堆分配</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T15:34:40+08:00">
+                2019-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要学习在linux glibc使用的ptmalloc2实现原理。</p>
+<a id="more"></a>
+<p>当前针对各大平台主要有如下几种堆内存管理机制：</p>
+<p>dlmalloc – General purpose allocator<br>ptmalloc2 – glibc<br>jemalloc – FreeBSD and Firefox<br>tcmalloc – Google<br>libumem – Solaris</p>
+<p>本文主要学习在linux glibc使用的ptmalloc2实现原理。</p>
+<p>本来linux默认的是dlmalloc，但是由于其不支持多线程堆管理，所以后来被支持多线程的prmalloc2代替了。<br>linux平台*malloc本质上都是通过系统调用brk或者mmap实现的。</p>
+<p>查看进程缺页中断次数<br>ps -o majflt,minflt -C process<br>Majflt major fault 大错误<br>Minflt minor fault 小错误<br>两个数值表示一个进程启动以来发生缺页中断次数<br>缺页中断：<br>1.软性中断：页缺失发生时，相关的页已经被加载进内存，但没有向mmu(memory management unit)注册<br>2.硬性中断：已被映射的虚拟地址没有被载入主存（当malloc分配了空间，但linux并未给创建空间的vma映射物理页，此时若对其进行操作会发生缺页中断）</p>
+<p>发成缺页中断后，执行了那些操作？<br>当一个进程发生缺页中断的时候，进程会陷入内核态，执行以下操作：<br>1、检查要访问的虚拟地址是否合法<br>2、查找/分配一个物理页<br>3、填充物理页内容（读取磁盘，或者直接置0，或者啥也不干）<br>4、建立映射关系（虚拟地址到物理地址）<br>重新执行发生缺页中断的那条指令<br>如果第3步，需要读取磁盘，那么这次缺页中断就是majflt，否则就是minflt。</p>
+<p>Brk分配方式<br>1、brk是将数据段(.data)的最高地址指针_edata往高地址推；</p>
+<p>2、mmap是在进程的虚拟地址空间中（堆和栈中间，称为文件映射区域的地方）找一块空闲的虚拟内存。</p>
+<p>这两种方式分配的都是虚拟内存，没有分配物理内存。在第一次访问已分配的虚拟地址空间的时候，发生缺页中断，操作系统负责分配物理内存，然后建立虚拟内存和物理内存之间的映射关系。</p>
+<p>malloc小于128k的内存，使用brk分配内存，将_edata往高地址推(只分配虚拟空间，不对应物理内存(因此没有初始化)，第一次读/写数据时，引起内核缺页中断，内核才分配对应的物理内存，然后虚拟地址空间建立映射关系)，如下图：</p>
+<img src="/2019/03/28/glibc堆分配/1.png">
+<p>1、进程启动的时候，其（虚拟）内存空间的初始布局如图1所示。<br>其中，mmap内存映射文件是在堆和栈的中间（例如libc-2.2.93.so，其它数据文件等），为了简单起见，省略了内存映射文件。<br>edata指针（glibc里面定义）指向数据段的最高地址。<br>2、进程调用A=malloc(30K)以后，内存空间如图2：<br>malloc函数会调用brk系统调用，将_edata指针往高地址推30K，就完成虚拟内存分配。<br>你可能会问：只要把_edata+30K就完成内存分配了？<br>事实是这样的，edata+30K只是完成虚拟地址的分配，A这块内存现在还是没有物理页与之对应的，等到进程第一次读写A这块内存的时候，发生缺页中断，这个时候，内核才分配A这块内存对应的物理页。也就是说，如果用malloc分配了A这块内容，然后从来不访问它，那么，A对应的物理页是不会被分配的。<br>3、进程调用B=malloc(40K)以后，内存空间如图3。<br>malloc大于128k的内存，使用mmap分配内存，在堆和栈之间找一块空闲内存分配(对应独立内存，而且初始化为0)，如下图：</p>
+<img src="/2019/03/28/glibc堆分配/2.png">
+<p>4、进程调用C=malloc(200K)以后，内存空间如图4：<br>默认情况下，malloc函数分配内存，如果请求内存大于128K（可由M_MMAP_THRESHOLD选项调节），那就不是去推_edata指针了，而是利用mmap系统调用，从堆和栈的中间分配一块虚拟内存。<br>这样子做主要是因为::<br>brk分配的内存需要等到高地址内存释放以后才能释放（例如，在B释放之前，A是不可能释放的，这就是内存碎片产生的原因，什么时候紧缩看下面），而mmap分配的内存可以单独释放。<br>当然，还有其它的好处，也有坏处，再具体下去，有兴趣的同学可以去看glibc里面malloc的代码了。<br>5、进程调用D=malloc(100K)以后，内存空间如图5；<br>6、进程调用free(C)以后，C对应的虚拟内存和物理内存一起释放。</p>
+<img src="/2019/03/28/glibc堆分配/3.png">
+<p>7、进程调用free(B)以后，如图7所示：<br>B对应的虚拟内存和物理内存都没有释放，因为只有一个_edata指针，如果往回推，那么D这块内存怎么办呢？<br>当然，B这块内存，是可以重用的，如果这个时候再来一个40K的请求，那么malloc很可能就把B这块内存返回回去了。<br>8、进程调用free(D)以后，如图8所示：<br>B和D连接起来，变成一块140K的空闲内存。<br>9、默认情况下：<br>当最高地址空间的空闲内存超过128K（可由M_TRIM_THRESHOLD选项调节）时，执行内存紧缩操作（trim）。在上一个步骤free的时候，发现最高地址空闲内存超过128K，于是内存紧缩，变成图9所示。</p>
+<p>现在已经清楚了brk和mmap的基本分配方法<br>在malloc的内存小于128K时使用brk，即将_edata指针向高地址推，如果访问了新malloc的内容则会产生缺页中断<br>当aslr关闭时brk指针（即最初的_edata）会指向data/bss段的末尾（如图所示）<br>当aslr开启时，会再data/bss段的末尾随机增加一段偏移<br>大于128k时则使用mmap在堆栈之间的内存映射段分配出空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/* Per thread arena example. */</span><br><span class="line">//compile gcc -no-pie -m32 -lpthread mthread.c -o mthread</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line"></span><br><span class="line">void* threadFunc(void* arg) &#123;</span><br><span class="line">        printf(&quot;Before malloc in thread 1\n&quot;);</span><br><span class="line">        getchar();</span><br><span class="line">        char* addr = (char*) malloc(1000);</span><br><span class="line">        printf(&quot;After malloc and before free in thread 1\n&quot;);</span><br><span class="line">        getchar();</span><br><span class="line">        free(addr);</span><br><span class="line">        printf(&quot;After free in thread 1\n&quot;);</span><br><span class="line">        getchar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">        pthread_t t1;</span><br><span class="line">        void* s;</span><br><span class="line">        int ret;</span><br><span class="line">        char* addr;</span><br><span class="line"></span><br><span class="line">        printf(&quot;Welcome to per thread arena example::%d\n&quot;,getpid());</span><br><span class="line">        printf(&quot;Before malloc in main thread\n&quot;);</span><br><span class="line">        getchar();</span><br><span class="line">        addr = (char*) malloc(1000);</span><br><span class="line">        printf(&quot;After malloc and before free in main thread\n&quot;);</span><br><span class="line">        getchar();</span><br><span class="line">        free(addr);</span><br><span class="line">        printf(&quot;After free in main thread\n&quot;);</span><br><span class="line">        getchar();</span><br><span class="line">        ret = pthread_create(&amp;t1, NULL, threadFunc, NULL);</span><br><span class="line">        if(ret)</span><br><span class="line">        &#123;</span><br><span class="line">                printf(&quot;Thread creation error\n&quot;);</span><br><span class="line">                return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        ret = pthread_join(t1, &amp;s);</span><br><span class="line">        if(ret)</span><br><span class="line">        &#123;</span><br><span class="line">                printf(&quot;Thread join error\n&quot;);</span><br><span class="line">                return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2019/03/28/glibc堆分配/4.png">
+<img src="/2019/03/28/glibc堆分配/5.png">
+<p>主线程运行后，这部分系统分配的内存叫做arena，这里大小为0x22000远比我们申请的1000字节多，这里之前就有了解过，操作系统在内核层面申请一部分内存，用户态使用时再从这部分内存中取，如果不够便再申请。</p>
+<p>在主线程调用free之后：从内存布局可以看出程序的堆空间并没有被释放掉，原来调用free函数释放已经分配了的空间并非直接“返还”给系统，而是由glibc 的malloc库函数加以管理。它会将释放的chunk添加到main arenas的bin，这是一种用于存储同类型free chunk的双链表数据结构中。在这里，记录空闲空间的freelist数据结构称之为bins。之后当用户再次调用malloc申请堆空间的时候，glibc malloc会先尝试从bins中找到一个满足要求的chunk，如果没有才会向操作系统申请新的堆空间。</p>
+<img src="/2019/03/28/glibc堆分配/6.png">
+<img src="/2019/03/28/glibc堆分配/7.png">
+<p>在thread1调用malloc之后：从输出结果可以看出thread1的heap segment已经分配完毕了，同时从这个区域的起始地址可以看出，它并不是通过brk分配的，而是通过mmap分配。</p>
+<p>arena的个数是跟系统中处理器核心个数相关的，如下所示：</p>
+<p>For 32 bit systems:<br>Number of arena = 2 number of cores + 1.<br>For 64 bit systems:<br>Number of arena = 8 number of cores + 1.</p>
+<p>多Arena的管理<br>假设有如下情境：一台只含有一个处理器核心的PC机安装有32位操作系统，其上运行了一个多线程应用程序，共含有4个线程——主线程和三个用户线程。显然线程个数大于系统能维护的最大arena个数（2*核心数 + 1= 3），那么此时glibc malloc就需要确保这4个线程能够正确地共享这3个arena，那么它是如何实现的呢？<br>当主线程首次调用malloc的时候，glibc malloc会直接为它分配一个main arena，而不需要任何附加条件。+<br>当用户线程1和用户线程2首次调用malloc的时候，glibc malloc会分别为每个用户线程创建一个新的thread arena。此时，各个线程与arena是一一对应的。但是，当用户线程3调用malloc的时候，就出现问题了。因为此时glibc malloc能维护的arena个数已经达到上限，无法再为线程3分配新的arena了，那么就需要重复使用已经分配好的3个arena中的一个(main arena, arena 1或者arena 2)。那么该选择哪个arena进行重复利用呢？</p>
+<p>1)首先，glibc malloc循环遍历所有可用的arenas，在遍历的过程中，它会尝试lock该arena。如果成功lock(该arena当前对应的线程并未使用堆内存则表示可lock)，比如将main arena成功lock住，那么就将main arena返回给用户，即表示该arena被线程3共享使用。</p>
+<p>2)而如果没能找到可用的arena，那么就将线程3的malloc操作阻塞，直到有可用的arena为止。</p>
+<p>3)现在，如果线程3再次调用malloc的话，glibc malloc就会先尝试使用最近访问的arena(此时为main arena)。如果此时main arena可用的话，就直接使用，否则就将线程3阻塞，直到main arena再次可用为止。</p>
+<p>这样线程3与主线程就共享main arena了。至于其他更复杂的情况，以此类推。</p>
+<p><a href="https://www.cnblogs.com/vinozly/p/5489138.html" target="_blank" rel="noopener">https://www.cnblogs.com/vinozly/p/5489138.html</a><br><a href="https://www.cnblogs.com/alisecurity/p/5486458.html" target="_blank" rel="noopener">https://www.cnblogs.com/alisecurity/p/5486458.html</a><br><a href="https://sploitfun.wordpress.com/2015/02/11/syscalls-used-by-malloc/" target="_blank" rel="noopener">https://sploitfun.wordpress.com/2015/02/11/syscalls-used-by-malloc/</a><br><a href="https://www.freebuf.com/articles/system/91527.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/system/91527.html</a><br><a href="https://blog.csdn.net/qq_33438733/article/details/73149417" target="_blank" rel="noopener">https://blog.csdn.net/qq_33438733/article/details/73149417</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pwn/" rel="tag"># pwn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/19/栈溢出mprotect/" rel="next" title="栈溢出mprotect">
+                <i class="fa fa-chevron-left"></i> 栈溢出mprotect
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/02/从一道360pwn题目学习srop/" rel="prev" title="从一道360pwn题目学习srop">
+                从一道360pwn题目学习srop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

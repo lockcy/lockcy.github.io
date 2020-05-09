@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="渗透测试,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习编写劫持程序流的后门程序">
+<meta name="keywords" content="渗透测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="win下的免杀后门探究（二）">
+<meta property="og:url" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="学习编写劫持程序流的后门程序">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/t1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/t2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/t3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/7.png">
+<meta property="og:updated_time" content="2019-08-15T03:54:01.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="win下的免杀后门探究（二）">
+<meta name="twitter:description" content="学习编写劫持程序流的后门程序">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/t1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/">
+
+
+
+
+
+  <title>win下的免杀后门探究（二） | lockcy's cave</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lockcy's cave</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/win下的免杀后门探究（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ICCTW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">win下的免杀后门探究（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-23T11:50:46+08:00">
+                2018-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习编写劫持程序流的后门程序</p>
+<a id="more"></a>
+
+<p>实验环境</p>
+<p>监听机 kali linux 64位</p>
+<p>测试机win7 sp1 32位</p>
+<p>测试模板:putty</p>
+<p>测试杀软：火绒安全4.0.76.9</p>
+<p>360安全卫士11.4.0.1002</p>
+<p>在线测试网站：<a href="http://www.virustotal.com" target="_blank" rel="noopener">www.virustotal.com</a></p>
+<p>静态分析：IDA PRO</p>
+<p>动态分析：OLLYDBG</p>
+<p>上一篇主要讲了一些现成payload生产后门的利用，但这些后门除了回弹给攻击者一个shell以外是没有其他功能的。当被害人点开伪装成正常软件的后门后，发现什么都没有发生，是不是会起疑呢？</p>
+<p>作为一个小白，我首先想到的是将正常的软件和后门捆绑打包成一个可执行文件，这样既会执行正常软件又会启动后门。</p>
+<p>于是百度一番，找到了一个exe捆绑软件 ：exe捆绑机</p>
+<p>简单捆绑了一下后门程序和putty</p>
+<p>Putty and payload2.exe的检测结果</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/t1.png">
+<p>这结果也是醉了，看看到底什么情况。<br>用IDA打开正常的putty</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/t2.png">
+<p>可以看到代码段和数据段，且权限区分很明显（只有代码段拥有执行权限）<br>在比较一下捆绑过后的</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/t3.png">
+
+<p>还真是简单粗暴啊，直接分别把两个程序写到upx0和upx1段里了，而且每个段都有执行权限，这不报毒都不可能啊。</p>
+<p>由此我们想到了一种新姿势，即把恶意代码嵌入正常程序中，以劫持程序流的形式让用户主动触发恶意代码造成后门回连。这样的后门较为隐蔽，即用户必须触发某个程序动作后才会导致后门的回连。<br>当用户双击恶意可执行文件时，进程创建，但后门并未连接，也没有异常的流量产生，只用当用户触发某个程序动作时才会回连，这样可以绕过部分AV在程序运行时的检测。</p>
+<p>下面依旧使用putty作为演示对象</p>
+<p>1.在代码段虚地址为0x0041CB6E的位置找到字符串login as的字样，用过Putty的同学都知道选择ip后点击open就会跳转到login as的登录界面，因此选择在这儿劫持程序流。</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/1.png">
+<p>2.寻找code cave，需要在程序中找到一个合适的空间来嵌入shellcode。利用Cminer或者Cave_miner工具来找代码洞（其实手工也行）</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/2.png">
+<p>可能是我64位下的pe32装载的问题，Cminer没有找到起始地址，无奈试下Cave_miner</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/3.png">
+<p>在data段发现两个代码洞，但是在OD里没有看到所示的虚地址…(后来找出是段标志位的原因，导致od和cave_miner对data段的解析不同)<br>只能手动在data段尾找到没有分配的空间，就从虚地址0x0047A478开始作为shellcode内嵌的起始地址。</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/4.png">
+<p>把之前找到的程序起点改为JMP 0047A478，即跳转到我们要填充的shellcode的首地址</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/5.png">
+<p>3.利用msfvenom生成shellcode并以hex形式输出，把shellcode复制到选定的代码洞中</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/6.png">
+<p>4.现在的后门是无法运行的，因为shellcode所在的data段是没有x权限的，最后再用lordpe改下data段的权限。</p>
+<p>5.运行程序，点击open后，后门回连</p>
+<img src="/2018/12/23/win下的免杀后门探究（二）/7.png">
+<p>6.在shellcode执行完后我们希望可以返回主程序流<br>即在shellcode后加入下列指令的机器码<br>Popfd<br>Popad<br>Push offset 00467c7c<br>Jmp 0041cb73<br>nop</p>
+<p>*选用上一章节免杀效果较好的payload生成的shellcode，实战价值很高。</p>
+<p>参考资料：《程序员的自我修养链接装载与库》<br>嘶吼：免杀的艺术</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/渗透测试/" rel="tag"># 渗透测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/13/win下的免杀后门探究（一）/" rel="next" title="win下的免杀后门探究（一）">
+                <i class="fa fa-chevron-left"></i> win下的免杀后门探究（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/05/GOT表与PLT表/" rel="prev" title="GOT表与PLT表">
+                GOT表与PLT表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

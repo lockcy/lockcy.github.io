@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="pwn,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="PWNABLE write up[Toddler’s Bottle]">
+<meta name="keywords" content="pwn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwnable [Toddler&#39;s Bottle] write up">
+<meta property="og:url" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="PWNABLE write up[Toddler’s Bottle]">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/collision1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/collision2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/collision3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode6.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode7.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input6.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input7.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input8.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/shellshock1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/shellshock2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/shellshock3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blackjack1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blackjack2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blackjack3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd11.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd12.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd13.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd14.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd15.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd21.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd22.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd23.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd24.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd25.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd26.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/memcpy1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/memcpy2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/memcpy3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm6.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blukat1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blukat2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blukat3.png">
+<meta property="og:updated_time" content="2019-08-15T07:14:21.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pwnable [Toddler&#39;s Bottle] write up">
+<meta name="twitter:description" content="PWNABLE write up[Toddler’s Bottle]">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/">
+
+
+
+
+
+  <title>pwnable [Toddler's Bottle] write up | lockcy's cave</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lockcy's cave</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/pwnable-Toddler-s-Bottle-write-up/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ICCTW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">pwnable [Toddler's Bottle] write up</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T11:59:07+08:00">
+                2019-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>PWNABLE write up[Toddler’s Bottle]</p>
+<a id="more"></a>
+
+<p>fd 最基础的c语言题目</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd2.png"></th></tr></table>
+考察点：read函数ssize_t read(int fd,void * buf ,size_t count);
+<br>
+Fd.c
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">char buf[32];</span><br><span class="line">int main(int argc, char* argv[], char* envp[])&#123;</span><br><span class="line">	if(argc&lt;2)&#123;</span><br><span class="line">		printf(&quot;pass argv[1] a number\n&quot;);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int fd = atoi( argv[1] ) - 0x1234;    //字符串转整形</span><br><span class="line">	int len = 0;</span><br><span class="line">	len = read(fd, buf, 32);</span><br><span class="line">	if(!strcmp(&quot;LETMEWIN\n&quot;, buf))&#123;</span><br><span class="line">		printf(&quot;good job :)\n&quot;);</span><br><span class="line">		system(&quot;/bin/cat flag&quot;);</span><br><span class="line">		exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;learn about Linux file IO\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由fd.c知程序中变量fd为读入的第一个参数减0x1234，同时fd也作为read函数的第一个参数。<br>linux的文件描述符</p>
+<p>Integervalue    Name    &lt;unistd.h&gt; symbolicconstant    &lt;stdio.h&gt; filestream<br>0    Standardinput    STDIN_FILENO    stdin<br>1    Standardoutput    STDOUT_FILENO    stdout<br>2    Standarderror    STDERR_FILENO    stderr</p>
+<p>当fd为0时，read函数为标准输入流，(0x1234)16 =(4660)10 即第一个参数为4660时read函数生效，再输入buf的内容：LETMEWIN，获取flag。</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/fd3.png">
+
+<p>collision</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/collision1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/collision2.png"></th></tr></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br><span class="line">unsigned long hashcode = 0x21DD09EC;</span><br><span class="line">unsigned long check_password(const char* p)&#123;</span><br><span class="line">	int* ip = (int*)p;</span><br><span class="line">	int i;</span><br><span class="line">	int res=0;</span><br><span class="line">	for(i=0; i&lt;5; i++)&#123;</span><br><span class="line">		res += ip[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[])&#123;</span><br><span class="line">	if(argc&lt;2)&#123;</span><br><span class="line">		printf(&quot;usage : %s [passcode]\n&quot;, argv[0]);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	if(strlen(argv[1]) != 20)&#123;</span><br><span class="line">		printf(&quot;passcode length should be 20 bytes\n&quot;);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if(hashcode == check_password( argv[1] ))&#123;</span><br><span class="line">		system(&quot;/bin/cat flag&quot;);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;wrong passcode.\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>题目要求输入一个20字节参数，check_password函数用来将输入参数转化为5个整形并求和，随便凑一下只要满足最后之和为0x21DD09EC就行了，还要注意小端储存模式，这也算一个坑点吧。<br>如下图：即0x01010101*4+0x1dd905e8=0x21DD09EC</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/collision3.png">
+
+<p>bof</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof2.png"></th></tr></table>
+
+
+
+<p>最简单的buffer overflow</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof3.png">
+<p>栈的简单结构如下</p>
+<p>overflowme<br>ebp<br>eip<br>函数参数key</p>
+<p>只要溢出把key的值变成0xcafebabe就可以了</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof4.png">
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/bof5.png">
+
+<p>flag</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag2.png"></th></tr></table>
+
+
+<p>题目提示是逆向,拖到winhex里发现upx加壳</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag3.png">
+<p>Upx -d 脱下壳,再用ida打开</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag4.png">
+<p>发现main函数里有句提示，双击跟进下具体位置,发现flag</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/flag5.png">
+
+<p>passcode</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode2.png"></th></tr></table>
+
+
+<p>做这题时先要看到程序里的关键点<br>scanf(“%d”, passcode1); 这里没有&amp;，表示是直接向地址为passcode1里写入整型数据</p>
+<p>刚上手，发现输入name处存在溢出，但是有canary，canary就是图中v2，即passcode2，因此不能直接覆盖返回地址。</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode3.png">
+<p>通过ida观察栈中情况<br>name变量所在位置</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode4.png">
+<p>passcode1所在位置</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode5.png">
+<p>两者相差0x60</p>
+<p>最终思路如下：<br>1.通过输入name控制passcode1<br>2.将passcode1构造成程序中接下来会调用函数的地址<br>3.下一步程序会执行scanf函数，通过scanf直接将函数地址(got表)覆写成我们想要的<br>即下图</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode6.png">
+<p>这里覆写的是printf的got表</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/passcode7.png">
+
+
+<p>random</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random2.png"></th></tr></table>
+
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random3.png">
+
+<p>发现随机数没设置种子，每次出来的都是同一个值</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random4.png">
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/random5.png">
+
+<p>leg<br>ARM汇编基础知识，虽然学过8086汇编，但看到ARM汇编还是懵逼的，好多寄存器没见过…上网查了资料才知道</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input2.png"></th></tr></table>
+
+
+<p>r0-r3 用作传入函数参数，传出函数返回值。在子程序调用之间，可以将 r0-r3 用于任何用途。<br>被调用函数在返回之前不必恢复 r0-r3。如果调用函数需要再次使用 r0-r3 的内容，则它必须保留这些内容。<br>r4-r11 被用来存放函数的局部变量。如果被调用函数使用了这些寄存器，它在返回之前必须恢复这些寄存器的值。<br>r12 是内部调用暂时寄存器 ip。它在过程链接胶合代码（例如，交互操作胶合代码）中用于此角色。<br>在过程调用之间，可以将它用于任何用途。被调用函数在返回之前不必恢复 r12。<br>r13 是栈指针 sp。它不能用于任何其它用途。sp 中存放的值在退出被调用函数时必须与进入时的值相同。<br>r14 是链接寄存器 lr。如果您保存了返回地址，则可以在调用之间将 r14 用于其它用途，程序返回时要恢复<br>r15 是程序计数器 PC。它不能用于任何其它用途。<br><a href="https://blog.csdn.net/u014379540/article/details/51996209" target="_blank" rel="noopener">https://blog.csdn.net/u014379540/article/details/51996209</a></p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input3.png">
+<p>题目需要使输入的key=key1+key2+key3</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input4.png">
+<p>Mov r3,pc 将PC中的内容放至r3寄存器中，此时PC中的内容为当前地址+8，即0x08ce4，函数返回值为r0寄存器中的内容，即key1=0x08ce4</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input5.png">
+<p>Add r6,pc #1<br>在ARM里表示r6=pc+1 即r6=0x08d01<br>Bx r6 表示r6是跳转的目的地址，并且根据地址的最低位确定是否状态切换。如果末尾是1则切换到thumb状态，否则保留在asm状态；当前状态下是应该切换到thumb状态。<br>这里是thumb模式，所以操作都是16位的，也就是16进制的4位<br>当前pc为0x08d08<br>r3=pc+4=0x08d0c</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input6.png">
+<p>LR为链接寄存器，保存子程序的返回地址</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input7.png">
+<p>子程序结束后顺序返回到0x08d80，即r0和LR的值为0x08d80</p>
+<p>最终把三个数相加得到key</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/input8.png">
+
+
+<p>mistake</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake2.png"></th></tr></table>
+
+<p>题目提示是运算符优先级问题<br>问题出在这里</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake3.png">
+<p>=优先级小于&lt;，因此fd为0，即程序会先从标准输入流中获取pw_buf2值<br>整个逻辑都可控了</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/mistake4.png">
+
+
+<p>shellshock</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/shellshock1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/shellshock2.png"></th></tr></table>
+
+<p>Shellshock是2014年的一个bash shell 的CVE<br><a href="https://www.freebuf.com/news/48331.html" target="_blank" rel="noopener">https://www.freebuf.com/news/48331.html</a></p>
+<p>Poc: env x=’() { :;}; echo hh’ bash -c “echo test”<br>设置环境变量时，如果发现有(){ 会解析成函数，且之后的命令仍然执行</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/shellshock3.png">
+
+
+<p>coin1</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin2.png"></th></tr></table>
+
+
+<p>题目就不放上来了，一个简单的二分查找</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin3.png">
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/coin4.png">
+
+<p>注意要放到他的服务器上跑，不然延迟很高，肯定来不及</p>
+<p>blackjack</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blackjack1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blackjack2.png"></th></tr></table>
+
+<p>一个21点的小游戏，题目就不放了<br>做法也很简单，因为一开始没看源码，测试了下发现赌注可以输入负数，接着一直输就好了……<br>后来看了源码发现还有别的解法<br><a href="https://blog.csdn.net/qq_20307987/article/details/51435143" target="_blank" rel="noopener">https://blog.csdn.net/qq_20307987/article/details/51435143</a></p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blackjack3.png">
+
+<p>lotto</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto2.png"></th></tr></table>
+
+
+<p>看似是一个看脸的彩票游戏，但是代码里有很大问题</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto3.png">
+<p>计算match值这部分，虽然lotto是随机的，但是如果你输入6个相同数字，lotto中有一个和你输入数字相同就能验证通过，爆破一下</p>
+<p>脚本里：( 部分可以无视，因为pwnable的flag标志太明显了…</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/lotto4.png">
+
+
+<p>cmd1</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd11.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd12.png"></th></tr></table>
+
+<p>考察点：linux基础等，通配符*的利用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int filter(char* cmd)&#123;</span><br><span class="line">	int r=0;</span><br><span class="line">	r += strstr(cmd, &quot;flag&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;sh&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;tmp&quot;)!=0;</span><br><span class="line">	return r;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char* argv[], char** envp)&#123;</span><br><span class="line">	putenv(&quot;PATH=/thankyouverymuch&quot;);</span><br><span class="line">	if(filter(argv[1])) return 0;</span><br><span class="line">	system( argv[1] );</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要求输入的参数中不能包含flag sh tmp</p>
+<p>方法一、<br>利用通配符</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd13.png">
+<p>方法二、<br>利用绝对路径绕过关键字的限制<br>在有权限创建文件的位置创建文件a</p>
+<p>a的内容如下</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd14.png">
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd15.png">
+
+
+<p>cmd2</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd21.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd22.png"></th></tr></table>
+
+<p>相比于cmd1，限制更加严格，连/ 和`都不能用了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;                                         </span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int filter(char* cmd)&#123;</span><br><span class="line">	int r=0;</span><br><span class="line">	r += strstr(cmd, &quot;=&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;PATH&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;export&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;/&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;`&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;flag&quot;)!=0;</span><br><span class="line">	return r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extern char** environ;</span><br><span class="line">void delete_env()&#123;</span><br><span class="line">	char** p;</span><br><span class="line">	for(p=environ; *p; p++)	memset(*p, 0, strlen(*p));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[], char** envp)&#123;</span><br><span class="line">	delete_env();</span><br><span class="line">	putenv(&quot;PATH=/no_command_execution_until_you_become_a_hacker&quot;);</span><br><span class="line">	if(filter(argv[1])) return 0;</span><br><span class="line">	printf(&quot;%s\n&quot;, argv[1]);</span><br><span class="line">	system( argv[1] );</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本题的重点就是绕过/的限制<br>易知</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd23.png">
+<p>这样一来就很轻松构造Payload</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd24.png">
+<p>但是并没有执行，又试了下payload写入文件执行，也无法执行。<br>后来查了下linux中单双引号的区别才发现问题所在：</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd25.png">
+<p><a href="https://blog.csdn.net/beginning1126/article/details/8633900" target="_blank" rel="noopener">https://blog.csdn.net/beginning1126/article/details/8633900</a><br>果然还是Linux基础太差了，以后要好好补补<br>用单引号就ok了</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/cmd26.png">
+
+
+<p>uaf</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf2.png"></th></tr></table>
+
+<p>学到了uaf（use after free）漏洞<br>题目解析这篇博客已经讲得很清楚了<br><a href="https://blog.csdn.net/qq_20307987/article/details/51511230" target="_blank" rel="noopener">https://blog.csdn.net/qq_20307987/article/details/51511230</a><br>利用过程自己再捋一遍<br>1.先执行3，虽然分配的空间被回收，但是m指针仍然指向被回收的内存区域（迷途指针）<br>2.查看之前分配的空间大小，以便利用，分配了0x18</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf3.png">
+<p>3.将虚表调整</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/uaf4.png">
+
+<p>memcpy</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/memcpy1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/memcpy2.png"></th></tr></table>
+
+<p>movntps m128,XMM<br>m128 &lt;== XMM 直接把XMM中的值送入m128，不经过cache,必须对齐16字节.<br>movdqa 把2个对准的四字节整数传送到xmm寄存器或者内存</p>
+<p>堆块分配时除了堆块本身还有堆块大小和标志位共计4字节。而malloc分配的堆块大小是以8字节对其的。<br>因为movntps需要16字节对齐，这就说明每次分配的堆块数必须是偶数，所以只要每次输入的大小满足使分配的堆块数为偶即可<br>k为输入数据，即满足(k+4)/8=2n<br>这题一开始不是很理解，但是看了几遍writeup后发现其实原理很简单，主要要了解堆分配的规则，一开始想复杂了</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/memcpy3.png">
+
+
+<p>asm</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm2.png"></th></tr></table>
+
+<p>题目大致的意思是把你的shellcode加上一段预设的shellcode在沙箱里运行<br>先看沙箱函数，沙箱里只允许使用open read write exit exit_group这些函数</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm3.png">
+<p>再看添加的shellcode，只是把寄存器清零了</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm4.png">
+<p>用pwntools自带的shellcraft模块就很方便</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm5.png">
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/asm6.png">
+
+
+<p>blukat</p>
+<table><tr><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blukat1.png"></th><th><img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blukat2.png"></th></tr></table>
+
+
+<p>这题……纯考你细心不细心</p>
+<img src="/2019/02/13/pwnable-Toddler-s-Bottle-write-up/blukat3.png">
+
+
+<p>第一部分的题目相对简单，分值也低，还有Input unlink horcruxes 没写，有空继续做</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pwn/" rel="tag"># pwn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/05/GOT表与PLT表/" rel="next" title="GOT表与PLT表">
+                <i class="fa fa-chevron-left"></i> GOT表与PLT表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/02/栈溢出ret2dlresolve/" rel="prev" title="栈溢出ret2dlresolve">
+                栈溢出ret2dlresolve <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
