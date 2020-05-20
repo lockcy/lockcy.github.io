@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="weex,">
 
 
 
@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="个人介绍 Web安全 pwn 渗透测试爱好者zjut最菜CTFer 联系方式lockcysec@qq.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About me">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="weex环境配置及创建项目">
+<meta name="keywords" content="weex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weex开发实战（一）">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/weex开发实战（一）/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="个人介绍 Web安全 pwn 渗透测试爱好者zjut最菜CTFer 联系方式lockcysec@qq.com">
+<meta property="og:description" content="weex环境配置及创建项目">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-15T03:19:18.974Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/weex开发实战（一）/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/weex开发实战（一）/2.png">
+<meta property="og:updated_time" content="2020-05-09T08:59:01.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About me">
-<meta name="twitter:description" content="个人介绍 Web安全 pwn 渗透测试爱好者zjut最菜CTFer 联系方式lockcysec@qq.com">
+<meta name="twitter:title" content="weex开发实战（一）">
+<meta name="twitter:description" content="weex环境配置及创建项目">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/09/weex开发实战（一）/1.png">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2020/05/09/weex开发实战（一）/">
 
 
 
 
 
-  <title>About me | lockcy's cave</title>
+  <title>weex开发实战（一） | lockcy's cave</title>
   
 
 
@@ -240,36 +244,168 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/weex开发实战（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ICCTW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">About me</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p><font face="黑体" size="6">个人介绍</font></p>
-<p>Web安全 pwn 渗透测试爱好者<br>zjut最菜CTFer</p>
-<p><font face="黑体" size="6">联系方式</font><br><a href="mailto:lockcysec@qq.com" target="_blank" rel="noopener">lockcysec@qq.com</a></p>
-
+          <h1 class="post-title" itemprop="name headline">weex开发实战（一）</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T12:00:50+08:00">
+                2020-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p> weex环境配置及创建项目</p>
+<a id="more"></a>
+
+
+<p><em>1.安装node.js</em></p>
+<p><em>2.安装weex-toolkit</em><br>npm i -g weex-toolkit</p>
+<p><em>3.创建weex项目</em><br>weex create water-metering-system</p>
+<p>select weex web render（选择weex web渲染器）</p>
+<p>Babel compiler（js编译器）？选项有4个，按推荐选择第一个“stage-0”,支持所有es6语法：</p>
+<p>Use vue-router to manage your view router?是否使用vue路由来管理界面路由，我这里没按推荐选择，vue-router是官方路由，个人推荐使用。</p>
+<p>Use ESLint to lint your code?是否使用ESLint管理代码，ESLint是个代码风格管理工具，是用来统一代码风格的，并不会影响整体的运行，这也是为了多人协作，新手就不用了，一般项目中都会使用。</p>
+<p>接下来也是选择题Pick an ESLint preset (Use arrow keys) 选择一个ESLint预设，编写vue项目时的代码风格，因为我选择了使用ESLint，所以有此选项：<br>Standard (<a href="https://github.com/feross/standard" target="_blank" rel="noopener">https://github.com/feross/standard</a>) 标准，有些看不明白，什么标准呢，去给提示的standardgithub地址看一下， 原来是js的标准风格<br>AirBNB (<a href="https://github.com/airbnb/javascript" target="_blank" rel="noopener">https://github.com/airbnb/javascript</a>) JavaScript最合理的方法，这个github地址说的是JavaScript最合理的方法<br>none (configure it yourself) 这个不用说，自己定义风格,我选择了标准风格</p>
+<p>Set up unit tests (Y/n)？是否安装单元测试</p>
+<p>Should we run ‘npm install’ for you after the project has been created?(译：项目创建后是否要为你运行“npm install”?这里选择包管理工具)<br>yes,use npm(使用npm)<br>yes,use yarn(使用yarn)<br>no,I will handle that myself(自己操作)：</p>
+<p>创建的时候会自动帮你下载需要的modules,创建完成后进入目录npm start,项目就能运行了</p>
+<img src="/2020/05/09/weex开发实战（一）/1.png">
+<p>可以下载官方提供的weex playground app，在手机上就能查看效果</p>
+<p>添加移动端<br>weex platform add ios<br>weex platform add android</p>
+<p>运行在三端<br>weex run ios<br>weex run android<br>weex run web</p>
+<img src="/2020/05/09/weex开发实战（一）/2.png">
+
+
+
+
+<p><a href="https://blog.csdn.net/cui130/article/details/82701056" target="_blank" rel="noopener">https://blog.csdn.net/cui130/article/details/82701056</a></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/weex/" rel="tag"># weex</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/09/python序列化与反序列化/" rel="next" title="python序列化与反序列化">
+                <i class="fa fa-chevron-left"></i> python序列化与反序列化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
