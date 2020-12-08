@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="parse_url解析漏洞">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-12-08T15:25:49.610Z">
+<meta property="og:updated_time" content="2020-12-08T15:26:31.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="parse-url">
 <meta name="twitter:description" content="parse_url解析漏洞">
@@ -364,7 +364,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function filter_directory()</span><br><span class="line">&#123;</span><br><span class="line">    $keywords = [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];</span><br><span class="line">    $uri = parse_url($_SERVER[&quot;REQUEST_URI&quot;]);</span><br><span class="line">    parse_str($uri[&apos;query&apos;], $query);</span><br><span class="line">//    var_dump($query);</span><br><span class="line">//    die();</span><br><span class="line">    foreach($keywords as $token)</span><br><span class="line">    &#123;</span><br><span class="line">        foreach($query as $k =&gt; $v)</span><br><span class="line">        &#123;</span><br><span class="line">            if (stristr($k, $token))</span><br><span class="line">                hacker();</span><br><span class="line">            if (stristr($v, $token))</span><br><span class="line">                hacker();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Payload：</p>
-<pre><code class="//user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg"></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
