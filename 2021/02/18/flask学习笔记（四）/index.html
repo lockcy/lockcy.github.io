@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="flask,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="请求与响应 模板[使用方法+源码剖析]">
+<meta name="keywords" content="flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask学习笔记（四）">
+<meta property="og:url" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="请求与响应 模板[使用方法+源码剖析]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/1.png">
+<meta property="og:image" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/2.png">
+<meta property="og:image" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/3.png">
+<meta property="og:image" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/5.png">
+<meta property="og:image" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/4.png">
+<meta property="og:updated_time" content="2021-02-20T06:03:06.956Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask学习笔记（四）">
+<meta name="twitter:description" content="请求与响应 模板[使用方法+源码剖析]">
+<meta name="twitter:image" content="http://yoursite.com/2021/02/18/flask学习笔记（四）/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/02/18/flask学习笔记（四）/">
+
+
+
+
+
+  <title>flask学习笔记（四） | lockcy's cave</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lockcy's cave</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/18/flask学习笔记（四）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lockcy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/harutya.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">flask学习笔记（四）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-18T16:34:52+08:00">
+                2021-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>请求与响应 模板[使用方法+源码剖析]</p>
+<a id="more"></a>
+<p><font size="6">HTTP请求类型</font><br>在上一期的最后我们提到了注册路由时的参数，有一个比较重要的参数没有提到：methods，即请求方式，详细介绍methods之前先温习一下HTTP请求方式。<br>在最新的HTTP/1.1参考意见稿RFC7231（原在RFC2616）中定义了如下几种请求方式。<br><a href="https://tools.ietf.org/html/rfc7231" target="_blank" rel="noopener">https://tools.ietf.org/html/rfc7231</a></p>
+<style>
+table th:nth-of-type(1){
+width: 20%;
+}
+table th:nth-of-type(2){
+width: 80%;
+}
+</style>
+<table>
+<thead>
+<tr>
+<th align="center">请求方式</th>
+<th align="center">详细介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">GET</td>
+<td align="center">向特定目标资源发出请求，是信息检索的主要机制。</td>
+</tr>
+<tr>
+<td align="center">HEAD</td>
+<td align="center">HEAD方法与GET类似，不同之处在于服务器在响应中不得发送消息正文，服务器应发送与HEAD请求相同的报头字段。</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="center">向指定资源提交数据进行处理请求。数据被包含在请求体中。POST请求可能会导致新的资源的创建和/或已有资源的修改。</td>
+</tr>
+<tr>
+<td align="center">PUT</td>
+<td align="center">更新指定位置的资源文件。与POST的区别是PUT是幂等的，多次调用同一个PUT请求将始终产生相同的结果。而反复调用POST请求会多次创建相同的资源。</td>
+</tr>
+<tr>
+<td align="center">DELETE</td>
+<td align="center">请求原始服务器删除目标资源与其当前功能之间的关联。即删除所标识的资源。</td>
+</tr>
+<tr>
+<td align="center">CONNECT</td>
+<td align="center">请求接收者建立到由请求目标标识的目的源服务器的隧道。</td>
+</tr>
+<tr>
+<td align="center">TRACE</td>
+<td align="center">回显服务器收到的请求</td>
+</tr>
+</tbody></table>
+<p>而在实际应用中主要用到的请求方式有GET POST HEAD PUT DELETE</p>
+<p><font size="6">Flask 请求</font><br>注册路由时通过配置methods参数来指定HTTP请求类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/hello&apos;, methods=[&apos;GET&apos;, &apos;POST&apos;])    # 指定GET POST方式均可访问</span><br><span class="line">@app.route(&apos;/hello&apos;, methods=[&apos;POST&apos;])           # 指定仅允许POST方式访问，GET方式访问响应为405 Method Not Allowed</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<p>使用表单以POST方式访问路由<br>login.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">   &lt;body&gt;</span><br><span class="line"></span><br><span class="line">      &lt;form action = &quot;http://localhost:5000/login&quot; method = &quot;post&quot;&gt;</span><br><span class="line">         &lt;p&gt;Enter Name:&lt;/p&gt;</span><br><span class="line">         &lt;p&gt;&lt;input type = &quot;text&quot; name = &quot;username&quot; /&gt;&lt;/p&gt;</span><br><span class="line">         &lt;p&gt;&lt;input type = &quot;submit&quot; value = &quot;submit&quot; /&gt;&lt;/p&gt;</span><br><span class="line">      &lt;/form&gt;</span><br><span class="line">   &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应后端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/login&apos;, methods=[&apos;POST&apos;, &apos;GET&apos;])</span><br><span class="line">def login():</span><br><span class="line">    method = request.method</span><br><span class="line">    username = request.form.get(&apos;username&apos;)</span><br><span class="line">    results = &apos;&#123;0&#125;使用&#123;1&#125;方式登录&apos;.format(username, method)</span><br><span class="line">    return results</span><br></pre></td></tr></table></figure>
+
+<p>访问login.html，表单中填写信息提交后的结果</p>
+<img src="/2021/02/18/flask学习笔记（四）/1.png">
+<img src="/2021/02/18/flask学习笔记（四）/2.png">
+
+<p>这里代码中用到的request对象其实是LocalProxy实例而来，在后边上下文章节中会详细分析LocalProxy，这里先了解一些request包含的属性。<br>request.form POST请求时的表单，request.form.get(‘username’)获取表单中username的值。<br>request.args GET请求时的参数，request.args.get(‘username’)获取url中username参数的值。<br>request.headers 获取请求头。<br>request.cookies 获取请求的cookies<br>request.files 获取上传的文件<br>request.method 获取请求的方法(GET/POST)<br>request.scheme 获取请求的协议(http)<br>request.path 获取请求相对路径(/login)<br>request.url 获取请求的url(<a href="http://localhost:5000/login" target="_blank" rel="noopener">http://localhost:5000/login</a>)</p>
+<p><font size="6">Flask 响应</font><br>定义路由的视图函数时，return的对象/值 即为响应，之前接触到返回的类型大致有以下三种：</p>
+<ol>
+<li>返回一个字符串 return ‘success’</li>
+<li>返回渲染的模板 return render_template(‘xxx.html’)</li>
+<li>返回重定向路由 return redirect(‘/index’)</li>
+</ol>
+<p>除了上述三种情况外，我们也可以自定义response对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 自定义返回响应头</span><br><span class="line">new_headers = &#123;&apos;content-type&apos;: &apos;text/html; charset=utf-8&apos;, &apos;secret&apos;: &apos;lockcy is locked&apos;&#125;</span><br><span class="line">res = make_response(&apos;自定义内容&apos;)</span><br><span class="line">res.headers = new_headers</span><br><span class="line"># 自定义状态码</span><br><span class="line">return res, 666</span><br><span class="line"># 自定义返回数据格式</span><br><span class="line">res = make_response(&#123;&apos;name&apos;: &apos;lockcy&apos;&#125;)</span><br><span class="line">res.mimetype = &apos;application/json&apos;    </span><br><span class="line">return res    # return jsonify(&#123;&apos;name&apos;: &apos;lockcy&apos;&#125;)</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/02/18/flask学习笔记（四）/3.png">
+<img src="/2021/02/18/flask学习笔记（四）/5.png">
+
+<p><font size="3">简述了flask中从请求到响应的使用方法，我们再从源码的角度分析下该过程(只给出与本节内容相关的代码,并去除了try except等不影响大体流程的代码)。</font></p>
+<p><strong>1.通过 <strong>call</strong> 方法将 Flask 对象变为可调用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def __call__(self, environ, start_response):</span><br><span class="line">    return self.wsgi_app(environ, start_response)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.实现 wsgi_app 函数处理 web 服务器转发的请求</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def wsgi_app(self, environ, start_response):</span><br><span class="line">    ctx = self.request_context(environ)</span><br><span class="line">    ctx.push()</span><br><span class="line">    response = self.full_dispatch_request()</span><br><span class="line">    return response(environ, start_response)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.full_dispatch_request 先大喊一声请求来了，并执行3.1 3.2中内容</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request_started.send(self)</span><br><span class="line">rv = self.preprocess_request()</span><br><span class="line">if rv is None:</span><br><span class="line">    rv = self.dispatch_request()</span><br><span class="line">return self.finalize_request(rv)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.1. rv = self.dispatch_request()，根据收到的请求到路由与视图函数对应关系中找到符合的，并返回视图函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return self.view_functions[rule.endpoint](**req.view_args)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.2. return self.finalize_request(rv) 设置响应，再大喊一声请求结束了，并返回响应</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">response = self.make_response(rv)</span><br><span class="line">response = self.process_response(response)</span><br><span class="line">request_finished.send(self, response=response)</span><br><span class="line">return response</span><br></pre></td></tr></table></figure>
+
+<p><font size="6">模板</font><br><font size="4">在前面的实例中，视图函数的主要作用是生成请求的响应，这是最简单请求。实际上，视图函数有两个作用：</font><br><em>处理业务逻辑</em><br><em>返回响应内容</em><br><font size="4">在大型应用中，把业务逻辑和表现内容放在一起，会增加代码的复杂度和维护成本。</font><br><em>模板其实是一个包含响应文本的文件，其中用占位符(变量)表示动态部分，告诉模板引擎其具体的值需要从使用的数据中获取</em><br><em>使用真实值替换变量，再返回最终得到的字符串,这个过程称为’渲染’</em><br><em>Flask 是使用 Jinja2 这个模板引擎来渲染模板</em><br><font size="4">使用模板的好处</font><br><em>视图函数只负责业务逻辑和数据处理(业务逻辑方面)</em><br><em>而模板则取到视图函数的数据结果进行展示(视图展示方面)</em><br><em>代码结构清晰,耦合度低</em></p>
+<p>在这里不过多关注Jinjia2本身的特性，只关注其与flask有关的功能。<br><strong>变量取值</strong> { { } }<br><strong>注释</strong> { # # }<br><strong>控制结构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if &apos;lockcy&apos; in names %&#125;</span><br><span class="line">lockcy</span><br><span class="line">&#123;% elif &apos;harutya&apos; in names %&#125;</span><br><span class="line">harutya</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">nonono</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>循环结构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for name in names %&#125;</span><br><span class="line">hello,&#123;&#123;name&#125;&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>宏定义</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% macro button(value) %&#125;</span><br><span class="line">&lt;button type=&apos;text&apos; style=&quot;height:50px;width:100px&quot; onclick=&quot;alert(&apos;just a test&apos;)&quot;&gt;&#123;&#123;value&#125;&#125;&lt;/button&gt;</span><br><span class="line">&#123;% endmacro %&#125;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&#123;&#123; button(&apos;lockcy&apos;) &#125;&#125; &lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码输出的结果如下：</p>
+<img src="/2021/02/18/flask学习笔记（四）/4.png">
+
+<p><strong>过滤器</strong><br>过滤器通过管道符号|与变量链接，并且可以通过圆括号传递参数，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;# 单词首字母大写 #&#125;</span><br><span class="line">&lt;p&gt;&#123;&#123; &apos;hello&apos; | capitalize &#125;&#125;&lt;/p&gt;</span><br><span class="line">&#123;# 单词全小写 #&#125;</span><br><span class="line">&lt;p&gt;&#123;&#123; &apos;XML&apos; | lower &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Jinjia2过滤器比较多，详细内容可以参考 <a href="https://www.cnblogs.com/liuruitao/p/7787482.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuruitao/p/7787482.html</a></p>
+<p><strong>参考资料</strong><br>[1]RFC7231：<a href="https://tools.ietf.org/html/rfc7231" target="_blank" rel="noopener">https://tools.ietf.org/html/rfc7231</a><br>[2]Jinjia2模板设计者文档：<a href="http://docs.jinkan.org/docs/jinja2/templates.html" target="_blank" rel="noopener">http://docs.jinkan.org/docs/jinja2/templates.html</a><br>[3]Jinjia2过滤器：<a href="https://www.cnblogs.com/liuruitao/p/7787482.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuruitao/p/7787482.html</a></p>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+
+      
+</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flask/" rel="tag"># flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/07/flask学习笔记（三）/" rel="next" title="flask学习笔记（三）">
+                <i class="fa fa-chevron-left"></i> flask学习笔记（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+            
+              <p class="site-author-name" itemprop="name">lockcy</p>
+              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.8k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
