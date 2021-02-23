@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pwn,">
+  <meta name="keywords" content="pwn," />
 
 
 
@@ -80,33 +80,33 @@
 
 
 <meta name="description" content="PWNABLE write up[Rookiss]">
-<meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwnable-Rookiss-write-up ">
 <meta property="og:url" content="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="PWNABLE write up[Rookiss]">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-15T07:47:28.635Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-06-18T07:46:03.000Z">
+<meta property="article:modified_time" content="2019-08-15T07:47:28.635Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pwnable-Rookiss-write-up ">
-<meta name="twitter:description" content="PWNABLE write up[Rookiss]">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/"/>
 
 
 
@@ -136,9 +136,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -182,41 +182,41 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -256,9 +256,9 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/pwnable-Rookiss-write-up/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ICCTW">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -280,9 +280,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T15:46:03+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-18T15:46:03+08:00">
                 2019-06-18
               </time>
             
@@ -304,6 +304,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
 
           
 
@@ -321,7 +352,7 @@
 
       
         <p>PWNABLE write up[Rookiss]</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>Brainfuck</p>
 <p>一个c语言的brainfuck解释器，这题有点技巧，在leak阶段我也想了好久好久。<br>关于brainfuck，是一种小型计算机语言，之前也接触过一些bf编码的东西</p>
 <p>程序的do_brainfuck函数与表中除[ ]不支持外基本一致</p>
@@ -340,10 +371,10 @@
 <p>#include &lt;string.h&gt;</p>
 <p>#include &lt;fcntl.h&gt;</p>
 <p>int main(int argc, char* argv[]){<br>    char fname[128];<br>    unsigned long long otp[2];</p>
-<pre><code>if(argc!=2){
+<pre><code>if(argc!=2)&#123;
     printf(&quot;usage : ./otp [passcode]\n&quot;);
     return 0;
-}
+&#125;
 
 int fd = open(&quot;/dev/urandom&quot;, O_RDONLY);
 if(fd==-1) exit(-1);
@@ -353,22 +384,22 @@ close(fd);
 
 sprintf(fname, &quot;/tmp/%llu&quot;, otp[0]);
 FILE* fp = fopen(fname, &quot;w&quot;);
-if(fp==NULL){ exit(-1); }
+if(fp==NULL)&#123; exit(-1); &#125;
 fwrite(&amp;otp[1], 8, 1, fp);
 fclose(fp);</code></pre><p>printf(“OTP generated.\n”);</p>
 <pre><code>unsigned long long passcode=0;
 FILE* fp2 = fopen(fname, &quot;r&quot;);
-if(fp2==NULL){ exit(-1); }
+if(fp2==NULL)&#123; exit(-1); &#125;
 fread(&amp;passcode, 8, 1, fp2);
 fclose(fp2);
 
-if(strtoul(argv[1], 0, 16) == passcode){
+if(strtoul(argv[1], 0, 16) == passcode)&#123;
     printf(&quot;Congratz!\n&quot;);
     system(&quot;/bin/cat flag&quot;);
-}
-else{
+&#125;
+else&#123;
     printf(&quot;OTP mismatch\n&quot;);
-}
+&#125;
 
 unlink(fname);
 return 0;</code></pre><p>}</p>
@@ -376,7 +407,7 @@ return 0;</code></pre><p>}</p>
 <p>Tiny_easy</p>
 <p>整个程序很简单，就四行汇编代码</p>
 <p>程序在进入入口地址时会加载参数及环境变量</p>
-<p>什么保护措施都没开，优先考虑的是写入shellcode执行，但没有找到合适的写入点，在参考<a href="https://eugenekolo.com/blog/pwning-tiny_easy-pwnable-kr/后发现可以将shellcode写入环境变量传入程序" target="_blank" rel="noopener">https://eugenekolo.com/blog/pwning-tiny_easy-pwnable-kr/后发现可以将shellcode写入环境变量传入程序</a></p>
+<p>什么保护措施都没开，优先考虑的是写入shellcode执行，但没有找到合适的写入点，在参考<a target="_blank" rel="noopener" href="https://eugenekolo.com/blog/pwning-tiny_easy-pwnable-kr/后发现可以将shellcode写入环境变量传入程序">https://eugenekolo.com/blog/pwning-tiny_easy-pwnable-kr/后发现可以将shellcode写入环境变量传入程序</a></p>
 <p>Fsb</p>
 <p>一道格式化字符串题目，分值只有20分，但却困扰了我很久<br>key在bss段中<br>最开始想的是利用格式化字符串读取或改写key的值，但是因为key不在栈中，无法使用格式化字符串利用key</p>
 <p>思路：<br>1.利用格式化字符串泄露esp和ebp<br>2.覆写ebp使其指向sleep的got地址<br>3.覆写sleep的got地址为execve</p>
@@ -387,7 +418,7 @@ return 0;</code></pre><p>}</p>
 <p>shellcode是没问题的，本地也跑得起来，所以刚开始有点困惑<br>ida查看程序</p>
 <p>Shellcode存放在ebp-1Ch开始处，而shellcode的长度为23字节，即shellcode到ebp-5h处<br>这里的问题是多次push后，栈中的内容会污染shellcode，导致shellcode无法正常执行<br>这里将第二个push eax 改为leave<br>复习一下AT&amp;T汇编leave ：<br>等价于</p>
 <p>movl %ebp, %esp<br>popl %ebp</p>
-<p>这里卡住了，毕竟栈基址移动后栈发生了变化，出错挺正常的，后来参考了网上大神的wp，方法挺巧妙的<br><a href="https://blog.csdn.net/kostart123/article/details/79395273" target="_blank" rel="noopener">https://blog.csdn.net/kostart123/article/details/79395273</a></p>
+<p>这里卡住了，毕竟栈基址移动后栈发生了变化，出错挺正常的，后来参考了网上大神的wp，方法挺巧妙的<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/kostart123/article/details/79395273">https://blog.csdn.net/kostart123/article/details/79395273</a></p>
 <p>Echo1</p>
 <p>64位elf，没有任何保护，优先考虑写入shellcode，程序在echo1函数存在明显栈溢出漏洞，<br>最简单的方法是把jmp esp指令的机器码写入到id处，再控制eip跳转到id执行jmp esp，从而执行写入的shellcode</p>
 <p>Echo2</p>
@@ -408,6 +439,12 @@ return 0;</code></pre><p>}</p>
     
     
     
+<div>
+      
+        
+
+      
+</div>
 
     
 
@@ -432,7 +469,7 @@ return 0;</code></pre><p>}</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/30/linux下c语言函数返回值探究/" rel="next" title="linux下c语言函数返回值探究">
+              <a href="/2019/04/30/linux%E4%B8%8Bc%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%E6%8E%A2%E7%A9%B6/" rel="next" title="linux下c语言函数返回值探究">
                 <i class="fa fa-chevron-left"></i> linux下c语言函数返回值探究
               </a>
             
@@ -442,7 +479,7 @@ return 0;</code></pre><p>}</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/21/安全辅助工具应用/" rel="prev" title="安全辅助工具应用">
+              <a href="/2019/06/21/%E5%AE%89%E5%85%A8%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7%E5%BA%94%E7%94%A8/" rel="prev" title="安全辅助工具应用">
                 安全辅助工具应用 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -492,7 +529,9 @@ return 0;</code></pre><p>}</p>
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
       
 
       
@@ -501,7 +540,11 @@ return 0;</code></pre><p>}</p>
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -510,10 +553,10 @@ return 0;</code></pre><p>}</p>
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -526,7 +569,7 @@ return 0;</code></pre><p>}</p>
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -536,9 +579,26 @@ return 0;</code></pre><p>}</p>
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
+
 
           
           
@@ -550,6 +610,13 @@ return 0;</code></pre><p>}</p>
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -566,13 +633,22 @@ return 0;</code></pre><p>}</p>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">34.8k</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -580,7 +656,7 @@ return 0;</code></pre><p>}</p>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -588,7 +664,7 @@ return 0;</code></pre><p>}</p>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -600,15 +676,10 @@ return 0;</code></pre><p>}</p>
 
 
 
-        
-      </span></div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
       </div>
+    </footer>
+
     
 
     
@@ -761,5 +832,6 @@ return 0;</code></pre><p>}</p>
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

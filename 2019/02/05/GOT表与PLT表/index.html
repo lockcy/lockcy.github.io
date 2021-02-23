@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pwn,">
+  <meta name="keywords" content="pwn," />
 
 
 
@@ -80,41 +80,41 @@
 
 
 <meta name="description" content="全局偏移表 (Global Offset Table GOT) 过程连接表(Procedure Linkage Table PLT)">
-<meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GOT表与PLT表">
-<meta property="og:url" content="http://yoursite.com/2019/02/05/GOT表与PLT表/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="全局偏移表 (Global Offset Table GOT) 过程连接表(Procedure Linkage Table PLT)">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/7.png">
-<meta property="og:updated_time" content="2019-08-15T03:57:40.685Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/7.png">
+<meta property="article:published_time" content="2019-02-05T03:55:28.000Z">
+<meta property="article:modified_time" content="2019-08-15T03:57:40.685Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOT表与PLT表">
-<meta name="twitter:description" content="全局偏移表 (Global Offset Table GOT) 过程连接表(Procedure Linkage Table PLT)">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/05/GOT表与PLT表/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/05/GOT表与PLT表/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/05/GOT表与PLT表/"/>
 
 
 
@@ -144,9 +144,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -162,7 +162,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -190,41 +190,41 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -261,12 +261,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/05/GOT表与PLT表/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ICCTW">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -288,9 +288,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T11:55:28+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-05T11:55:28+08:00">
                 2019-02-05
               </time>
             
@@ -312,6 +312,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  241
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
 
           
 
@@ -330,34 +361,40 @@
       
         <p>全局偏移表 (Global Offset Table GOT)</p>
 <p>过程连接表(Procedure Linkage Table PLT)</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>PLT和GOT在动态链接时对地址重定位所需的</p>
 <p>地址重定位类似于上学期操作系统学的虚拟内存</p>
 <p>以一个简单的程序test.c为例</p>
-<img src="/2019/02/05/GOT表与PLT表/1.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/1.png" class="">
 <p>gdb 反汇编下test函数</p>
-<img src="/2019/02/05/GOT表与PLT表/2.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/2.png" class="">
 <p>发现在调用printf函数是用到了plt表<br>再查看printf函数</p>
-<img src="/2019/02/05/GOT表与PLT表/3.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/3.png" class="">
 <p>第一句跳转到当前eip+0x2fe2处<br>当前的eip为0x1036，计算得跳转地址为0x4018，与注释一致，再看0x4018里放的地址</p>
-<img src="/2019/02/05/GOT表与PLT表/4.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/4.png" class="">
 <p>发现又跳回了printf函数的第二步，现在有了疑问，函数执行过程为什么要兜一个大圈子？</p>
 <p>继续看下去</p>
-<img src="/2019/02/05/GOT表与PLT表/5.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/5.png" class="">
 <p>跳转到0x4010便是该函数的got.plt位置<br>而got.plt就是用来保存函数引用的地址</p>
 <p>函数第一次调用过程</p>
-<img src="/2019/02/05/GOT表与PLT表/6.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/6.png" class="">
 <p>函数之后调用过程</p>
-<img src="/2019/02/05/GOT表与PLT表/7.png">
+<img src="/2019/02/05/GOT%E8%A1%A8%E4%B8%8EPLT%E8%A1%A8/7.png" class="">
 
-<p><a href="https://www.jianshu.com/p/0ac63c3744dd" target="_blank" rel="noopener">https://www.jianshu.com/p/0ac63c3744dd</a><br><a href="https://www.cnblogs.com/pannengzhi/p/2018-04-09-about-got-plt.html" target="_blank" rel="noopener">https://www.cnblogs.com/pannengzhi/p/2018-04-09-about-got-plt.html</a><br><a href="https://www.freebuf.com/articles/system/135685.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/system/135685.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0ac63c3744dd">https://www.jianshu.com/p/0ac63c3744dd</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pannengzhi/p/2018-04-09-about-got-plt.html">https://www.cnblogs.com/pannengzhi/p/2018-04-09-about-got-plt.html</a><br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/135685.html">https://www.freebuf.com/articles/system/135685.html</a></p>
 
       
     </div>
     
     
     
+<div>
+      
+        
+
+      
+</div>
 
     
 
@@ -382,7 +419,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/23/win下的免杀后门探究（二）/" rel="next" title="win下的免杀后门探究（二）">
+              <a href="/2018/12/23/win%E4%B8%8B%E7%9A%84%E5%85%8D%E6%9D%80%E5%90%8E%E9%97%A8%E6%8E%A2%E7%A9%B6%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="win下的免杀后门探究（二）">
                 <i class="fa fa-chevron-left"></i> win下的免杀后门探究（二）
               </a>
             
@@ -442,7 +479,9 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
       
 
       
@@ -451,7 +490,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -460,10 +503,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -476,7 +519,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -486,9 +529,26 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
+
 
           
           
@@ -500,6 +560,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -516,13 +583,22 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">34.8k</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -530,7 +606,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -538,7 +614,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -550,15 +626,10 @@
 
 
 
-        
-      </span></div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
       </div>
+    </footer>
+
     
 
     
@@ -711,5 +782,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

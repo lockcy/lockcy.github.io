@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pwn,">
+  <meta name="keywords" content="pwn," />
 
 
 
@@ -80,48 +80,48 @@
 
 
 <meta name="description" content="本文参照freebuf上的一篇文章，因为这篇文章比较透彻，此仅为自己的记录">
-<meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="栈溢出ret2dlresolve">
-<meta property="og:url" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="本文参照freebuf上的一篇文章，因为这篇文章比较透彻，此仅为自己的记录">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/8.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/9.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/10.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/11.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/12.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/13.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/14.png">
-<meta property="og:updated_time" content="2019-08-15T07:22:50.672Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/11.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/12.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/13.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/14.png">
+<meta property="article:published_time" content="2019-03-02T07:15:19.000Z">
+<meta property="article:modified_time" content="2019-08-15T07:22:50.672Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="栈溢出ret2dlresolve">
-<meta name="twitter:description" content="本文参照freebuf上的一篇文章，因为这篇文章比较透彻，此仅为自己的记录">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/"/>
 
 
 
@@ -151,9 +151,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -169,7 +169,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -197,41 +197,41 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -268,12 +268,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/栈溢出ret2dlresolve/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ICCTW">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -295,9 +295,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-02T15:15:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-02T15:15:19+08:00">
                 2019-03-02
               </time>
             
@@ -319,6 +319,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
 
           
 
@@ -336,82 +367,75 @@
 
       
         <p>本文参照freebuf上的一篇文章，因为这篇文章比较透彻，此仅为自己的记录</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>最近空的时候也在刷Pwnable.kr的题，但很多题确实考的知识都不会，也不想看writeup，想着先把一些pwn的知识复习一下再说</p>
-<p>ret2dlresolve<br>本文参照freebuf上的一篇文章，因为这篇文章比较透彻，此仅为自己的记录<br><a href="https://www.freebuf.com/articles/system/170661.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/system/170661.html</a></p>
+<p>ret2dlresolve<br>本文参照freebuf上的一篇文章，因为这篇文章比较透彻，此仅为自己的记录<br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/170661.html">https://www.freebuf.com/articles/system/170661.html</a></p>
 <p>预备知识：延迟绑定，动态链接等</p>
 <p>Test.c</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/1.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/1.png" class="">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -fno-stack-protector -m32 -o test</span><br><span class="line">readelf -S test</span><br></pre></td></tr></table></figure>
-
-<img src="/2019/03/02/栈溢出ret2dlresolve/2.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/2.png" class="">
 <p>.dynsym //动态链接符号表<br>.dynstr //动态链接的字符串<br>.rel.dyn //变量重定位<br>.rel.plt //函数重定位<br>.got //全局变量偏移表<br>.got.plt //全局函数偏移表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -d test</span><br></pre></td></tr></table></figure>
-
 <p>显示test中的section</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/3.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/3.png" class="">
 <p>它的结构如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    Elf32_Sword d_tag;</span><br><span class="line">    union &#123;</span><br><span class="line">        Elf32_Word d_val;</span><br><span class="line">        Elf32_Addr d_ptr;</span><br><span class="line">    &#125; d_un;</span><br><span class="line">&#125; Elf32_Dyn;</span><br></pre></td></tr></table></figure>
-
 <p>一个 Elf_Dyn 是一个键值对，其中 d_tag 是键，d_value 是值。可以看到.dynamic中的JMPREL段地址与.rel.plt地址相对应，是用来保存运行时重定位表的，看一下该表的内容</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/4.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/4.png" class="">
 <p>可以看到read符号位于.rel.plt的第一个，也就是偏移为0×0的地方，这里的r_offset（偏移量）就是.got.plt的地址<br>然后关注一下.dynsym(对应SYMTAB )对应的内容</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/5.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/5.png" class="">
 <p>.symtab的内容不用关注，.dynsym的结构体为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    Elf32_Word st_name;     // Symbol name(对应于.dynstr中的索引)</span><br><span class="line">    Elf32_Addr st_value;    // Symbol value</span><br><span class="line">    Elf32_Word st_size;     // Symbol size</span><br><span class="line">    unsigned char st_info;  // Symbol type and binding</span><br><span class="line">    unsigned char st_other; // Symbol visibility under glibc&gt;=2.2</span><br><span class="line">    Elf32_Section st_shndx; // Section index</span><br><span class="line">&#125; Elf32_Sym;</span><br><span class="line">#define ELF32_R_SYM(info) ((info)&gt;&gt;8)</span><br><span class="line">#define ELF32_R_TYPE(info) ((unsigned char)(info))</span><br><span class="line">#define ELF32_R_INFO(sym, type) (((sym)&lt;&lt;8)+(unsigned char)(type))</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    Elf32_Word st_name;     &#x2F;&#x2F; Symbol name(对应于.dynstr中的索引)</span><br><span class="line">    Elf32_Addr st_value;    &#x2F;&#x2F; Symbol value</span><br><span class="line">    Elf32_Word st_size;     &#x2F;&#x2F; Symbol size</span><br><span class="line">    unsigned char st_info;  &#x2F;&#x2F; Symbol type and binding</span><br><span class="line">    unsigned char st_other; &#x2F;&#x2F; Symbol visibility under glibc&gt;&#x3D;2.2</span><br><span class="line">    Elf32_Section st_shndx; &#x2F;&#x2F; Section index</span><br><span class="line">&#125; Elf32_Sym;</span><br><span class="line">#define ELF32_R_SYM(info) ((info)&gt;&gt;8)</span><br><span class="line">#define ELF32_R_TYPE(info) ((unsigned char)(info))</span><br><span class="line">#define ELF32_R_INFO(sym, type) (((sym)&lt;&lt;8)+(unsigned char)(type))</span><br></pre></td></tr></table></figure>
 <p>通过ELF32_R_SYM(info) ((info)&gt;&gt;8) 可以得知，sym[num]中的num是通过（(r_info)&gt;&gt;8）索引的（r_info?==&gt;.rel.plt中的info的值）<br>因为.dynsym的地址为020c，又因为read函数对应的num为1，查看一下ndx name为read处的内存</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/6.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/6.png" class="">
 <p>解释一下这一串地址0x020c+0x10*1的意义<br>0x020c 对应.dynsym的地址<br>0×10 ： 每一条symbol信息的大小在SYMENT中体现，为16 bytes （可以用readelf -d fun命令查看）<br>1 ： num值为1</p>
 <p>可以看到0x080481dc对应的第一个值为0x1a，这个值对应st_name 即read字符串在.dynstr中的偏移</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/7.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/7.png" class="">
 <p>0x029c dynstr 地址<br>0x1a偏移量</p>
 <p>之前的分析忘记关pie了，现在关pie后在分析一下流程</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -fno-stack-protector -m32 -o test -no-pie</span><br></pre></td></tr></table></figure>
-
-<img src="/2019/03/02/栈溢出ret2dlresolve/8.png">
-<img src="/2019/03/02/栈溢出ret2dlresolve/9.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/8.png" class="">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/9.png" class="">
 <p>第一步jmp to 0x804c00c，而0x804c00c中是下一步的地址，因为这个程序第一次运行所以got表中没有保存read函数的地址，所以程序又跳转会read@plt+6，所以紧接着会执行下一步</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/10.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/10.png" class="">
 <p>先将0×0压栈（0×0表示相对.rel.plt的偏移，通过上面分析我们可以知道，read符号在.rel.plt中的位置为第一个，所以偏移为0），又跳转到0x8049030，看一下该地处的内容。</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/11.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/11.png" class="">
 <p>会将0x804c004压栈，然后跳转到0x804c008处。0x804c004处对应一个指向内部数据结构的指针，类型是 link_map，在动态装载器内部使用，包含了进行符号解析需要的当前 ELF 对象的信息。在它的 l_info 域中保存了 .dynamic 段中大多数条目的指针构成的一个数组，我们后面会利用它。<br>0x0804c008 处为函数 dl_runtime_resolve(link_map,rel_offset)<br>所以会调用函数dl_runtime_resolve(link_map,0×0),解析出地址，然后写到对应位置因此如果我们伪造一个rel_offset,以及对应的其他结构体，便可以执行任意函数了<br>其实dl_runtime_resolve()函数中调用了dl_fixup()函数<br>首先我们看一下dl_runtime_resolve()函数的实现</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/12.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/12.png" class="">
 <p>在 0xf7fe44f0地址处调用了_dl_fixup()函数，并且采用寄存器传参<br>dl_fixup()是在dl-runtime.c中实现的，这里只展示主要的地方</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">_dl_fixup (struct link_map *l, ElfW(Word) reloc_arg)</span><br><span class="line">｛</span><br><span class="line">    const PLTREL *const reloc = (const void *) (D_PTR (l, l_info[DT_JMPREL]) + reloc_offset);</span><br><span class="line">    const ElfW(Sym) *sym = &amp;symtab[ELFW(R_SYM) (reloc-&gt;r_info)];</span><br><span class="line">    assert (ELFW(R_TYPE)(reloc-&gt;r_info) == ELF_MACHINE_JMP_SLOT);</span><br><span class="line">    result = _dl_lookup_symbol_x (strtab + sym-&gt;st_name, l, &amp;sym, l-&gt;l_scope,version, ELF_RTYPE_CLASS_PLT, flags, NULL);</span><br><span class="line">    value = DL_FIXUP_MAKE_VALUE (result, sym ? (LOOKUP_VALUE_ADDRESS (result) + sym-&gt;st_value) : 0);</span><br><span class="line">    return elf_machine_fixup_plt (l, result, reloc, rel_addr, value);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">_dl_fixup (struct link_map *l, ElfW(Word) reloc_arg)</span><br><span class="line">｛</span><br><span class="line">    const PLTREL *const reloc &#x3D; (const void *) (D_PTR (l, l_info[DT_JMPREL]) + reloc_offset);</span><br><span class="line">    const ElfW(Sym) *sym &#x3D; &amp;symtab[ELFW(R_SYM) (reloc-&gt;r_info)];</span><br><span class="line">    assert (ELFW(R_TYPE)(reloc-&gt;r_info) &#x3D;&#x3D; ELF_MACHINE_JMP_SLOT);</span><br><span class="line">    result &#x3D; _dl_lookup_symbol_x (strtab + sym-&gt;st_name, l, &amp;sym, l-&gt;l_scope,version, ELF_RTYPE_CLASS_PLT, flags, NULL);</span><br><span class="line">    value &#x3D; DL_FIXUP_MAKE_VALUE (result, sym ? (LOOKUP_VALUE_ADDRESS (result) + sym-&gt;st_value) : 0);</span><br><span class="line">    return elf_machine_fixup_plt (l, result, reloc, rel_addr, value);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
 <p>逐行解释</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_dl_fixup (struct link_map *l, ElfW(Word) reloc_arg)</span><br></pre></td></tr></table></figure>
-
 <p>这里面 link_map还是一开始传进来的link_map,但一开始传进来的rel_offset改为用reloc_arg表示：reloc_arg=reloffset</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const PLTREL *const reloc = (const void *) (D_PTR (l, l_info[DT_JMPREL]) + reloc_offset);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const PLTREL *const reloc &#x3D; (const void *) (D_PTR (l, l_info[DT_JMPREL]) + reloc_offset);</span><br></pre></td></tr></table></figure>
 <p>用来计算重定位入口reloc，JMPREL即.rel.plt地址，reloc_offset即reloc_arg</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const ElfW(Sym) *sym = &amp;symtab[ELFW(R_SYM) (reloc-&gt;r_info)];</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const ElfW(Sym) *sym &#x3D; &amp;symtab[ELFW(R_SYM) (reloc-&gt;r_info)];</span><br></pre></td></tr></table></figure>
 <p>找到在.dynsym中对应的条目，[ELFW(R_SYM) (reloc-&gt;r_info)]就是为了找到对应的num[?]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert (ELFW(R_TYPE)(reloc-&gt;r_info) == ELF_MACHINE_JMP_SLOT);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert (ELFW(R_TYPE)(reloc-&gt;r_info) &#x3D;&#x3D; ELF_MACHINE_JMP_SLOT);</span><br></pre></td></tr></table></figure>
 <p>检查reloc-&gt;r_info的最低位是不是R_386_JUMP_SLOT=7</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = _dl_lookup_symbol_x (strtab + sym-&gt;st_name, l, &amp;sym, l-&gt;l_scope,version, ELF_RTYPE_CLASS_PLT, flags, NULL);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; _dl_lookup_symbol_x (strtab + sym-&gt;st_name, l, &amp;sym, l-&gt;l_scope,version, ELF_RTYPE_CLASS_PLT, flags, NULL);</span><br></pre></td></tr></table></figure>
 <p>根据st_name对应的偏移，去.dynstr(STRTAB)中查找对应的字符串，result为libc基地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value = DL_FIXUP_MAKE_VALUE (result, sym ? (LOOKUP_VALUE_ADDRESS (result) + sym-&gt;st_value) : 0);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &#x3D; DL_FIXUP_MAKE_VALUE (result, sym ? (LOOKUP_VALUE_ADDRESS (result) + sym-&gt;st_value) : 0);</span><br></pre></td></tr></table></figure>
 <p>value为函数的实际地址，在libc基地址的基础上加上函数在libc中的偏移</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return elf_machine_fixup_plt (l, result, reloc, rel_addr, value);</span><br></pre></td></tr></table></figure>
-
 <p>将函数地址写到got表对应位置</p>
 <p>攻击流程<br>流程如下当.dynamic可写时，可以将.dynstr地址改写为.bss地址，然后在bss段伪造我们想要的函数的字符串<br>当.dynamic不可写时， 上面我们讲完了函数的解析流程 主要是由dl_runtime_resolve(link_map,rel_offset),之所以它能解析不同函数的地址，以为我们传入的rel_offset不同，因此，把传入的rel_offset改为我们希望的函数的偏移，便可以执行我们希望的函数，新的问题来了，.rel.plt中不一定存在我们希望的函数，因此就需要我们伪造一个.rel.plt，将rel_offset修改为一个比较大的值，在.rel.plt+rel_offset的地方是我们伪造好的，结构跟.rel.plt相同的数据，这样我们就相当于伪造好了reloc（重定位入口），程序又会根据r_info找到对应的.dynsym中的symbols，我们再次伪造symbols的内容-&gt;st_name,使得到的str在我们的可控地址内，然后在.dynstr+st_name地址处放置库函数字符串例如：system。</p>
 <p>让我们回到当前的情况再走一遍攻击流程<br>攻击前：事先准备和开辟一块用于伪造的bss_stage</p>
-<img src="/2019/03/02/栈溢出ret2dlresolve/13.png">
-<img src="/2019/03/02/栈溢出ret2dlresolve/14.png">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/13.png" class="">
+<img src="/2019/03/02/%E6%A0%88%E6%BA%A2%E5%87%BAret2dlresolve/14.png" class="">
 
       
     </div>
     
     
     
+<div>
+      
+        
+
+      
+</div>
 
     
 
@@ -446,7 +470,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/03/栈溢出ret2shellcode/" rel="prev" title="栈溢出ret2shellcode">
+              <a href="/2019/03/03/%E6%A0%88%E6%BA%A2%E5%87%BAret2shellcode/" rel="prev" title="栈溢出ret2shellcode">
                 栈溢出ret2shellcode <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -496,7 +520,9 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
       
 
       
@@ -505,7 +531,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -514,10 +544,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -530,7 +560,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -540,9 +570,26 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
+
 
           
           
@@ -554,6 +601,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -570,13 +624,22 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">34.8k</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -584,7 +647,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -592,7 +655,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -604,15 +667,10 @@
 
 
 
-        
-      </span></div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
       </div>
+    </footer>
+
     
 
     
@@ -765,5 +823,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

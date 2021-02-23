@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pwn,">
+  <meta name="keywords" content="pwn," />
 
 
 
@@ -80,43 +80,43 @@
 
 
 <meta name="description" content="通过pwntools中的dynelf模块实现无libc泄露">
-<meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="栈溢出dynelf">
-<meta property="og:url" content="http://yoursite.com/2019/03/05/栈溢出dynelf/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="通过pwntools中的dynelf模块实现无libc泄露">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/8.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/9.png">
-<meta property="og:updated_time" content="2019-08-15T07:28:36.789Z">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/9.png">
+<meta property="article:published_time" content="2019-03-05T07:26:55.000Z">
+<meta property="article:modified_time" content="2019-08-15T07:28:36.789Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="栈溢出dynelf">
-<meta name="twitter:description" content="通过pwntools中的dynelf模块实现无libc泄露">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/05/栈溢出dynelf/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/05/栈溢出dynelf/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/栈溢出dynelf/"/>
 
 
 
@@ -146,9 +146,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -164,7 +164,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,41 +192,41 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -263,12 +263,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/栈溢出dynelf/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ICCTW">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -290,9 +290,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T15:26:55+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T15:26:55+08:00">
                 2019-03-05
               </time>
             
@@ -314,6 +314,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  520
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
 
           
 
@@ -331,39 +362,43 @@
 
       
         <p>通过pwntools中的dynelf模块实现无libc泄露</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>依旧先上一个简单的例子，程序存在明显的栈溢出</p>
-<img src="/2019/03/05/栈溢出dynelf/1.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/1.png" class="">
 <p>关闭栈保护、地址随机化编译一下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fno-stack-protector -no-pie -o test test.c</span><br></pre></td></tr></table></figure>
-
 <p>这里插一句话，发现一个很有意思的现象，即使没加栈保护参数-fno-stack-protector，攻击时也会成功，系统并未为函数检测栈溢出，在加了-fstack-protector-all参数后才实现了检测所有函数是否栈溢出，后来才知道-fno-stack-protector是默认选项…有点尴尬<br>看一下pwntools源码里对dynelf用法的介绍</p>
-<img src="/2019/03/05/栈溢出dynelf/2.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/2.png" class="">
 <p>直接上脚本</p>
-<img src="/2019/03/05/栈溢出dynelf/3.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/3.png" class="">
 <p>攻击流程分析：<br>1.leak函数通过栈溢出来泄露指定地址的数据<br>2.dynelf查找已加载的libc并通过leak函数dump出system函数的地址<br>3.通过read函数向bss段里写/bin/sh并最终执行system函数，这里因为连续两次使用栈所以记得pop第一次使用read函数的三个参数并ret</p>
 <p>原理介绍</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = DynELF(leak, elf=ELF(&apos;test&apos;))</span><br><span class="line">system_addr = d.lookup(&apos;system&apos;, &apos;libc&apos;)</span><br><span class="line">log.info(&quot;system_addr = &quot; + hex(system_addr))</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d &#x3D; DynELF(leak, elf&#x3D;ELF(&#39;test&#39;))</span><br><span class="line">system_addr &#x3D; d.lookup(&#39;system&#39;, &#39;libc&#39;)</span><br><span class="line">log.info(&quot;system_addr &#x3D; &quot; + hex(system_addr))</span><br></pre></td></tr></table></figure>
 <p>在这里dynelf的作用是寻找内存中system函数的位置，我们定位到pwntools dynelf模块的源码，看看lookup函数都做了些什么<br>这里忽略了一些异常处理和优化代码</p>
-<img src="/2019/03/05/栈溢出dynelf/4.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/4.png" class="">
 <p>再转到_dynamic_load_dynelf函数</p>
-<img src="/2019/03/05/栈溢出dynelf/5.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/5.png" class="">
 <p>dynamic_load_dynelf通过link_map来查找已经加载的库中的信息，而link_map我们在 栈溢出ret2dlresolve 中遇到过，是指向内部数据结构的一个指针，这里Elf32_Link_Map的结构如下</p>
-<img src="/2019/03/05/栈溢出dynelf/6.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/6.png" class="">
 <p>接着_dynamic_load_dynelf通过leak.field函数来获取了libc.so的内存加载基址</p>
-<img src="/2019/03/05/栈溢出dynelf/7.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/7.png" class="">
 <p>通过_lookup函数来获取libc.so的hash表、动态符号表、字符串表基地址</p>
-<img src="/2019/03/05/栈溢出dynelf/8.png">
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/8.png" class="">
 <p>最后通过hash表获取system函数地址<br>(具体实现部分还有几个问题没有理清，有空会回来再写详细一点)<br>实战练习<br>jarvisoj [XMAN]level4<br>和上例类似，就不赘述了，直接放脚本了</p>
-<img src="/2019/03/05/栈溢出dynelf/9.png">
-<p>部分内容参考<a href="https://www.freebuf.com/articles/system/193646.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/system/193646.html</a></p>
+<img src="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/9.png" class="">
+<p>部分内容参考<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/193646.html">https://www.freebuf.com/articles/system/193646.html</a></p>
 
       
     </div>
     
     
     
+<div>
+      
+        
+
+      
+</div>
 
     
 
@@ -388,7 +423,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/04/栈溢出ret2libc/" rel="next" title="栈溢出ret2libc">
+              <a href="/2019/03/04/%E6%A0%88%E6%BA%A2%E5%87%BAret2libc/" rel="next" title="栈溢出ret2libc">
                 <i class="fa fa-chevron-left"></i> 栈溢出ret2libc
               </a>
             
@@ -398,7 +433,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/07/栈溢出绕过canary/" rel="prev" title="栈溢出绕过canary">
+              <a href="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/" rel="prev" title="栈溢出绕过canary">
                 栈溢出绕过canary <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -448,7 +483,9 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>
       
 
       
@@ -457,7 +494,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">ICCTW</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -466,10 +507,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -482,7 +523,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -492,9 +533,26 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lockcy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lockcysec@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
+
 
           
           
@@ -506,6 +564,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -522,13 +587,22 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">ICCTW</span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">34.8k</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -536,7 +610,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -544,7 +618,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -556,15 +630,10 @@
 
 
 
-        
-      </span></div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
       </div>
+    </footer>
+
     
 
     
@@ -717,5 +786,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>
