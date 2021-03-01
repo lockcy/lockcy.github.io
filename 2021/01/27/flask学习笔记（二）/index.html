@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="flask,">
+  <meta name="keywords" content="flask," />
 
 
 
@@ -79,25 +79,25 @@
 
 
 
-<meta name="description" content="从最简单的flask程序来学习Werkzeug与Jinjia2">
-<meta name="keywords" content="flask">
+<meta name="description" content="从最简单的flask程序来了解学习Werkzeug与Jinjia2[使用方法+源码剖析]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flask学习笔记（二）">
-<meta property="og:url" content="http://yoursite.com/2021/01/27/flask学习笔记（二）/index.html">
+<meta property="og:url" content="https://lockcy.github.io/2021/01/27/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="从最简单的flask程序来学习Werkzeug与Jinjia2">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-02-07T14:37:32.000Z">
+<meta property="og:description" content="从最简单的flask程序来了解学习Werkzeug与Jinjia2[使用方法+源码剖析]">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-27T14:08:32.000Z">
+<meta property="article:modified_time" content="2021-02-24T03:44:03.364Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="flask">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flask学习笔记（二）">
-<meta name="twitter:description" content="从最简单的flask程序来学习Werkzeug与Jinjia2">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/01/27/flask学习笔记（二）/">
+  <link rel="canonical" href="https://lockcy.github.io/2021/01/27/flask学习笔记（二）/"/>
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -253,11 +253,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/27/flask学习笔记（二）/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2021/01/27/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lockcy">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
@@ -314,7 +314,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  998
+                  1.1k
                 </span>
               
 
@@ -351,56 +351,37 @@
       
 
       
-        <p>从最简单的flask程序来学习Werkzeug与Jinjia2</p>
-<a id="more"></a>
-<p>在学习flask的过程中肯定会遇到Werkzeug与Jinjia2，而没有这两个模块便没有flask简洁的编写与灵活的呈现。<br><font size="6">Werkzeug</font><br>官网上是这么介绍Werkzeug的：<br>Werkzeug在德语中是工具的意思，是一个综合的WSGI web应用库。它最初只是WSGI应用程序的各种实用程序的简单集合，现在已经成为最先进的WSGI实用程序库之一。</p>
-<p><font size="6">WSGI</font><br>所谓的WSGI为web服务器网关接口，在处理一个WSGI请求时，服务器会为应用程序提供环境信息及一个回调函数（Callback Function）。当应用程序完成处理请求后，透过前述的回调函数，将结果回传给服务器。<strong>WSGI定义了服务器和应用程序通信的标准</strong>。<br>一个简单的符合WSGI的应用程序：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def application_callable(environ, start_response):</span><br><span class="line">    start_response(&apos;200 OK&apos;, [(&apos;Content-Type&apos;, &apos;text/plain&apos;)])</span><br><span class="line">    yield &quot;Hello world!\n&quot;</span><br></pre></td></tr></table></figure>
-
-<p>Web程序必须有一个<strong>可调用对象</strong><br>当收到一个请求后，服务器会通过 application_callable(environ, start_response) 调用应用。</p>
+        <p>从最简单的flask程序来了解学习Werkzeug与Jinjia2[使用方法+源码剖析]</p>
+<span id="more"></span>
+<p>在学习flask的过程中会遇到Werkzeug与Jinjia2两个模块，这两个模块在底层为flask提供了丰富的支持。<br><font size=6>Werkzeug</font><br>官网上是这么介绍Werkzeug的：<br>Werkzeug在德语中是工具的意思，是一个综合的WSGI web应用库。它起初只是WSGI应用程序的各种实用程序的简单集合，现在已经成为最先进的WSGI实用程序库之一。</p>
+<p><font size=6>WSGI</font><br>所谓的WSGI为web服务器网关接口，在处理一个WSGI请求时，服务器会为应用程序提供环境信息及一个回调函数（Callback Function）。当应用程序完成处理请求后，透过前述的回调函数，将结果回传给服务器。<strong>WSGI定义了服务器和应用程序通信的标准</strong>。<br>一个简单的符合WSGI的应用程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def application_callable(environ, start_response):</span><br><span class="line">    start_response(&#39;200 OK&#39;, [(&#39;Content-Type&#39;, &#39;text&#x2F;plain&#39;)])</span><br><span class="line">    yield &quot;Hello world!\n&quot;</span><br></pre></td></tr></table></figure>
+<p>Web程序必须有一个 <strong>可调用对象</strong><br>当收到一个请求后，服务器会通过 application_callable(environ, start_response) 调用应用。</p>
 <ol>
 <li>其中environ是一个字典，包含请求的相关信息，如请求方式、请求路径等等。</li>
-<li>而start_response为上述<strong>可调用对象</strong>中调用的函数,接受的参数为状态(status)和响应头(response_headers)</li>
+<li>而start_response为上述 <strong>可调用对象</strong> 中调用的函数，接受的参数为状态(status)和响应头(response_headers)。</li>
 </ol>
-<p><font size="6">从flask到Werkzeug</font><br>一个最简单的flask程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)   </span><br><span class="line"></span><br><span class="line">@app.route(&apos;/index&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<p><font size=6>从flask到Werkzeug</font><br>flask hellworld</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app &#x3D; Flask(__name__)   </span><br><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;index&#39;)</span><br><span class="line">def index():</span><br><span class="line">    return &#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
 
-<p>以下分析步骤仅考虑在一般情况下，仅列出关键代码：</p>
+<p>以下分析步骤仅考虑在一般情况下，只列出关键代码：</p>
 <ol>
-<li><p>跟进app.run方法，在run方法中调用了werkzeug.serving的run_simple函数</p>
-</li>
-<li><p>跟进run_simple函数调用了inner函数</p>
-</li>
-<li><p>inner函数中又调用了make_server</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def inner():</span><br><span class="line">    try:</span><br><span class="line">        fd = int(os.environ[&quot;WERKZEUG_SERVER_FD&quot;])</span><br><span class="line">    except (LookupError, ValueError):</span><br><span class="line">        fd = None</span><br><span class="line">    srv = make_server(</span><br><span class="line">        hostname,</span><br><span class="line">        port,</span><br><span class="line">        application,</span><br><span class="line">        threaded,</span><br><span class="line">        processes,</span><br><span class="line">        request_handler,</span><br><span class="line">        passthrough_errors,</span><br><span class="line">        ssl_context,</span><br><span class="line">        fd=fd,</span><br><span class="line">    )</span><br><span class="line">    if fd is None:</span><br><span class="line">        log_startup(srv.socket)</span><br><span class="line">    srv.serve_forever()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>make_server中调用了BaseWSGIServer</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return BaseWSGIServer(</span><br><span class="line">    host, port, app, request_handler, passthrough_errors, ssl_context, fd=fd</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BaseWSGIServer又继承了HTTPServer，HTTPServer继承了TCPServer，在TCPServer中我们看到了非常熟悉的东西：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.socket = socket.socket(self.address_family, self.socket_type)</span><br><span class="line">self.socket.bind(self.server_address)</span><br><span class="line">self.socket.listen(self.request_queue_size)</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>跟进app.run方法，在run方法中调用了werkzeug.serving的run_simple函数</li>
+<li>跟进run_simple函数调用了inner函数</li>
+<li>inner函数中又调用了make_server<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def inner():</span><br><span class="line">    try:</span><br><span class="line">        fd &#x3D; int(os.environ[&quot;WERKZEUG_SERVER_FD&quot;])</span><br><span class="line">    except (LookupError, ValueError):</span><br><span class="line">        fd &#x3D; None</span><br><span class="line">    srv &#x3D; make_server(</span><br><span class="line">        hostname,</span><br><span class="line">        port,</span><br><span class="line">        application,</span><br><span class="line">        threaded,</span><br><span class="line">        processes,</span><br><span class="line">        request_handler,</span><br><span class="line">        passthrough_errors,</span><br><span class="line">        ssl_context,</span><br><span class="line">        fd&#x3D;fd,</span><br><span class="line">    )</span><br><span class="line">    if fd is None:</span><br><span class="line">        log_startup(srv.socket)</span><br><span class="line">    srv.serve_forever()</span><br></pre></td></tr></table></figure></li>
+<li>make_server中调用了BaseWSGIServer<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return BaseWSGIServer(</span><br><span class="line">    host, port, app, request_handler, passthrough_errors, ssl_context, fd&#x3D;fd</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>BaseWSGIServer又继承了HTTPServer，HTTPServer继承了TCPServer，在TCPServer中我们看到了非常熟悉的东西：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.socket &#x3D; socket.socket(self.address_family, self.socket_type)</span><br><span class="line">self.socket.bind(self.server_address)</span><br><span class="line">self.socket.listen(self.request_queue_size)</span><br></pre></td></tr></table></figure>
+在我们初学python socket的时候，编写服务端的时候便是这样一个步骤，即创建套接字，绑定端口，持续监听；通过分析源码，我们浅显的搞清楚了从python应用到web服务后边函数调用链，也就是wsgi的原理，在应用与服务器之间架设桥梁。<br>试想一下如果没有Werkzeug，flask不可能用短短几行代码跑起一个WEB应用，而正是有了Werkzeug在底层的支持，我们才能如此快捷的使用flask框架。</li>
 </ol>
-<p>在我们初学python 学习socket的时候，在创建服务端的时候便是这样一个步骤，即创建套接字，绑定端口，持续监听；通过分析源码，我们浅显的搞清楚了Werkzeug后面的函数链。<br>试想一下如果没有Werkzeug，flask可能用短短几行代码跑起一个WEB应用吗？而正是有了Werkzeug在底层的支持，我们才能如此快捷的使用flask框架。</p>
-<p><font size="6">Jinjia2</font><br>jinjia2是一种Python模板语言，具有很多友好的特性。jinjia是日文中神庙的意思，对应英文为temple，和模板template非常相似。<br>与Werkzeug一样，从一个最简单的用到jinjia2模板渲染的程序来探究下jinjia2.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, render_template</span><br><span class="line"></span><br><span class="line">app = Flask(__name__, template_folder=&apos;./&apos;)</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/index&apos;)</span><br><span class="line">def index():</span><br><span class="line">    name = &apos;lockcy&apos;</span><br><span class="line">    return render_template(&apos;index.html&apos;, name=name)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-
+<p><font size=6>Jinjia2</font><br>Jinjia2是一种Python模板语言，具有很多友好的特性。Jinjia是日文中神庙的意思，对应英文为temple，和模板template非常相似。<br>与Werkzeug一样，从一个最简单的用到jinjia2模板渲染的程序来探究下jinjia2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, render_template</span><br><span class="line"></span><br><span class="line">app &#x3D; Flask(__name__, template_folder&#x3D;&#39;.&#x2F;&#39;)</span><br><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;index&#39;)</span><br><span class="line">def index():</span><br><span class="line">    name &#x3D; &#39;lockcy&#39;</span><br><span class="line">    return render_template(&#39;index.html&#39;, name&#x3D;name)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
 <p>index.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;hello,&#123;&#123;name&#125;&#125;&lt;/h2&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;hello,&#123;&#123;name&#125;&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 <ol>
-<li><p>跟进render_template，调用了_render</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">return _render(</span><br><span class="line">    ctx.app.jinja_env.get_or_select_template(template_name_or_list),</span><br><span class="line">    context,</span><br><span class="line">    ctx.app,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>跟进_render函数。过程如下：发送信号，渲染模板，发送信号，返回渲染后字符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def _render(template, context, app):</span><br><span class="line">    &quot;&quot;&quot;Renders the template and fires the signal&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    before_render_template.send(app, template=template, context=context)  # signal.py before_render_template = _signals.signal(&quot;before-render-template&quot;)</span><br><span class="line">    rv = template.render(context)  # rv is the rendered results</span><br><span class="line">    template_rendered.send(app, template=template, context=context)  # signal.py before_render_template = _signals.signal(&quot;template_rendered&quot;)</span><br><span class="line">    return rv</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于flask中的信号量与模板源码的细节以后再讨论，这里只是简单过下Jinjia2的模板渲染流程。</p>
-</li>
-<li><p>再看下Jinjia2的一些基本语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">控制结构 *&#123;% %&#125;</span><br><span class="line">变量取值 &#123;&#123; &#125;&#125;</span><br><span class="line">注释 &#123;# #&#125;</span><br><span class="line">例:</span><br><span class="line">&#123;% for name in names %&#125;</span><br><span class="line">&lt;h2&gt;hello,&#123;&#123;name&#125;&#125;&lt;/h2&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-
+<li>跟进render_template，调用了_render<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">return _render(</span><br><span class="line">    ctx.app.jinja_env.get_or_select_template(template_name_or_list),</span><br><span class="line">    context,</span><br><span class="line">    ctx.app,</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>跟进_render函数。过程如下：发送信号，渲染模板，发送信号，返回渲染后字符。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def _render(template, context, app):</span><br><span class="line">    &quot;&quot;&quot;Renders the template and fires the signal&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    before_render_template.send(app, template&#x3D;template, context&#x3D;context)  # signal.py before_render_template &#x3D; _signals.signal(&quot;before-render-template&quot;)</span><br><span class="line">    rv &#x3D; template.render(context)  # rv is the rendered results</span><br><span class="line">    template_rendered.send(app, template&#x3D;template, context&#x3D;context)  # signal.py before_render_template &#x3D; _signals.signal(&quot;template_rendered&quot;)</span><br><span class="line">    return rv</span><br></pre></td></tr></table></figure></li>
+<li>关于flask中的信号量与模板源码的细节以后再讨论，这里只是简单过下Jinjia2的模板渲染流程。</li>
+<li>再看下Jinjia2的一些基本语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">控制结构 *&#123;% %&#125;</span><br><span class="line">变量取值 &#123;&#123; &#125;&#125;</span><br><span class="line">注释 &#123;# #&#125;</span><br><span class="line">例:</span><br><span class="line">&#123;% for name in names %&#125;</span><br><span class="line">&lt;h2&gt;hello,&#123;&#123;name&#125;&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -439,7 +420,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/01/15/seafile配置/" rel="next" title="seafile配置">
+              <a href="/2021/01/15/seafile%E9%85%8D%E7%BD%AE/" rel="next" title="seafile配置">
                 <i class="fa fa-chevron-left"></i> seafile配置
               </a>
             
@@ -449,7 +430,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/02/07/flask学习笔记（三）/" rel="prev" title="flask学习笔记（三）">
+              <a href="/2021/02/07/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="prev" title="flask学习笔记（三）">
                 flask学习笔记（三） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -499,9 +480,12 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-		<div id="music163player">
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
-		</div>
+
+
+		<!--<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>-->
+
       
 
       
@@ -510,10 +494,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">lockcy</p>
-              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -521,9 +507,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,12 +550,18 @@
             </div>
           
 
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+      
           
           
 
 
           
           
+
 
           
 
@@ -611,7 +603,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.8k</span>
+    <span title="Site words total count">35.6k</span>
   
 </div>
 
@@ -632,7 +624,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -645,7 +637,7 @@
 
 
         
-      </span></div>
+      </div>
     </footer>
 
     
@@ -800,5 +792,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

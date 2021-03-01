@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="flask,">
+  <meta name="keywords" content="flask," />
 
 
 
@@ -80,24 +80,24 @@
 
 
 <meta name="description" content="装饰器与路由[源码剖析+使用方法]">
-<meta name="keywords" content="flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flask学习笔记（三）">
-<meta property="og:url" content="http://yoursite.com/2021/02/07/flask学习笔记（三）/index.html">
+<meta property="og:url" content="https://lockcy.github.io/2021/02/07/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="装饰器与路由[源码剖析+使用方法]">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-02-20T05:50:15.212Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-02-07T15:02:25.000Z">
+<meta property="article:modified_time" content="2021-02-24T06:37:38.973Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="flask">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flask学习笔记（三）">
-<meta name="twitter:description" content="装饰器与路由[源码剖析+使用方法]">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/02/07/flask学习笔记（三）/">
+  <link rel="canonical" href="https://lockcy.github.io/2021/02/07/flask学习笔记（三）/"/>
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -253,11 +253,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/07/flask学习笔记（三）/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2021/02/07/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lockcy">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
@@ -352,50 +352,38 @@
 
       
         <p>装饰器与路由[源码剖析+使用方法]</p>
-<a id="more"></a>
-<p>回到上一期我们初学flask时那个最简单的例子，路由是通过app.route这个装饰器来控制的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)   </span><br><span class="line"></span><br><span class="line">@app.route(&apos;/index&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-
-<p><font size="6">装饰器</font><br>在flask中，一般情况下路由是由装饰器来注册的，当我们配置了@app.route(‘/index’)后，访问<a href="http://127.0.0.1:5000/index" target="_blank" rel="noopener">http://127.0.0.1:5000/index</a> 就会执行/index路径对应的index视图函数。从源码入手：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def route(self, rule, **options):</span><br><span class="line">    def decorator(f):</span><br><span class="line">        endpoint = options.pop(&quot;endpoint&quot;, None)</span><br><span class="line">        self.add_url_rule(rule, endpoint, f, **options)</span><br><span class="line">        return f</span><br><span class="line"></span><br><span class="line">    return decorator</span><br></pre></td></tr></table></figure>
-
+<span id="more"></span>
+<p>回到上一期我们初学flask时那个最简单的例子，路由是通过app.route装饰器控制的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app &#x3D; Flask(__name__)   </span><br><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;index&#39;)</span><br><span class="line">def index():</span><br><span class="line">    return &#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<p><font size=6>装饰器</font><br>在flask中，一般情况下路由是由装饰器来注册的，当我们配置了@app.route(‘/index’)后，访问<a target="_blank" rel="noopener" href="http://127.0.0.1:5000/index">http://127.0.0.1:5000/index</a> 就会执行/index路径对应的index视图函数。从源码入手：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def route(self, rule, **options):</span><br><span class="line">    def decorator(f):</span><br><span class="line">        endpoint &#x3D; options.pop(&quot;endpoint&quot;, None)</span><br><span class="line">        self.add_url_rule(rule, endpoint, f, **options)</span><br><span class="line">        return f</span><br><span class="line"></span><br><span class="line">    return decorator</span><br></pre></td></tr></table></figure>
 <p>app中的route方法中定义了装饰器，在理解route中的装饰器之前，我们先看看python中独有的装饰器是用来做什么的，从一个简单的例子入手：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def wrapper(func):</span><br><span class="line">    def wrapFunction(*args, **kwargs):</span><br><span class="line">        print(&apos;before working&apos;)</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line">        print(&apos;after working&apos;)</span><br><span class="line">    return wrapFunction</span><br><span class="line"></span><br><span class="line">@wrapper</span><br><span class="line">def work(param):</span><br><span class="line">    print(param)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    work(&apos;Monday working&apos;)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def wrapper(func):</span><br><span class="line">    def wrapFunction(*args, **kwargs):</span><br><span class="line">        print(&#39;before working&#39;)</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line">        print(&#39;after working&#39;)</span><br><span class="line">    return wrapFunction</span><br><span class="line"></span><br><span class="line">@wrapper</span><br><span class="line">def work(param):</span><br><span class="line">    print(param)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    work(&#39;Monday working&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>results</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">before working</span><br><span class="line">Monday working</span><br><span class="line">after working</span><br></pre></td></tr></table></figure>
 
 <p>在函数work前使用wrapper装饰器，结果在执行test函数前后提供了一些额外的功能。<br>装饰器允许向一个现有的对象添加新的功能,同时又不改变其结构。这种类型的设计模式属于结构型模式,它是作为现有的类的一个包装。装饰器除了可以包装函数外，也有利于简化冗余代码，使代码更pythonic。<br>从上边这个例子可以看出装饰器确实可以做到一些东西，但我们也发现了问题：如果在被装饰器装饰的函数中执行<code>work.__name__</code>，输出的结果是wrapFunction而非原函数名work；如果我们在使用装饰器的过程中需要保留被装饰函数原有的一些性质，可以引入functools的wraps装饰器，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from functools import wraps</span><br><span class="line">def wrapper(func):</span><br><span class="line">    @wraps(func)</span><br><span class="line">    def wrapFunction(*args, **kwargs):</span><br><span class="line">        print(&apos;before working&apos;)</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line">        print(&apos;after working&apos;)</span><br><span class="line">    return wrapFunction</span><br><span class="line"></span><br><span class="line">@wrapper</span><br><span class="line">def work(param):</span><br><span class="line">    print(work.__name__)</span><br><span class="line">    print(param)</span><br></pre></td></tr></table></figure>
-
-<p><font size="6">路由</font><br>跟进app.route，定义了装饰器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def route(self, rule, **options):</span><br><span class="line">      def decorator(f):</span><br><span class="line">          endpoint = options.pop(&quot;endpoint&quot;, None)</span><br><span class="line">          self.add_url_rule(rule, endpoint, f, **options)</span><br><span class="line">          return f</span><br><span class="line">      return decorator</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from functools import wraps</span><br><span class="line">def wrapper(func):</span><br><span class="line">    @wraps(func)</span><br><span class="line">    def wrapFunction(*args, **kwargs):</span><br><span class="line">        print(&#39;before working&#39;)</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line">        print(&#39;after working&#39;)</span><br><span class="line">    return wrapFunction</span><br><span class="line"></span><br><span class="line">@wrapper</span><br><span class="line">def work(param):</span><br><span class="line">    print(work.__name__)</span><br><span class="line">    print(param)</span><br></pre></td></tr></table></figure>
+<p><font size=6>路由</font><br>跟进app.route，定义了装饰器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def route(self, rule, **options):</span><br><span class="line">      def decorator(f):</span><br><span class="line">          endpoint &#x3D; options.pop(&quot;endpoint&quot;, None)</span><br><span class="line">          self.add_url_rule(rule, endpoint, f, **options)</span><br><span class="line">          return f</span><br><span class="line">      return decorator</span><br></pre></td></tr></table></figure>
 <p>跟进add_url_rule方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rule = self.url_rule_class(rule, methods=methods, **options)  </span><br><span class="line">rule.provide_automatic_options = provide_automatic_options</span><br><span class="line"></span><br><span class="line">self.url_map.add(rule)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rule &#x3D; self.url_rule_class(rule, methods&#x3D;methods, **options)  </span><br><span class="line">rule.provide_automatic_options &#x3D; provide_automatic_options</span><br><span class="line"></span><br><span class="line">self.url_map.add(rule)</span><br></pre></td></tr></table></figure>
 <p>url_rule_class = Rule，这里首先实例化了一个Rule对象rule，rule中包含了注册的路由信息，再将注册的rule添加到url_map中，当我们请求url时，如果url在url_map中，就会根据Rule对象中的路由来返回相应的视图函数。这些功能是Werkzeug的路由模块来提供的，我们注册路由时无需过多关注路由、视图函数及其背后的数据结构，只需调用装饰器或使用app.add_url_rule方法即可，这对于快速部署轻量级应用来说是至关重要的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 装饰器方式注册路由</span><br><span class="line">@app.route(&apos;/index/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br><span class="line"></span><br><span class="line"># 直接调用add_url_rule方式注册路由</span><br><span class="line">def index1():</span><br><span class="line">    return &apos;hello world1&apos;</span><br><span class="line">app.add_url_rule(&apos;/index1/&apos;, view_func=index1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 装饰器方式注册路由</span><br><span class="line">@app.route(&#39;&#x2F;index&#x2F;&#39;)</span><br><span class="line">def index():</span><br><span class="line">    return &#39;hello world&#39;</span><br><span class="line"></span><br><span class="line"># 直接调用add_url_rule方式注册路由</span><br><span class="line">def index1():</span><br><span class="line">    return &#39;hello world1&#39;</span><br><span class="line">app.add_url_rule(&#39;&#x2F;index1&#x2F;&#39;, view_func&#x3D;index1)</span><br></pre></td></tr></table></figure>
 
-<p><font size="6">路由进阶用法</font><br><font size="3">视图函数绑定多个URL</font><br>访问/index 和/index1 路由都会执行视图函数index</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/index1&apos;)</span><br><span class="line">@app.route(&apos;/index&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br></pre></td></tr></table></figure>
-
-<p><font size="3">动态URL</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 动态路由</span><br><span class="line">@app.route(&apos;/index/&lt;username&gt;&apos;)</span><br><span class="line">def index(username):</span><br><span class="line">    print(type(username))  # 默认为str</span><br><span class="line">    return &apos;hello world,%s&apos;%username</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/index/&lt;int:id&gt;&apos;) # 获取int类型的参数，若非int则404</span><br><span class="line">@app.route(&apos;/index/&lt;float:price&gt;&apos;) # 获取float类型的参数，若非int则404</span><br><span class="line">@app.route(&apos;/index/&lt;path:username&gt;&apos;) # 可识别带斜杠的字符串</span><br><span class="line">@app.route(&apos;/index/&lt;uuid:uuid&gt;&apos;) # uuid类型（uuid.uuid4()）</span><br></pre></td></tr></table></figure>
-
+<p><font size=6>路由进阶用法</font><br><font size=3>视图函数绑定多个URL</font><br>访问/index 和/index1 路由都会执行视图函数index</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&#39;&#x2F;index1&#39;)</span><br><span class="line">@app.route(&#39;&#x2F;index&#39;)</span><br><span class="line">def index():</span><br><span class="line">    return &#39;hello world&#39;</span><br></pre></td></tr></table></figure>
+<p><font size=3>动态URL</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 动态路由</span><br><span class="line">@app.route(&#39;&#x2F;index&#x2F;&lt;username&gt;&#39;)</span><br><span class="line">def index(username):</span><br><span class="line">    print(type(username))  # 默认为str</span><br><span class="line">    return &#39;hello world,%s&#39;%username</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&#39;&#x2F;index&#x2F;&lt;int:id&gt;&#39;) # 获取int类型的参数，若非int则404</span><br><span class="line">@app.route(&#39;&#x2F;index&#x2F;&lt;float:price&gt;&#39;) # 获取float类型的参数，若非int则404</span><br><span class="line">@app.route(&#39;&#x2F;index&#x2F;&lt;path:username&gt;&#39;) # 可识别带斜杠的字符串</span><br><span class="line">@app.route(&#39;&#x2F;index&#x2F;&lt;uuid:uuid&gt;&#39;) # uuid类型（uuid.uuid4()）</span><br></pre></td></tr></table></figure>
 <p><strong>自定义路由动态参数</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class MyConverter(BaseConverter):</span><br><span class="line">    def __init__(self, map, regex):</span><br><span class="line">        super().__init__(map)</span><br><span class="line">        self.regex = regex</span><br><span class="line"></span><br><span class="line">app.url_map.converters[&apos;loc&apos;] = MyConverter</span><br><span class="line">@app.route(&quot;/index/&lt;loc(&apos;[a-z]&#123;6&#125;&apos;):loc&gt;&quot;)</span><br><span class="line">def fn_rule(loc):</span><br><span class="line">    return loc</span><br></pre></td></tr></table></figure>
-
-<p><font size="3">注册路由时的一些参数</font><br><em>endpoint</em> 端点<br>在接触endpoint前我们先学习下反向访问url</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/index/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class MyConverter(BaseConverter):</span><br><span class="line">    def __init__(self, map, regex):</span><br><span class="line">        super().__init__(map)</span><br><span class="line">        self.regex &#x3D; regex</span><br><span class="line"></span><br><span class="line">app.url_map.converters[&#39;loc&#39;] &#x3D; MyConverter</span><br><span class="line">@app.route(&quot;&#x2F;index&#x2F;&lt;loc(&#39;[a-z]&#123;6&#125;&#39;):loc&gt;&quot;)</span><br><span class="line">def fn_rule(loc):</span><br><span class="line">    return loc</span><br></pre></td></tr></table></figure>
+<p><font size=3>注册路由时的一些参数</font><br><em>endpoint</em> 端点<br>在接触endpoint前我们先学习下反向访问url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&#39;&#x2F;index&#x2F;&#39;)</span><br><span class="line">def index():</span><br><span class="line">    return &#39;hello world&#39;</span><br></pre></td></tr></table></figure>
 <p>url_for(‘index’)反向获取了index这个视图函数的路由，即’/index/‘，跟进url_for，发现是根据endpoint来查找路由的，这个endpoint我们一开始并没有定义过，那是根据什么来产生endpoint的呢？答案还是在add_url_rule方法中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># add_url_rule</span><br><span class="line">if endpoint is None:</span><br><span class="line">    endpoint = _endpoint_from_view_func(view_func)</span><br><span class="line"></span><br><span class="line"># _endpoint_from_view_func</span><br><span class="line">assert view_func is not None, &quot;expected view func if endpoint is not provided.&quot;</span><br><span class="line">return view_func.__name__</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># add_url_rule</span><br><span class="line">if endpoint is None:</span><br><span class="line">    endpoint &#x3D; _endpoint_from_view_func(view_func)</span><br><span class="line"></span><br><span class="line"># _endpoint_from_view_func</span><br><span class="line">assert view_func is not None, &quot;expected view func if endpoint is not provided.&quot;</span><br><span class="line">return view_func.__name__</span><br></pre></td></tr></table></figure>
 <p>若没有给定endpoint，endpoint默认为<code>view_func.__name__</code>，即视图函数的名字。当然我们也可以在注册路由时加上endpoint的值自定义endpoint</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/index/&apos;,endpoint=&apos;i1&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;hello world&apos;</span><br><span class="line"></span><br><span class="line">url_for(&apos;i1&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&#39;&#x2F;index&#x2F;&#39;,endpoint&#x3D;&#39;i1&#39;)</span><br><span class="line">def index():</span><br><span class="line">    return &#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">url_for(&#39;i1&#39;)</span><br></pre></td></tr></table></figure>
 
 <p><em>strict_slashes</em> 忽略斜杠<br>@app.route(‘/index’,strict_slashes=False) 访问/index与/index/均可找到路由<br>@app.route(‘/index’,strict_slashes=True) 只能访问/index找到路由</p>
 <p><em>subdomain</em> 子域名路由控制</p>
@@ -436,7 +424,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/01/27/flask学习笔记（二）/" rel="next" title="flask学习笔记（二）">
+              <a href="/2021/01/27/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="flask学习笔记（二）">
                 <i class="fa fa-chevron-left"></i> flask学习笔记（二）
               </a>
             
@@ -446,7 +434,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/02/18/flask学习笔记（四）/" rel="prev" title="flask学习笔记（四）">
+              <a href="/2021/02/18/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="prev" title="flask学习笔记（四）">
                 flask学习笔记（四） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -496,9 +484,12 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-		<div id="music163player">
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
-		</div>
+
+
+		<!--<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>-->
+
       
 
       
@@ -507,10 +498,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">lockcy</p>
-              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -518,9 +511,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -561,12 +554,18 @@
             </div>
           
 
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+      
           
           
 
 
           
           
+
 
           
 
@@ -608,7 +607,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.8k</span>
+    <span title="Site words total count">35.6k</span>
   
 </div>
 
@@ -629,7 +628,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -642,7 +641,7 @@
 
 
         
-      </span></div>
+      </div>
     </footer>
 
     
@@ -797,5 +796,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>

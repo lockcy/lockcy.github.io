@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="php,">
+  <meta name="keywords" content="php," />
 
 
 
@@ -80,24 +80,24 @@
 
 
 <meta name="description" content="parse_url解析漏洞">
-<meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="parse_url">
-<meta property="og:url" content="http://yoursite.com/2020/12/08/parse_url/index.html">
+<meta property="og:url" content="https://lockcy.github.io/2020/12/08/parse_url/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
 <meta property="og:description" content="parse_url解析漏洞">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-12-08T15:27:24.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-12-08T15:15:15.000Z">
+<meta property="article:modified_time" content="2020-12-08T15:27:24.000Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="parse_url">
-<meta name="twitter:description" content="parse_url解析漏洞">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/12/08/parse_url/">
+  <link rel="canonical" href="https://lockcy.github.io/2020/12/08/parse_url/"/>
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">lockcy's cave</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -253,11 +253,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/08/parse_url/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2020/12/08/parse_url/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lockcy">
-      <meta itemprop="description" content>
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/harutya.jpg">
     </span>
 
@@ -314,7 +314,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  723
+                  815
                 </span>
               
 
@@ -330,7 +330,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -352,51 +352,38 @@
 
       
         <p>parse_url解析漏洞</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>Pause_url<br>parse_url — 解析 URL，返回其组成部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parse_url ( string $url [, int $component = -1 ] ) : mixed</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parse_url ( string $url [, int $component &#x3D; -1 ] ) : mixed</span><br></pre></td></tr></table></figure>
 <p>本函数解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分。<br>本函数不是用来验证给定 URL 的合法性的，只是将其分解为下面列出的部分。不完整的 URL 也被接受，parse_url() 会尝试尽量正确地将其解析。</p>
 <p><strong>更新日志</strong><br>版本     说明<br>5.4.7     修复了 host 在 协议 省略时的识别。<br>5.3.3     在 URL 解析失败时将不会产生 E_WARNING 级别的错误。<br>5.1.2     增加了参数 component。</p>
 <p><strong>范例</strong><br>Example #1 parse_url() 例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url = &apos;http://username:password@hostname/path?arg=value#anchor&apos;;</span><br><span class="line">print_r(parse_url($url));</span><br><span class="line">echo parse_url($url, PHP_URL_PATH);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url &#x3D; &#39;http:&#x2F;&#x2F;username:password@hostname&#x2F;path?arg&#x3D;value#anchor&#39;;</span><br><span class="line">print_r(parse_url($url));</span><br><span class="line">echo parse_url($url, PHP_URL_PATH);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>以上例程会输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [scheme] =&gt; http</span><br><span class="line">    [host] =&gt; hostname</span><br><span class="line">    [user] =&gt; username</span><br><span class="line">    [pass] =&gt; password</span><br><span class="line">    [path] =&gt; /path</span><br><span class="line">    [query] =&gt; arg=value</span><br><span class="line">    [fragment] =&gt; anchor</span><br><span class="line">)</span><br><span class="line">/path</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [scheme] &#x3D;&gt; http</span><br><span class="line">    [host] &#x3D;&gt; hostname</span><br><span class="line">    [user] &#x3D;&gt; username</span><br><span class="line">    [pass] &#x3D;&gt; password</span><br><span class="line">    [path] &#x3D;&gt; &#x2F;path</span><br><span class="line">    [query] &#x3D;&gt; arg&#x3D;value</span><br><span class="line">    [fragment] &#x3D;&gt; anchor</span><br><span class="line">)</span><br><span class="line">&#x2F;path</span><br></pre></td></tr></table></figure>
 <p>Example #2 parse_url() 解析丢失协议的例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url = &apos;//www.example.com/path?googleguy=googley&apos;;</span><br><span class="line"></span><br><span class="line">// 在 5.4.7 之前这会输出路径 &quot;//www.example.com/path&quot;</span><br><span class="line">var_dump(parse_url($url));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url &#x3D; &#39;&#x2F;&#x2F;www.example.com&#x2F;path?googleguy&#x3D;googley&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 在 5.4.7 之前这会输出路径 &quot;&#x2F;&#x2F;www.example.com&#x2F;path&quot;</span><br><span class="line">var_dump(parse_url($url));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>以上例程会输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">array(3) &#123;</span><br><span class="line">  [&quot;host&quot;]=&gt;</span><br><span class="line">  string(15) &quot;www.example.com&quot;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(5) &quot;/path&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(17) &quot;googleguy=googley&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">array(3) &#123;</span><br><span class="line">  [&quot;host&quot;]&#x3D;&gt;</span><br><span class="line">  string(15) &quot;www.example.com&quot;</span><br><span class="line">  [&quot;path&quot;]&#x3D;&gt;</span><br><span class="line">  string(5) &quot;&#x2F;path&quot;</span><br><span class="line">  [&quot;query&quot;]&#x3D;&gt;</span><br><span class="line">  string(17) &quot;googleguy&#x3D;googley&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上是php手册中的介绍</p>
 <p>测试代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo PHP_VERSION.&apos;&lt;p&gt;&apos;;</span><br><span class="line">echo $_SERVER[&quot;REQUEST_URI&quot;].&apos;&lt;p&gt;&apos;;</span><br><span class="line">$url = &apos;/user.php?page =keyword&apos;;</span><br><span class="line">$url = &apos;//user.php?page =keyword&apos;;</span><br><span class="line">$url = &apos;///user.php?page =keyword&apos;;</span><br><span class="line">$uri = parse_url($url);</span><br><span class="line">var_dump($uri);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo PHP_VERSION.&#39;&lt;p&gt;&#39;;</span><br><span class="line">echo $_SERVER[&quot;REQUEST_URI&quot;].&#39;&lt;p&gt;&#39;;</span><br><span class="line">$url &#x3D; &#39;&#x2F;user.php?page &#x3D;keyword&#39;;</span><br><span class="line">$url &#x3D; &#39;&#x2F;&#x2F;user.php?page &#x3D;keyword&#39;;</span><br><span class="line">$url &#x3D; &#39;&#x2F;&#x2F;&#x2F;user.php?page &#x3D;keyword&#39;;</span><br><span class="line">$uri &#x3D; parse_url($url);</span><br><span class="line">var_dump($uri);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>测试结果<br>Php5.3.29（5.4.7之前）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(9) &quot;/user.php&quot;    </span><br><span class="line">  string(10) &quot;//user.php&quot;  </span><br><span class="line">  string(11) &quot;///user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(12) &quot;page=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]&#x3D;&gt;</span><br><span class="line">  string(9) &quot;&#x2F;user.php&quot;    </span><br><span class="line">  string(10) &quot;&#x2F;&#x2F;user.php&quot;  </span><br><span class="line">  string(11) &quot;&#x2F;&#x2F;&#x2F;user.php&quot;</span><br><span class="line">  [&quot;query&quot;]&#x3D;&gt;</span><br><span class="line">  string(12) &quot;page&#x3D;keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Php5.5.38</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(9) &quot;/user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(12) &quot;page=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;host&quot;]=&gt;</span><br><span class="line">  string(8) &quot;user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(12) &quot;page=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]&#x3D;&gt;</span><br><span class="line">  string(9) &quot;&#x2F;user.php&quot;</span><br><span class="line">  [&quot;query&quot;]&#x3D;&gt;</span><br><span class="line">  string(12) &quot;page&#x3D;keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [&quot;host&quot;]&#x3D;&gt;</span><br><span class="line">  string(8) &quot;user.php&quot;</span><br><span class="line">  [&quot;query&quot;]&#x3D;&gt;</span><br><span class="line">  string(12) &quot;page&#x3D;keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>user.php会被解析成host，而page=keyword会被解析成 query<br>///user.php?page=keyword导致解析失败<br>bool(false)</p>
 <p>测试结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;br&gt;&lt;p&gt;array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(9) &quot;/user.php&quot;</span><br><span class="line">  [&quot;query&quot;]=&gt;</span><br><span class="line">  string(56) &quot;page=php://filter/convert.base64-encode/resource=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;p&gt;array(2) &#123;</span><br><span class="line">  [&quot;host&quot;]=&gt;</span><br><span class="line">  string(17) &quot;user.php?page=php&quot;</span><br><span class="line">  [&quot;path&quot;]=&gt;</span><br><span class="line">  string(47) &quot;//filter/convert.base64-encode/resource=keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;br&gt;&lt;p&gt;array(2) &#123;</span><br><span class="line">  [&quot;path&quot;]&#x3D;&gt;</span><br><span class="line">  string(9) &quot;&#x2F;user.php&quot;</span><br><span class="line">  [&quot;query&quot;]&#x3D;&gt;</span><br><span class="line">  string(56) &quot;page&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;p&gt;array(2) &#123;</span><br><span class="line">  [&quot;host&quot;]&#x3D;&gt;</span><br><span class="line">  string(17) &quot;user.php?page&#x3D;php&quot;</span><br><span class="line">  [&quot;path&quot;]&#x3D;&gt;</span><br><span class="line">  string(47) &quot;&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;keyword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.4.45&lt;p&gt;&lt;p&gt;bool(false)</span><br></pre></td></tr></table></figure>
 
 <p>因此当php版本号较高时，且使用parse_url函数解析参数时，可能会存在//绕过黑名单的情况。</p>
 <p>实例[N1CTF 2018]eating_cms<br>黑名单过滤了需要读取的文件，发现php版本较高且存在parse_url解析传入数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function filter_directory()</span><br><span class="line">&#123;</span><br><span class="line">    $keywords = [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];</span><br><span class="line">    $uri = parse_url($_SERVER[&quot;REQUEST_URI&quot;]);</span><br><span class="line">    parse_str($uri[&apos;query&apos;], $query);</span><br><span class="line">//    var_dump($query);</span><br><span class="line">//    die();</span><br><span class="line">    foreach($keywords as $token)</span><br><span class="line">    &#123;</span><br><span class="line">        foreach($query as $k =&gt; $v)</span><br><span class="line">        &#123;</span><br><span class="line">            if (stristr($k, $token))</span><br><span class="line">                hacker();</span><br><span class="line">            if (stristr($v, $token))</span><br><span class="line">                hacker();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function filter_directory()</span><br><span class="line">&#123;</span><br><span class="line">    $keywords &#x3D; [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];</span><br><span class="line">    $uri &#x3D; parse_url($_SERVER[&quot;REQUEST_URI&quot;]);</span><br><span class="line">    parse_str($uri[&#39;query&#39;], $query);</span><br><span class="line">&#x2F;&#x2F;    var_dump($query);</span><br><span class="line">&#x2F;&#x2F;    die();</span><br><span class="line">    foreach($keywords as $token)</span><br><span class="line">    &#123;</span><br><span class="line">        foreach($query as $k &#x3D;&gt; $v)</span><br><span class="line">        &#123;</span><br><span class="line">            if (stristr($k, $token))</span><br><span class="line">                hacker();</span><br><span class="line">            if (stristr($v, $token))</span><br><span class="line">                hacker();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;user.php?page&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;ffffllllaaaaggg</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -433,7 +420,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/08/23/通达OA-0day复现/" rel="next" title="通达OA 0day复现">
+              <a href="/2020/08/23/%E9%80%9A%E8%BE%BEOA-0day%E5%A4%8D%E7%8E%B0/" rel="next" title="通达OA 0day复现">
                 <i class="fa fa-chevron-left"></i> 通达OA 0day复现
               </a>
             
@@ -443,7 +430,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/12/10/PyQt5的一些技巧/" rel="prev" title="PyQt5的一些技巧">
+              <a href="/2020/12/10/PyQt5%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/" rel="prev" title="PyQt5的一些技巧">
                 PyQt5的一些技巧 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -493,9 +480,12 @@
   <aside id="sidebar" class="sidebar">
     
     <div class="sidebar-inner">
-		<div id="music163player">
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
-		</div>
+
+
+		<!--<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2196816455&auto=1&height=430"></iframe>
+		</div>-->
+
       
 
       
@@ -504,10 +494,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/harutya.jpg" alt="lockcy">
+              <img class="site-author-image" itemprop="image"
+                src="/images/harutya.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">lockcy</p>
-              <p class="site-description motion-element" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -515,9 +507,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -558,12 +550,18 @@
             </div>
           
 
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+      
           
           
 
 
           
           
+
 
           
 
@@ -605,7 +603,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.8k</span>
+    <span title="Site words total count">35.6k</span>
   
 </div>
 
@@ -626,7 +624,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 <span class="post-meta-divider">|</span>
-<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv" < span>人</span>
+<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"</span>人</span>
 
 
 
@@ -639,7 +637,7 @@
 
 
         
-      </span></div>
+      </div>
     </footer>
 
     
@@ -794,5 +792,6 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
+<script src="/live2d-widget/autoload.js"></script>
