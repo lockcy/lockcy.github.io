@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pwn," />
+  <meta name="keywords" content="渗透测试," />
 
 
 
@@ -79,29 +79,20 @@
 
 
 
-<meta name="description" content="总结绕过canary保护机制的几种方法">
+<meta name="description" content="Immunity Canvas 泄露的工具包里有不少1day，可以留着备用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="栈溢出绕过canary">
-<meta property="og:url" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/index.html">
+<meta property="og:title" content="Immunity Canvas ubuntu 环境搭建">
+<meta property="og:url" content="https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="总结绕过canary保护机制的几种方法">
+<meta property="og:description" content="Immunity Canvas 泄露的工具包里有不少1day，可以留着备用">
 <meta property="og:locale">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/1.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/2.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/3.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/4.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/5.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/6.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/7.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/8.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/9.png">
-<meta property="og:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/10.png">
-<meta property="article:published_time" content="2019-03-07T07:29:23.000Z">
-<meta property="article:modified_time" content="2019-08-15T07:31:59.686Z">
+<meta property="og:image" content="https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.png">
+<meta property="article:published_time" content="2021-03-07T04:53:51.000Z">
+<meta property="article:modified_time" content="2021-03-07T06:15:07.360Z">
 <meta property="article:author" content="lockcy">
-<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/1.png">
+<meta name="twitter:image" content="https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.png">
 
 
 
@@ -131,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://lockcy.github.io/2019/03/07/栈溢出绕过canary/"/>
+  <link rel="canonical" href="https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-环境搭建/"/>
 
 
 
 
 
-  <title>栈溢出绕过canary | lockcy's cave</title>
+  <title>Immunity Canvas ubuntu 环境搭建 | lockcy's cave</title>
   
 
 
@@ -264,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -281,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">栈溢出绕过canary</h1>
+          <h1 class="post-title" itemprop="name headline">Immunity Canvas ubuntu 环境搭建</h1>
         
 
         <div class="post-meta">
@@ -293,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T15:29:23+08:00">
-                2019-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-07T12:53:51+08:00">
+                2021-03-07
               </time>
             
 
@@ -325,7 +316,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  877
+                  256
                 </span>
               
 
@@ -341,7 +332,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -362,48 +353,13 @@
       
 
       
-        <p>总结绕过canary保护机制的几种方法</p>
+        <p>Immunity Canvas 泄露的工具包里有不少1day，可以留着备用</p>
 <span id="more"></span>
-<p>canary原意为金丝雀，以前下井工人通常会带一只金丝雀，当瓦斯气体浓度超标后金丝雀会死亡，以此起到预警作用，linux里防止栈溢出的canary机制也是类似<br>canary是一个介于栈基址ebp和变量之间的数值，程序运行结束时会检查canary的值是否正确，错误则会终止程序运行并打印错误信息<br>具体在栈中的结构如下</p>
-<p>变量1<br>变量2<br>canary<br>ebp<br>eip</p>
-<p>（canary不一定与与基址相邻）<br>因此如果在开启canary的程序中进行栈溢出必定会污染canary的值，在面对有canary保护的程序时必须想办法绕过或利用canary机制<br>依然从那个简单的例子开始</p>
-<p>test.c</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/1.png" class="">
+<p>Windows的安装方法在<br><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/265119.html">https://www.freebuf.com/sectool/265119.html</a><br>我比较习惯把攻击套件集成到linux里，这里简单记录下linux环境下安装Immunity Canvas 7.26的几个小坑。<br>基本上按照安装指导一步步走就行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pre Requests for installing Canvas: (tested setup) Ubuntu 18.04 (updated but not upgraded)</span><br><span class="line">Copy Canvas.zip to Linux PC</span><br><span class="line">Unzip it to working folder.</span><br><span class="line"></span><br><span class="line">Run command as root:</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get -y install python-pip</span><br><span class="line">sudo apt-get -y install gtk2.0</span><br><span class="line">sudo apt-get -y install python-glade2</span><br><span class="line">sudo apt-get -y install python-nacl python-bcrypt</span><br><span class="line">sudo pip install pycrypto</span><br><span class="line">sudo pip install pyasn1</span><br><span class="line">sudo pip install diskcache&#x3D;&#x3D;4.1.0</span><br><span class="line">sudo pip install asn1tools</span><br><span class="line">sudo apt-get install -y python-pycurl</span><br><span class="line">sudo apt-get install -y libcanberra-gtk-module</span><br><span class="line">sudo pip install pycurl</span><br><span class="line">sudo pip install requests</span><br><span class="line">sudo pip install pygame</span><br><span class="line"></span><br><span class="line">Go to CANVAS folder, then run:</span><br><span class="line">sudo bash CANVAS&#x2F;installer&#x2F;linux_installer.sh</span><br><span class="line"></span><br><span class="line">Setup is finished</span><br><span class="line">Executing:</span><br><span class="line">sudo python CANVAS&#x2F;runcanvas.py</span><br><span class="line"></span><br><span class="line">You are breathtaking!</span><br></pre></td></tr></table></figure>
 
-<p>分别用 不使用canary和使用canary保护机制编译一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fno-stack-protector test.c -o test1</span><br><span class="line">gcc -m32 -fstack-protector test.c -o test2</span><br></pre></td></tr></table></figure>
-<p>反编译一下看看两种编译方式的区别</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objdump -d test1</span><br><span class="line">objdump -d test2</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/2.png" class="">
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/3.png" class="">
-
-<p>后者在函数开始时：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov    %gs:0x14,%ecx  ;将gs:0x14的值给ecx</span><br><span class="line">mov    %ecx,-0xc(%ebp) ;将ecx中的值放在ebp-0xc的位置</span><br><span class="line">xor    %ecx,%ecx   ;清空ecx</span><br></pre></td></tr></table></figure>
-<p>函数快要结束时：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov    -0xc(%ebp),%eax  ;从ebp-0xc位置取值给eax</span><br><span class="line">xor    %gs:0x14,%eax   ;将eax与gs:0x14异或</span><br><span class="line">je     120a &lt;vul+0x4d&gt;  ;如果为0程序正常结束，这里120a就是下一步的地址</span><br><span class="line">call   12c0 &lt;__stack_chk_fail_local&gt;  ;不为0这说明canary值被修改，调用__stack_chk_fail函数处理（终止程序）</span><br></pre></td></tr></table></figure>
-<p>在有canary机制的程序里溢出看下结果</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/4.png" class="">
-<p>成功监测到了栈溢出，终止了程序</p>
-<p>绕过canary机制<br>多进程程序canary爆破<br>每次运行程序时，canary的值都是不一样的，因此爆破canary看似不太可能，但在特定情况下还是可行的。<br>在程序使用多个子进程时，子进程的崩溃不会影响到父进程，但同一个程序里的canary是一样的，所以爆破就有了可行性</p>
-<p>canary_brute.c</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/5.png" class="">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fstack-protector -no-pie canary_brute.c -o canary_brute.</span><br></pre></td></tr></table></figure>
-<p>程序会反复fork子进程调用vul函数，所以爆破canary存在可行性（主进程不会因栈溢出触发保护函数而退出）。<br>在32位程序中canary占4字节，且为了防止canary的值被连带泄露，canary的最高位为’\x00’。</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/6.png" class="">
-<p>栈的结构如下</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/7.png" class="">
-<p>爆破脚本</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/8.png" class="">
-<p>实战练习<br>2017 湖湘杯Pwn100<br>做法还是爆破canary，爆破出来后结合之前ret2libc中的内容，直接上脚本了</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/9.png" class="">
-<p>主动触发栈溢出保护<br>如果程序结束时程序检查canary的值被修改会调到_stack_chk_fail，再看下_stack_chk_fail的源码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void __attribute__ ((noreturn)) __stack_chk_fail (void)</span><br><span class="line">&#123;</span><br><span class="line"> __fortify_fail (&quot;stack smashing detected&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void __attribute__ ((noreturn)) internal_function __fortify_fail (const char *msg)</span><br><span class="line">&#123;</span><br><span class="line"> &#x2F;* The loop is added only to keep gcc happy. *&#x2F;</span><br><span class="line"> while (1)</span><br><span class="line"> __libc_message (2, &quot;*** %s ***: %s terminated\n&quot;,</span><br><span class="line"> msg, __libc_argv[0] ?: &quot;&lt;unknown&gt;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>程序终止并把argv[0]中的东西打印出来，SSP leak(Stack Smashing Protect leak)技术就是利用canary机制，将我们需要的内容放入argv[0]中，当栈溢出并最终打印argv[0]时，我们所需的内容便会打印出来，虽然很巧妙，但是局限性也很大，只能读取程序中特定的内容，更不要说getshell了<br>实战练习<br>jarvisoj smashes</p>
-<img src="/2019/03/07/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%BB%95%E8%BF%87canary/10.png" class="">
-
-<p>劫持_stack_chk_fail</p>
-<p>顾名思义，劫持_stack_chk_fail函数，即覆写_stack_chk_fail函数的在got表上的地址，也是故意触发canary机制。</p>
-<p>部分内容参考资料ichunqiu月刊第六期</p>
+<p><strong>1.高版本的debian和ubuntu gtk2.0可能会装不上，这里用的是ubuntu1604。</strong><br><strong>2.所需python版本为python27，如果安装pygame2.0以上版本会报错，回退到1.9即可。</strong><br>3.开始玩耍吧</p>
+<img src="/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.png" class="">
 
       
     </div>
@@ -413,6 +369,38 @@
 <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Immunity Canvas ubuntu 环境搭建</a></p>
+  <p><span>文章作者:</span></a></p>
+  <p><span>发布时间:</span>2021年03月07日 - 12:53:51</p>
+  <p><span>最后更新:</span>2021年03月07日 - 14:15:07</p>
+  <p><span>原始链接:</span><a href="/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Immunity Canvas ubuntu 环境搭建">https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
 
       
 </div>
@@ -427,7 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/pwn/" rel="tag"># pwn</a>
+            <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
           
         </div>
       
@@ -440,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/%E6%A0%88%E6%BA%A2%E5%87%BAdynelf/" rel="next" title="栈溢出dynelf">
-                <i class="fa fa-chevron-left"></i> 栈溢出dynelf
+              <a href="/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" rel="next" title="flask学习笔记（六）">
+                <i class="fa fa-chevron-left"></i> flask学习笔记（六）
               </a>
             
           </div>
@@ -449,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/19/%E6%A0%88%E6%BA%A2%E5%87%BAmprotect/" rel="prev" title="栈溢出mprotect">
-                栈溢出mprotect <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
