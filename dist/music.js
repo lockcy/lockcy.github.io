@@ -44,8 +44,17 @@ const ap = new APlayer({
             url: 'http://music.163.com/song/media/outer/url?id=1339048598.mp3',
             cover: 'http://p1.music.126.net/YydedMxFaskj7txCCekDCw==/109951164666603036.jpg?param=130y130',
         },
-
+        {
+            name: 'England Had a Queen',
+            artist: 'Tamas Wells',
+            url: 'http://music.163.com/song/media/outer/url?id=2001276.mp3',
+            cover: 'http://p2.music.126.net/AgrA8qRLSgrFZ7NmxuU41w==/6665239487718933.jpg?param=130y130',
+        },
+        {
+            name: 'The Crime at Edmond Lake',
+            artist: 'Tamas Wells',
+            url: 'http://music.163.com/song/media/outer/url?id=2001272.mp3',
+            cover: 'http://p2.music.126.net/AgrA8qRLSgrFZ7NmxuU41w==/6665239487718933.jpg?param=130y130',
+        },
     ]
 });
-
-
