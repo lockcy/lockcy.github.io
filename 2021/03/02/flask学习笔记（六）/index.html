@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="表单相关">
+<meta name="description" content="表单相关[使用方法]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flask学习笔记（六）">
 <meta property="og:url" content="https://lockcy.github.io/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="表单相关">
+<meta property="og:description" content="表单相关[使用方法]">
 <meta property="og:locale">
+<meta property="og:image" content="https://lockcy.github.io/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/1.png">
 <meta property="article:published_time" content="2021-03-02T09:05:21.000Z">
-<meta property="article:modified_time" content="2021-03-09T15:01:49.001Z">
+<meta property="article:modified_time" content="2021-03-10T11:46:45.636Z">
 <meta property="article:author" content="lockcy">
 <meta property="article:tag" content="flask">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lockcy.github.io/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/1.png">
 
 
 
@@ -314,7 +316,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  2.3k
                 </span>
               
 
@@ -330,7 +332,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  12
                 </span>
               
             </div>
@@ -351,7 +353,7 @@
       
 
       
-        <p>表单相关</p>
+        <p>表单相关[使用方法]</p>
 <span id="more"></span>
 <p>在flask学习笔记（三）请求与响应一节中提到了表单与视图函数数据交互的过程。在MVC架构中[其实flask不能算严格意义上的MVC，这里暂且将其视作MVC] 我们已经详细介绍了Controller，即视图函数；View，即模板。但我们发现了一个问题，模板与视图函数的交互是双向的：模板渲染视图函数传递的数据；把请求中获取的数据交给视图函数处理，为了更好的学习后者，我们需要学习表单相关内容。</p>
 <p><font size=6>简单的HTML表单&amp;后端交互</font><br>index.html</p>
@@ -367,10 +369,13 @@
 <p>常用的WTForms字段</p>
 <style>
 table th:nth-of-type(1){
-width: 20%;
+width: 30%;
 }
 table th:nth-of-type(2){
-width: 80%;
+width: 40%;
+}
+table th:nth-of-type(3){
+width: 40%;
 }
 </style>
 <table>
@@ -384,77 +389,77 @@ width: 80%;
 <tbody><tr>
 <td align="center">BooleanField</td>
 <td align="center">复选框，值会被处理为True或False</td>
-<td align="center"><input type="checkbox"></td>
+<td align="center">&lt;input type=”checkbox”&gt;</td>
 </tr>
 <tr>
 <td align="center">DateField</td>
 <td align="center">文本字段，值会被处理为datetime.date对象</td>
-<td align="center"><input type="text"></td>
+<td align="center">&lt;input type=”text”&gt;</td>
 </tr>
 <tr>
 <td align="center">DateTimeField</td>
 <td align="center">文本字段，值会被处理为datetime.datetime对象</td>
-<td align="center"><input type="text"></td>
+<td align="center">&lt;input type=”text”&gt;</td>
 </tr>
 <tr>
 <td align="center">StringField</td>
 <td align="center">文本字段</td>
-<td align="center"><input type="text"></td>
+<td align="center">&lt;input type=”text”&gt;</td>
 </tr>
 <tr>
 <td align="center">FileField</td>
 <td align="center">文件上传字段</td>
-<td align="center"><input type="file"></td>
+<td align="center">&lt;input type=”file”&gt;</td>
 </tr>
 <tr>
 <td align="center">FloatField</td>
 <td align="center">浮点数字段，值会被处理为浮点型</td>
-<td align="center"><input type="text"></td>
+<td align="center">&lt;input type=”text”&gt;</td>
 </tr>
 <tr>
 <td align="center">PasswordField</td>
 <td align="center">密码文本字段</td>
-<td align="center"><input type="password"></td>
+<td align="center">&lt;input type=”password”&gt;</td>
 </tr>
 <tr>
 <td align="center">StringField</td>
 <td align="center">文本字段</td>
-<td align="center"><input type="text"></td>
+<td align="center">&lt;input type=”text”&gt;</td>
 </tr>
 <tr>
 <td align="center">IntegerField</td>
 <td align="center">整数字段</td>
-<td align="center"><input type="text"></td>
+<td align="center">&lt;input type=”text”&gt;</td>
 </tr>
 <tr>
 <td align="center">RadioField</td>
 <td align="center">一组单选框</td>
-<td align="center"><input type="radio"></td>
+<td align="center">&lt;input type=”radio”&gt;</td>
 </tr>
 <tr>
 <td align="center">SelectField</td>
 <td align="center">下拉列表</td>
-<td align="center"><select><option></option></select></td>
+<td align="center">&lt;select&gt;&lt;option&gt;&lt;/option&gt;&lt;/select&gt;</td>
 </tr>
 <tr>
 <td align="center">SelectMutipleField</td>
 <td align="center">多选下拉列表</td>
-<td align="center"><select multiple><option></option></select></td>
+<td align="center">&lt;select multiple&gt;&lt;option&gt;&lt;/option&gt;&lt;/select&gt;</td>
 </tr>
 <tr>
 <td align="center">SubmitField</td>
 <td align="center">表单提交按钮</td>
-<td align="center"><input type="submit"></td>
+<td align="center">&lt;input type=”submit”&gt;</td>
 </tr>
 <tr>
 <td align="center">TextAreaField</td>
 <td align="center">多行文本字段</td>
-<td align="center"><textarea></textarea></td>
+<td align="center">&lt;textarea&gt;&lt;/textarea&gt;</td>
 </tr>
 <tr>
 <td align="center">HiddenField</td>
 <td align="center">隐藏文本字段</td>
-<td align="center"><input type="hidden"></td>
+<td align="center">&lt;input type=”hidden”&gt;</td>
 </tr>
 </tbody></table>
 <p>常用的WTForms验证器</p>
@@ -532,9 +537,21 @@ width: 60%;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;form.csrf_token &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;form.username.label&#125;&#125; &#123;&#123;form.username&#125;&#125; &#123;&#123;form.username.errors[0] &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;form.password.label&#125;&#125; &#123;&#123;form.password&#125;&#125; &#123;&#123;form.password.errors[0] &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
 <p>是不是感觉和WTForms几乎一样，但仔细看还是能发现不同。<br>即使我们没有手动设置csrf_token，flaskform在表单中也为我们设置了防止跨站请求的token，csrf_token需要secret_key为其签名，因此需要设置secret_key。再查看html源码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;input id&#x3D;&quot;csrf_token&quot; name&#x3D;&quot;csrf_token&quot; type&#x3D;&quot;hidden&quot; value&#x3D;&quot;ImIwMjA1MWU5OTZhNzU4MWZiYzNiOWQ5ODg2ZDNkNjIwZmQ2MTY3ZmYi.YEcsbA.Gcgdx7CHkKZKW4ti13M699HIbD0&quot;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;&lt;label for&#x3D;&quot;username&quot;&gt;用户名&lt;&#x2F;label&gt; &lt;input id&#x3D;&quot;username&quot; name&#x3D;&quot;username&quot; required type&#x3D;&quot;text&quot; value&#x3D;&quot;&quot;&gt; &lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;&lt;label for&#x3D;&quot;password&quot;&gt;密码&lt;&#x2F;label&gt; &lt;input id&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot; required type&#x3D;&quot;password&quot; value&#x3D;&quot;&quot;&gt; &lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
-<p>其他配置<br>禁用 CSRF 保护：<br>form = Form(csrf_enabled=False)<br>全局禁用 CSRF 保护：<br>WTF_CSRF_ENABLED = False<br>单独密钥：<br>WTF_CSRF_SECRET_KEY = ‘test’   </p>
+<p><strong>其他配置</strong><br>禁用 CSRF 保护：<br>form = Form(csrf_enabled=False)<br>全局禁用 CSRF 保护：<br>WTF_CSRF_ENABLED = False<br>单独密钥：<br>WTF_CSRF_SECRET_KEY = ‘test’   </p>
 <p>app.config[‘WTF_CSRF_ENABLED’] = False<br>app.config[‘WTF_CSRF_ENABLED’] = False</p>
-<p>WTForms文档：<a target="_blank" rel="noopener" href="https://wtforms.readthedocs.io/en/2.3.x/">https://wtforms.readthedocs.io/en/2.3.x/</a><br>Flask-wtf文档：<a target="_blank" rel="noopener" href="http://www.pythondoc.com/flask-wtf/">http://www.pythondoc.com/flask-wtf/</a></p>
+<p><strong>文件上传</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, render_template, flash</span><br><span class="line">from werkzeug.utils import secure_filename</span><br><span class="line">from flask_wtf.file import FileField, FileRequired, FileAllowed</span><br><span class="line">from flask_wtf import FlaskForm</span><br><span class="line">from wtforms import SubmitField</span><br><span class="line"></span><br><span class="line">app &#x3D; Flask(__name__)</span><br><span class="line">app.debug &#x3D; True</span><br><span class="line">app.secret_key &#x3D; &#39;test&#39;</span><br><span class="line">app.config[&#39;MAX_CONTENT_LENGTH&#39;] &#x3D; 1 * 1024 * 1024</span><br><span class="line"></span><br><span class="line">class UploadForm(FlaskForm):</span><br><span class="line">    &quot;&quot;&quot;用户上传文件的表单&quot;&quot;&quot;</span><br><span class="line">    file &#x3D; FileField(label&#x3D;&quot;图片&quot;, validators&#x3D;[FileRequired(), FileAllowed([&#39;jpg&#39;, &#39;png&#39;], &#39;只能上传图片&#39;)])</span><br><span class="line">    submit &#x3D; SubmitField()</span><br><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;upload&#x2F;&#39;, methods&#x3D;(&#39;GET&#39;, &#39;POST&#39;))</span><br><span class="line">def upload():</span><br><span class="line">    form &#x3D; UploadForm()</span><br><span class="line">    if form.validate_on_submit():</span><br><span class="line">        filename &#x3D; secure_filename(form.file.data.filename)</span><br><span class="line">        form.file.data.save(&#39;uploads&#x2F;&#39; + filename)</span><br><span class="line">        flash(&#39;文件上传成功&#39;)</span><br><span class="line">    else:</span><br><span class="line">        filename &#x3D; None</span><br><span class="line">        flash(&#39;文件上传失败&#39;)</span><br><span class="line">    return render_template(&#39;upload.html&#39;, form&#x3D;form, filename&#x3D;filename)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<p>upload.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for message in get_flashed_messages() %&#125;</span><br><span class="line">&lt;div class&#x3D;&quot;alert&quot;&gt;&#123;&#123; message &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line">&#123;% block content %&#125;&#123;% endblock %&#125;</span><br><span class="line">&lt;form method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">    &#123;&#123; form.csrf_token &#125;&#125;</span><br><span class="line">    &#123;&#123; form.file &#125;&#125;&lt;br&gt;</span><br><span class="line">    &#123;&#123; form.submit &#125;&#125;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<p><font size=6>Flask-CKEditor富文本编辑器</font><br><strong>引入CKEditor资源</strong><br>为了使用CKEditor，我们首先要在模板中引入CKEditor的JavaScript等资源文件。推荐的做法是自己编写资源引用语句，你可以在CKEditor提供的Online Builder构建一个自定义的资源包，下载解压后放到项目的static目录下， 并引入资源包内的ckeditor.js文件，比如（实际路径按需调整）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;&#123;&#123; url_for(&#39;static&#39;, filename&#x3D;&#39;ckeditor&#x2F;ckeditor.js&#39;) &#125;&#125;&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from flask_ckeditor import CKEditor, CKEditorField</span><br><span class="line">from flask import Flask, render_template, request</span><br><span class="line">from flask_wtf import FlaskForm</span><br><span class="line">from wtforms import StringField, SubmitField, validators</span><br><span class="line">app &#x3D; Flask(__name__)</span><br><span class="line">app.debug &#x3D; True</span><br><span class="line">app.secret_key &#x3D; &#39;test&#39;</span><br><span class="line">ckeditor &#x3D; CKEditor(app)</span><br><span class="line"></span><br><span class="line">class RichTextForm(FlaskForm):</span><br><span class="line">    title &#x3D; StringField(&#39;标题&#39;, validators&#x3D;[validators.DataRequired()])</span><br><span class="line">    body &#x3D; CKEditorField(&#39;正文&#39;, validators&#x3D;[validators.DataRequired()])</span><br><span class="line">    submit &#x3D; SubmitField(&#39;发布&#39;)</span><br><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;ckeditor&#39;, methods&#x3D;[&quot;GET&quot;, &quot;POST&quot;])</span><br><span class="line">def ckeditor():</span><br><span class="line">    form &#x3D; RichTextForm()</span><br><span class="line">    if request.method &#x3D;&#x3D; &#39;GET&#39;:</span><br><span class="line">        return render_template(&#39;ckeditor.html&#39;, form&#x3D;form)</span><br><span class="line">    else:</span><br><span class="line">        print(form.body.data)</span><br><span class="line">        return render_template(&#39;ckeditor.html&#39;, form&#x3D;form)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<p>ckeditor.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; form.csrf_token &#125;&#125;</span><br><span class="line">&#123;&#123; form.title.label &#125;&#125; &#123;&#123; form.title() &#125;&#125;</span><br><span class="line">&#123;&#123; form.body.label &#125;&#125; &#123;&#123; form.body() &#125;&#125;</span><br><span class="line">&#123;&#123; form.submit &#125;&#125;</span><br><span class="line">&#123;&#123; ckeditor.config(name&#x3D;&#39;body&#39;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下</p>
+<img src="/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/1.png" class="">
+
+<p>WTForms文档：<a target="_blank" rel="noopener" href="https://wtforms.readthedocs.io/en/2.3.x/">https://wtforms.readthedocs.io/en/2.3.x/</a><br>Flask-wtf文档：<a target="_blank" rel="noopener" href="http://www.pythondoc.com/flask-wtf/">http://www.pythondoc.com/flask-wtf/</a><br>flask-ckeditor使用： <a target="_blank" rel="noopener" href="http://greyli.com/flask-ckeditor-integrate-rich-text-editor/">http://greyli.com/flask-ckeditor-integrate-rich-text-editor/</a></p>
 
       
     </div>
@@ -555,7 +572,7 @@ width: 60%;
   <p><span>本文标题:</span>flask学习笔记（六）</a></p>
   <p><span>文章作者:</span></a></p>
   <p><span>发布时间:</span>2021年03月02日 - 17:05:21</p>
-  <p><span>最后更新:</span>2021年03月09日 - 23:01:49</p>
+  <p><span>最后更新:</span>2021年03月10日 - 19:46:45</p>
   <p><span>原始链接:</span><a href="/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" title="flask学习笔记（六）">https://lockcy.github.io/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2021/03/02/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/"  aria-label="复制成功！"></i></span>
   </p>
@@ -786,7 +803,7 @@ width: 60%;
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.5k</span>
+    <span title="Site words total count">39.2k</span>
   
 </div>
 
