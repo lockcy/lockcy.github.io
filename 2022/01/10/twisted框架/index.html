@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lockcy.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="twisted 入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="twisted框架">
+<meta property="og:url" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name" content="lockcy&#39;s cave">
+<meta property="og:description" content="twisted 入门">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/1.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/2.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/3.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/4.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/5.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/6.png">
+<meta property="article:published_time" content="2022-01-10T14:53:05.000Z">
+<meta property="article:modified_time" content="2022-01-10T14:59:18.608Z">
+<meta property="article:author" content="lockcy">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/1.png">
+
+<link rel="canonical" href="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>twisted框架 | lockcy's cave</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">lockcy's cave</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/lockcy" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/harutya.jpg">
+      <meta itemprop="name" content="lockcy">
+      <meta itemprop="description" content="A mind at peace with all below, a heart whose love is innocent!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lockcy's cave">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          twisted框架
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-10 22:53:05 / 修改时间：22:59:18" itemprop="dateCreated datePublished" datetime="2022-01-10T22:53:05+08:00">2022-01-10</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>twisted 入门</p>
+<span id="more"></span>
+<p>twisted框架<br>twisted是一个python编写的事件驱动网络框架<br><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install twisted</span><br><span class="line">&gt;&gt;&gt; import twisted</span><br><span class="line">&gt;&gt;&gt; twisted.__version__</span><br><span class="line">&#39;20.3.0&#39;</span><br></pre></td></tr></table></figure>
+<p><strong>基础</strong><br>下列例子与twisted官方文档介绍有所出入，仅用于自己学习参考<br>1.一个简单的服务器应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet.protocol import Factory, Protocol</span><br><span class="line">from twisted.internet import reactor</span><br><span class="line">from time import ctime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class TServer(Protocol):</span><br><span class="line">    def connectionMade(self):</span><br><span class="line">        self.transport.write(&quot;hello stranger!\t\n&quot;.encode())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def dataReceived(self, data):</span><br><span class="line">        if str(data.decode()) &#x3D;&#x3D; &#39;q&#39;:   # 输入q关闭连接</span><br><span class="line">            self.transport.write(&quot;\nconnection closed...\t\n&quot;.encode())</span><br><span class="line">            self.transport.loseConnection()</span><br><span class="line">        else:</span><br><span class="line">            self.transport.write(&quot; you have sent &#123;0&#125; at &#123;1&#125;\r\n&quot;.format(data.decode(), ctime()).encode())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">factory &#x3D; Factory()</span><br><span class="line">factory.protocol &#x3D; TServer</span><br><span class="line">reactor.listenTCP(22222, factory)</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+<p>分析：</p>
+<img src="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/1.png" class="">
+<p>使用telnet来连接创建的tcp服务，每输入一个字符就按特定的格式输出，输入q则关闭连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet localhost 22222</span><br></pre></td></tr></table></figure>
+<img src="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/2.png" class="">
+<p>但使用telnet连接我们创建的服务器应用时发现了一个问题，每敲击一个字符就把数据发送到了服务端，没有办法实现字符串的发送，因此需要编写相应的客户端应用来解决这个问题。<br>2.一个简单的客户端应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet.protocol import Protocol, ClientFactory</span><br><span class="line">from twisted.internet import reactor</span><br><span class="line"></span><br><span class="line">class TClient(Protocol):</span><br><span class="line">    def sendData(self):</span><br><span class="line">        data &#x3D; input(&quot;&gt;&quot;)</span><br><span class="line">        if data:</span><br><span class="line">            self.transport.write(data.encode())</span><br><span class="line"></span><br><span class="line">    def dataReceived(self, data):</span><br><span class="line">        print(data.decode())</span><br><span class="line">        self.sendData()</span><br><span class="line"></span><br><span class="line">class TClientFactory(ClientFactory):</span><br><span class="line">    protocol &#x3D; TClient</span><br><span class="line">    clientConnectionLost &#x3D; clientConnectionFailed &#x3D; lambda self, connector, reason: reactor.stop()</span><br><span class="line"></span><br><span class="line"># class TClientFactory(ClientFactory):</span><br><span class="line">#     protocol &#x3D; TClient</span><br><span class="line">#     def clientConnectionFailed(self, connector, reason):</span><br><span class="line">#         reactor.stop()</span><br><span class="line">#     def clientConnectionFailed(self, connector, reason):</span><br><span class="line">#         reactor.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">reactor.connectTCP(&#39;localhost&#39;, 22222, TClientFactory())</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+<p>具体的分析过程与构建服务端时类似，就不赘述了，效果如下：</p>
+<img src="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/3.png" class="">
+<p>*3.封装到协议工厂类的例子（《twisted网络编程要领》）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Server的例子,Client类似</span><br><span class="line">from twisted.internet import protocol, reactor</span><br><span class="line"></span><br><span class="line">class Echo(protocol.Protocol):</span><br><span class="line">    def dataReceived(self, data):</span><br><span class="line">        self.transport.write(data)</span><br><span class="line"></span><br><span class="line">class EchoFactory(protocol.Factory):</span><br><span class="line">    def buildProtocol(self, addr):</span><br><span class="line">        return Echo()</span><br><span class="line"></span><br><span class="line">reactor.listenTCP(8000, EchoFactory())</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+<p><strong>事件驱动</strong><br>这里不多说了，就类似于python多线程时cpu资源分配（GIL控制），在A作业I/O时把资源让给其他作业，放张《twisted网络编程要领》上的图</p>
+<img src="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/4.png" class="">
+
+<p><strong>核心部件</strong><br>Reactor 反应器<br>反应器是twisted实现事件驱动的核心，作用是提供网络api，线程，分配事件等。<br>温馨提示，配合源码食用更佳</p>
+<img src="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/5.png" class="">
+
+<p>Protocol 协议<br>协议类（BaseProtocol）中定义了一些交互式需要用到的方法<br>makeConnection  创建连接时调用<br>connectionMade   连接建立后调用</p>
+<p>Protocol：<br>dataReceived   接收数据时调用<br>connectionLost  关闭连接时调用<br>在基础部分的例子里我们继承了Protocol类，重写了connectionMade和dataReceived方法来达到自定义协议的目的。</p>
+<p>Protocol Factories  协议工厂<br>封装定义的协议类，为每个连接实例化，当连接终止时删除。协议定义了客户端服务端交互的方式，而协议工厂类中可以存放一些持续性的配置信息（如当前建立的有效连接数，在自定义的Factory类中定义一个numconnections变量，并在自定义的协议类中的connectionMode方法中将其+1）。<br>因为每建立一次连接都会重新创建协议的新的实例，所以持续性信息需要定义在协议工厂类而不是协议类中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet.protocol import Factory</span><br><span class="line">from twisted.protocols.basic import LineReceiver</span><br><span class="line">from twisted.internet import reactor</span><br><span class="line"></span><br><span class="line">class ChatProtocol(LineReceiver):</span><br><span class="line">    def __init__(self, factory):</span><br><span class="line">        self.factory &#x3D; factory</span><br><span class="line">        self.name &#x3D; None</span><br><span class="line">        self.state &#x3D; &quot;REGISTER&quot;</span><br><span class="line"></span><br><span class="line">    def connectionMade(self):</span><br><span class="line">        self.sendLine(&quot;What&#39;s your name?&quot;.encode())</span><br><span class="line"></span><br><span class="line">    def connectionLost(self, reason):</span><br><span class="line">        if self.name in self.factory.users:</span><br><span class="line">            del self.factory.users[self.name]</span><br><span class="line">            self.broadcastMessage(&quot;%s has left the channel.&quot; % (self.name,).encode())</span><br><span class="line"></span><br><span class="line">    def lineReceived(self, line):</span><br><span class="line">        if self.state &#x3D;&#x3D; &quot;REGISTER&quot;:</span><br><span class="line">            self.handle_REGISTER(line)</span><br><span class="line">        else:</span><br><span class="line">            self.handle_CHAT(line)</span><br><span class="line"></span><br><span class="line">    def handle_REGISTER(self, name):</span><br><span class="line">        if name in self.factory.users:</span><br><span class="line">            self.sendLine(&quot;Name taken, please choose another.&quot;.encode())</span><br><span class="line">            return</span><br><span class="line">        self.sendLine(&quot;Welcome, &#123;&#125;!&quot;.format(name).encode())</span><br><span class="line">        self.broadcastMessage(&quot;%s has joined the channel.&quot; % (name,))</span><br><span class="line">        self.name &#x3D; name</span><br><span class="line">        self.factory.users[name] &#x3D; self</span><br><span class="line">        self.state &#x3D; &quot;CHAT&quot;</span><br><span class="line"></span><br><span class="line">    def handle_CHAT(self, message):</span><br><span class="line">        message &#x3D; &quot;&lt;%s&gt; %s&quot; % (self.name, message)</span><br><span class="line">        self.broadcastMessage(message)</span><br><span class="line"></span><br><span class="line">    def broadcastMessage(self, message):</span><br><span class="line">        for name, protocol in self.factory.users.items():</span><br><span class="line">            if protocol !&#x3D; self:</span><br><span class="line">                protocol.sendLine(message.encode())</span><br><span class="line"></span><br><span class="line">class ChatFactory(Factory):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.users &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line">    def buildProtocol(self, addr):</span><br><span class="line">        return ChatProtocol(self)</span><br><span class="line"></span><br><span class="line">reactor.listenTCP(8123, ChatFactory())</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+<p>协议和协议工厂的源码比较好读，就不画调用流程图了</p>
+<p><strong>延迟与回调函数</strong></p>
+<img src="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/6.png" class="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet import reactor, defer</span><br><span class="line">class HeadlineRetriever(object):</span><br><span class="line">    def processHeadline(self, headline):</span><br><span class="line">        if len(headline) &gt; 50:</span><br><span class="line">            self.d.errback(</span><br><span class="line">            &quot;The headline &#96;&#96;%s&#39;&#39; is too long!&quot; % (headline,))</span><br><span class="line">        else:</span><br><span class="line">            self.d.callback(headline)</span><br><span class="line">    def _toHTML(self, result):</span><br><span class="line">        return &quot;&lt;h1&gt;%s&lt;&#x2F;h1&gt;&quot; % (result,)</span><br><span class="line">    def getHeadline(self, input):</span><br><span class="line">        self.d &#x3D; defer.Deferred()</span><br><span class="line">        reactor.callLater(1, self.processHeadline, input)</span><br><span class="line">        self.d.addCallback(self._toHTML)</span><br><span class="line">        return self.d</span><br><span class="line"></span><br><span class="line">def printData(result):</span><br><span class="line">    print(result)</span><br><span class="line">    reactor.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def printError(failure):</span><br><span class="line">    print(failure)</span><br><span class="line">    reactor.stop()</span><br><span class="line"></span><br><span class="line">h &#x3D; HeadlineRetriever()</span><br><span class="line">d &#x3D; h.getHeadline(&quot;Breaking News: Twisted Takes Us to the Moon!&quot;)</span><br><span class="line">d.addCallbacks(printData, printError)</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+
+<p>Deferred为实现事件驱动异步编程提供了基础，当在执行逻辑代码时需要多线程来避免阻塞主线程的情况发生。<br>在不使用异步的情况下，如果要多次访问执行耗时操作的服务端网页时，所需的时间是串行的；在使用异步后，由于I/O操作并行，计算操作串行，假定这里的耗时操作是I/O耗时的情况下，所需时间并行。<br>使用Deferred的非阻塞例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet import reactor</span><br><span class="line">from twisted.internet.task import deferLater</span><br><span class="line">from twisted.web.resource import Resource</span><br><span class="line">from twisted.web.server import Site, NOT_DONE_YET</span><br><span class="line">import time</span><br><span class="line">class BusyPage(Resource):</span><br><span class="line">    def _delayedRender(self, request):</span><br><span class="line">        request.write(&quot;Finally done, at %s&quot; % (time.asctime(),))</span><br><span class="line">        request.finish()</span><br><span class="line">    def render_GET(self, request):</span><br><span class="line">        d &#x3D; deferLater(reactor, 5, lambda: request)</span><br><span class="line">        d.addCallback(self._delayedRender)</span><br><span class="line">        return NOT_DONE_YET</span><br><span class="line">factory &#x3D; Site(BusyPage())</span><br><span class="line">reactor.listenTCP(8124, factory)</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def _runCallbacks(self):</span><br><span class="line">    if self._runningCallbacks:</span><br><span class="line">    # 防止递归调用</span><br><span class="line">    return</span><br><span class="line">    while current.callbacks:</span><br><span class="line">        item &#x3D; current.callbacks.pop(0)</span><br><span class="line">        callback, args, kw &#x3D; item[</span><br><span class="line">            isinstance(current.result, failure.Failure)]</span><br><span class="line">        # 从栈中弹出当前处理的回调，依据结果分配callback 或 errback</span><br><span class="line">           try:</span><br><span class="line">            current._runningCallbacks &#x3D; True</span><br><span class="line">                try:</span><br><span class="line">                    current.result &#x3D; callback(current.result, *args, **kw)</span><br><span class="line">                    # 回调函数执行</span><br><span class="line">                finally:</span><br><span class="line">                    current._runningCallbacks &#x3D; False</span><br><span class="line">            except:</span><br><span class="line">                current.result &#x3D; failure.Failure(captureVars&#x3D;self.debug)</span><br><span class="line">                # 异常视为失败</span><br></pre></td></tr></table></figure>
+<p><strong>WEB</strong><br>简单web应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from twisted.web.server import Site, GzipEncoderFactory</span><br><span class="line">from twisted.web.resource import Resource, EncodingResourceWrapper</span><br><span class="line">from twisted.internet import reactor</span><br><span class="line"></span><br><span class="line">class Simple(Resource):</span><br><span class="line">    isLeaf &#x3D; True</span><br><span class="line">    def render_GET(self, request):</span><br><span class="line">        return &quot;&lt;html&gt;Hello, world!&lt;&#x2F;html&gt;&quot;.encode()</span><br><span class="line"></span><br><span class="line">resource &#x3D; Simple()</span><br><span class="line">wrapped &#x3D; EncodingResourceWrapper(resource, [GzipEncoderFactory()])</span><br><span class="line">site &#x3D; Site(wrapped)</span><br><span class="line">reactor.listenTCP(8080, site)</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+<p>动态web应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet import reactor</span><br><span class="line">from twisted.web.resource import Resource</span><br><span class="line">from twisted.web.server import Site</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">class ClockPage(Resource):</span><br><span class="line">    isLeaf &#x3D; True</span><br><span class="line">    def render_GET(self, request):</span><br><span class="line">        rtn &#x3D; &quot;The local time is %s&quot; % (time.ctime(),)</span><br><span class="line">        return rtn.encode()</span><br><span class="line"></span><br><span class="line">resource &#x3D; ClockPage()</span><br><span class="line">factory &#x3D; Site(resource)</span><br><span class="line">reactor.listenTCP(8000, factory)</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+<p>post请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">from twisted.internet import reactor</span><br><span class="line">from twisted.web.resource import Resource</span><br><span class="line">from twisted.web.server import Site</span><br><span class="line">import html</span><br><span class="line">class FormPage(Resource):</span><br><span class="line">    isLeaf &#x3D; True</span><br><span class="line">    def render_GET(self, request):</span><br><span class="line">        return &quot;&quot;&quot;</span><br><span class="line">        &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">        &lt;form method&#x3D;&quot;POST&quot;&gt;</span><br><span class="line">        &lt;input name&#x3D;&quot;form-field&quot; type&#x3D;&quot;text&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;submit&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;form&gt;</span><br><span class="line">        &lt;&#x2F;body&gt;</span><br><span class="line">        &lt;&#x2F;html&gt;</span><br><span class="line">        &quot;&quot;&quot;.encode()</span><br><span class="line">    def render_POST(self, request):</span><br><span class="line">        rtn &#x3D; &quot;&quot;&quot;</span><br><span class="line">        &lt;html&gt;</span><br><span class="line">        &lt;body&gt;You submitted: %s&lt;&#x2F;body&gt;</span><br><span class="line">        &lt;&#x2F;html&gt;</span><br><span class="line">        &quot;&quot;&quot; % (html.escape(request.args.get(b&#39;form-field&#39;)[0].decode()),)</span><br><span class="line">        return rtn.encode()</span><br><span class="line"></span><br><span class="line">factory &#x3D; Site(FormPage())</span><br><span class="line">reactor.listenTCP(8000, factory)</span><br><span class="line">reactor.run()</span><br></pre></td></tr></table></figure>
+
+
+<p>Twisted Network Programming Essentials<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mumuxinfei/p/4528910.html">https://www.cnblogs.com/mumuxinfei/p/4528910.html</a><br>twistedmatrix.com/documents/current/core/howto/defer.html<br><a target="_blank" rel="noopener" href="https://twistedmatrix.com/documents/current/core/howto/index.html">https://twistedmatrix.com/documents/current/core/howto/index.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+          <div>
+            
+              
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>twisted框架</a></p>
+  <p><span>文章作者:</span></a></p>
+  <p><span>发布时间:</span>2022年01月10日 - 22:53:05</p>
+  <p><span>最后更新:</span>2022年01月10日 - 22:59:18</p>
+  <p><span>原始链接:</span><a href="/2022/01/10/twisted%E6%A1%86%E6%9E%B6/" title="twisted框架">https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2022/01/10/twisted%E6%A1%86%E6%9E%B6/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+
+            
+          </div>
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/27/vulnhub%E9%9D%B6%E6%9C%BADriftingBlues-7/" rel="prev" title="vulnhub靶机DriftingBlues: 7">
+      <i class="fa fa-chevron-left"></i> vulnhub靶机DriftingBlues: 7
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/10/twisted%E5%8E%86%E5%8F%B2%E6%BC%8F%E6%B4%9E/" rel="next" title="twisted历史漏洞">
+      twisted历史漏洞 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lockcy"
+      src="/images/harutya.jpg">
+  <p class="site-author-name" itemprop="name">lockcy</p>
+  <div class="site-description" itemprop="description">A mind at peace with all below, a heart whose love is innocent!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lockcy" title="GitHub → https://github.com/lockcy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lockcysec@qq.com" title="E-Mail → mailto:lockcysec@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+          <link rel="stylesheet" href="/dist/APlayer.min.css">
+          <div id="aplayer"></div>
+          <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+          <script type="text/javascript" src="/dist/music.js"></script>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lockcy</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">143k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:10</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
+<script src="/live2d-widget/autoload.js"></script>

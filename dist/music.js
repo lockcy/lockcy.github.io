@@ -9,6 +9,12 @@ const ap = new APlayer({
     preload: 'auto',
     audio: [
         {
+            name: '花びらたちのマーチ',
+            artist: 'Aimer',
+            url: 'http://music.163.com/song/media/outer/url?id=1357775526.mp3',
+            cover: 'http://p2.music.126.net/ucxKEgwsE8oVACLdanyttg==/109951165052444729.jpg?param=130y130',
+        },
+        {
             name: '瞬き',
             artist: '春茶オサム',
             url: 'http://music.163.com/song/media/outer/url?id=556042458.mp3',
@@ -68,11 +74,6 @@ const ap = new APlayer({
             url: 'http://music.163.com/song/media/outer/url?id=2001320.mp3',
             cover: 'http://p1.music.126.net/irlK0xcRGW8jw3wq165onw==/109951165361156638.jpg?param=130y130',
         },
-        {
-            name: 'Колыбельная',
-            artist: 'Rauf & Faik',
-            url: 'http://music.163.com/song/media/outer/url?id=1407268967.mp3',
-            cover: 'http://p2.music.126.net/kkBg5vhWa-PymMp53shK_Q==/109951164524811319.jpg?param=130y130',
-        },
+
     ]
 });
