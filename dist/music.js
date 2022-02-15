@@ -8,6 +8,12 @@ const ap = new APlayer({
     mutex: true,
     preload: 'auto',
     audio: [
+       {
+            name: '10月無口な君を忘れる',
+            artist: 'あたらよ',
+            url: 'http://music.163.com/song/media/outer/url?id=1830636201.mp3',
+            cover: 'http://p1.music.126.net/SRtyTB66R_XsFO0C6qNIbQ==/109951165816149249.jpg?param=130y130',
+        },
         {
             name: '花びらたちのマーチ',
             artist: 'Aimer',
