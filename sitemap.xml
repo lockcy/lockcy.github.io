@@ -431,6 +431,13 @@
   </url>
   
   <url>
+    <loc>https://lockcy.github.io/tags/flask/</loc>
+    <lastmod>2022-02-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://lockcy.github.io/tags/web/</loc>
     <lastmod>2022-02-15</lastmod>
     <changefreq>daily</changefreq>
@@ -438,7 +445,7 @@
   </url>
   
   <url>
-    <loc>https://lockcy.github.io/tags/flask/</loc>
+    <loc>https://lockcy.github.io/tags/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F/</loc>
     <lastmod>2022-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -495,13 +502,6 @@
   
   <url>
     <loc>https://lockcy.github.io/tags/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/</loc>
-    <lastmod>2022-02-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockcy.github.io/tags/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F/</loc>
     <lastmod>2022-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
