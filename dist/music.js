@@ -87,12 +87,6 @@ const ap = new APlayer({
             cover: 'http://p1.music.126.net/MtdqemvwZel08xDJmql-jA==/109951165404724376.jpg?param=130y130',
         },
         {
-            name: 'ヤキモチ',
-            artist: '高橋優',
-            url: 'http://music.163.com/song/media/outer/url?id=28885472.mp3',
-            cover: 'http://p1.music.126.net/Nmdg9A3mA-6KKYqYMKld-g==/109951165400350566.jpg?param=130y130',
-        },
-        {
             name: '水星记',
             artist: '郭顶',
             url: 'http://music.163.com/song/media/outer/url?id=441491828.mp3',
