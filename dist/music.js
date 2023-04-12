@@ -8,6 +8,12 @@ const ap = new APlayer({
     mutex: true,
     preload: 'auto',
     audio: [
+        {
+            name: '回不去的夏天',
+            artist: '夏日入侵企画',
+            url: 'http://music.163.com/song/media/outer/url?id=1832684671.mp3',
+            cover: 'http://p2.music.126.net/Oz62EqsdMUQhQnGz5sLfdA==/109951165835998589.jpg?param=130y130',
+        },
        {
             name: '10月無口な君を忘れる',
             artist: 'あたらよ',
